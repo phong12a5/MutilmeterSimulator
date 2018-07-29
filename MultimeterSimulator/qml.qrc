@@ -1,5 +1,16 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>Image/Capacitor/Capictor_1.png</file>
+        <file>Image/Capacitor/Capictor_2.png</file>
+        <file>Image/Capacitor/Capictor_3.png</file>
+        <file>Image/Condutor/Conductor_1.jpg</file>
+        <file>Image/Condutor/Conductor_2.png</file>
+        <file>Image/Diode/Diode.png</file>
+        <file>Image/Multimeter/IMG_93766.png</file>
+        <file>Image/Multimeter/Untitled-1.png</file>
+        <file>Image/Resistor/Resistor_1.png</file>
+        <file>Image/Resistor/Resistor_2.jpg</file>
+        <file>Image/Transistor/Transistor.png</file>
     </qresource>
 </RCC>
