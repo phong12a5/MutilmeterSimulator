@@ -13,10 +13,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp \
-    ModelData.cpp \
     main.cpp \
-    ModelData.cpp
+    ModelData.cpp \
+    DefineModel.cpp
 
 RESOURCES += qml.qrc
 
@@ -34,9 +33,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     ModelData.h \
     AppDefine.h \
-    AppDefine.h \
-    ModelData.h
+    DefineModel.h \
+    App_Enum.h
 
-DISTFILES += \
-    ../Image/Capacitor/Capictor_2.png \
-    ../Image/Capacitor/Capictor_3.png
+DISTFILES +=

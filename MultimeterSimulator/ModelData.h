@@ -2,46 +2,11 @@
 #define MODELDATA_H
 
 #include <QObject>
-
-enum class OBJECT_INDEX: int{
-    E_OBJECT_INDEX_RESISTOR_1 = 0,
-    E_OBJECT_INDEX_RESISTOR_2,
-    E_OBJECT_INDEX_CAPICTOR_1,
-    E_OBJECT_INDEX_CAPICTOR_2,
-    E_OBJECT_INDEX_CAPICTOR_3,
-    E_OBJECT_INDEX_CONDUTOR_1,
-    E_OBJECT_INDEX_CONDUTOR_2,
-    E_OBJECT_INDEX_DIODE     ,
-    E_OBJECT_INDEX_TRANSISTOR,
-};
-
-enum class OBJECT_TYPE: int{
-    E_OBJECT_TYPE_RESISTOR = 0,
-    E_OBJECT_TYPE_CAPICTOR,
-    E_OBJECT_TYPE_CONDUTOR,
-    E_OBJECT_TYPE_DIODE,
-    E_OBJECT_TYPE_TRANSISTOR,
-};
-
-typedef struct init_data{
-    int idx;
-    QString objectName;
-    int objectType;
-    QString sourceImage;
-
-} INIT_DATA;
-
-const QMap<OBJECT_INDEX, INIT_DATA> TABLE_CAMERA {
-    {OBJECT_INDEX::E_OBJECT_INDEX_RESISTOR_1,   {OBJECT_INDEX::E_OBJECT_INDEX_RESISTOR_1,"Resistor_1"   , (int)OBJECT_TYPE::E_OBJECT_TYPE_RESISTOR  , "CAMERA_00_RESP" ,"CAMERA_00_REQ" }},
-    {OBJECT_INDEX::E_OBJECT_INDEX_RESISTOR_2,   {OBJECT_INDEX::E_OBJECT_INDEX_RESISTOR_2,"Resistor_2"   , (int)OBJECT_TYPE::E_OBJECT_TYPE_RESISTOR  , "CAMERA_01_RESP" ,"CAMERA_01_REQ" }},
-    {OBJECT_INDEX::E_OBJECT_INDEX_CAPICTOR_1,   {OBJECT_INDEX::E_OBJECT_INDEX_CAPICTOR_1,"Capictor_1"   , (int)OBJECT_TYPE::E_OBJECT_TYPE_CAPICTOR  , "CAMERA_02_RESP" ,"CAMERA_02_REQ" }},
-    {OBJECT_INDEX::E_OBJECT_INDEX_CAPICTOR_2,   {OBJECT_INDEX::E_OBJECT_INDEX_CAPICTOR_2,"Capictor_2"   , (int)OBJECT_TYPE::E_OBJECT_TYPE_CAPICTOR  , "CAMERA_03_RESP" ,"CAMERA_03_REQ" }},
-    {OBJECT_INDEX::E_OBJECT_INDEX_CAPICTOR_3,   {OBJECT_INDEX::E_OBJECT_INDEX_CAPICTOR_3,"Capictor_3"   , (int)OBJECT_TYPE::E_OBJECT_TYPE_CAPICTOR  , "CAMERA_04_RESP" ,"CAMERA_04_REQ" }},
-    {OBJECT_INDEX::E_OBJECT_INDEX_CONDUTOR_1,   {OBJECT_INDEX::E_OBJECT_INDEX_CONDUTOR_1,"Conductor_1"  , (int)OBJECT_TYPE::E_OBJECT_TYPE_CONDUTOR  , "CAMERA_05_RESP" ,"CAMERA_05_REQ" }},
-    {OBJECT_INDEX::E_OBJECT_INDEX_CONDUTOR_2,   {OBJECT_INDEX::E_OBJECT_INDEX_CONDUTOR_2,"Conductor_2"  , (int)OBJECT_TYPE::E_OBJECT_TYPE_CONDUTOR  , "CAMERA_06_RESP" ,"CAMERA_06_REQ" }},
-    {OBJECT_INDEX::E_OBJECT_INDEX_DIODE     ,   {OBJECT_INDEX::E_OBJECT_INDEX_DIODE     ,"Diode"        , (int)OBJECT_TYPE::E_OBJECT_TYPE_DIODE     , "CAMERA_07_RESP" ,"CAMERA_07_REQ" }},
-    {OBJECT_INDEX::E_OBJECT_INDEX_TRANSISTOR,   {OBJECT_INDEX::E_OBJECT_INDEX_TRANSISTOR,"Transistor"   , (int)OBJECT_TYPE::E_OBJECT_TYPE_DIODE     , "CAMERA_08_RESP" ,"CAMERA_08_REQ" }},
-};
+#include <QMap>
+#include <AppDefine.h>
+#include <QDebug>
+#include <QDir>
+#include "App_Enum.h"
 
 class CommonObject: public QObject
 {
@@ -73,7 +38,7 @@ public:
     int objectType(){return m_objectType;}
     QString sourceImage(){return m_sourceImage;}
 
-    void setObjectName(int _idx){
+    void setIdx(int _idx){
         if(_idx != m_idx){
             m_idx = _idx;
             emit idxChanged();
@@ -105,13 +70,146 @@ private:
     QString m_sourceImage;
 };
 
+class MultimeterObject: public QObject
+{
+    Q_OBJECT
+public:
+    Q_PROPERTY(int idx READ idx WRITE setIdx NOTIFY idxChanged)
+    Q_PROPERTY(QString objectName READ objectName WRITE setObjectName NOTIFY objectNameChanged)
+    Q_PROPERTY(int objectType READ objectType WRITE setObjectType NOTIFY objectTypeChanged)
+    Q_PROPERTY(QString soureBg READ soureBg WRITE setSoureBg NOTIFY soureBgChanged)
+    Q_PROPERTY(QString sourcePointer READ sourcePointer WRITE setSourcePointer NOTIFY sourcePointerChanged)
+
+signals:
+    void idxChanged();
+    void objectNameChanged();
+    void objectTypeChanged();
+    void soureBgChanged();
+    void sourcePointerChanged();
+
+public:
+    MultimeterObject(int _idx, QString _objectName, int _objectType, QString _soureBg, QString _sourcePointer):
+    m_idx(_idx),
+    m_objectName(_objectName),
+    m_objectType(_objectType),
+    m_sourceBg(_soureBg),
+    m_sourcePointer(_sourcePointer)
+    {
+    }
+    ~MultimeterObject(){}
+
+    int idx(){ return  m_idx;}
+    QString objectName(){ return m_objectName;}
+    int objectType(){return m_objectType;}
+    QString soureBg(){return m_sourceBg;}
+    QString sourcePointer(){return m_sourcePointer;}
+
+    void setIdx(int _idx){
+        if(_idx != m_idx){
+            m_idx = _idx;
+            emit idxChanged();
+        }
+    }
+    void setObjectName(QString _objectName){
+        if(_objectName != m_objectName){
+            m_objectName = _objectName;
+            emit objectNameChanged();
+        }
+    }
+    void setObjectType(int _objectType){
+        if(_objectType != m_objectType){
+            m_objectType = _objectType;
+            emit objectTypeChanged();
+        }
+    }
+    void setSoureBg(QString _soureBg){
+        if(_soureBg != m_sourceBg){
+            m_sourceBg = _soureBg;
+            emit soureBgChanged();
+        }
+    }
+    void setSourcePointer(QString _soucePointer){
+        if(_soucePointer != m_sourcePointer){
+            m_sourcePointer =_soucePointer;
+            emit sourcePointerChanged();
+        }
+    }
+
+private:
+    int m_idx;
+    QString m_objectName;
+    int m_objectType;
+    QString m_sourceBg;
+    QString m_sourcePointer;
+};
+
 class ModelData : public QObject
 {
     Q_OBJECT
 public:
     explicit ModelData(QObject *parent = nullptr);
+    ~ModelData();
+
+    Q_PROPERTY(QObject* resistor1           READ resistor1         NOTIFY resistor1Changed)
+    Q_PROPERTY(QObject* resistor2           READ resistor2         NOTIFY resistor2Changed)
+    Q_PROPERTY(QObject* capictor_normal     READ capictor_normal   NOTIFY capictor_normalChanged)
+    Q_PROPERTY(QObject* capictor_abnormal   READ capictor_abnormal NOTIFY capictor_abnormalChanged)
+    Q_PROPERTY(QObject* cappictor_error     READ cappictor_error   NOTIFY cappictor_errorChanged)
+    Q_PROPERTY(QObject* condutor_normal     READ condutor_normal   NOTIFY condutor_normalChanged)
+    Q_PROPERTY(QObject* condutor_error      READ condutor_error    NOTIFY condutor_errorChanged)
+    Q_PROPERTY(QObject* diode               READ diode             NOTIFY diodeChanged)
+    Q_PROPERTY(QObject* transistor          READ transistor        NOTIFY transistorChanged)
+    Q_PROPERTY(QObject* multimeter          READ multimeter        NOTIFY multimeterChanged)
+
+    Q_PROPERTY(int pointerMode      READ pointerMode    WRITE setPointerMode    NOTIFY pointerModeChanged)
+
+private:
+
+    static ModelData* m_instantce;
+
+    QObject* m_resistor1;
+    QObject* m_resistor2;
+    QObject* m_capictor_normal;
+    QObject* m_capictor_abnormal;
+    QObject* m_cappictor_error;
+    QObject* m_condutor_normal;
+    QObject* m_condutor_error;
+    QObject* m_diode;
+    QObject* m_transistor;
+    QObject* m_multimeter;
+
+    int m_pointerMode;
+
+public:
+    static ModelData* getInstance();
+    void initObjects();
+
+    QObject* resistor1();
+    QObject* resistor2();
+    QObject* capictor_normal();
+    QObject* capictor_abnormal();
+    QObject* cappictor_error();
+    QObject* condutor_normal();
+    QObject* condutor_error();
+    QObject* diode();
+    QObject* transistor();
+    QObject* multimeter();
+    int pointerMode();
+    void setPointerMode(int _mode);
+
 
 signals:
+    void resistor1Changed();
+    void resistor2Changed();
+    void capictor_normalChanged();
+    void capictor_abnormalChanged();
+    void cappictor_errorChanged();
+    void condutor_normalChanged();
+    void condutor_errorChanged();
+    void diodeChanged();
+    void transistorChanged();
+    void multimeterChanged();
+    void pointerModeChanged();
 
 public slots:
 };
