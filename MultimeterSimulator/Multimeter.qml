@@ -18,46 +18,6 @@ Item {
         width: Define.multiImg_sourcwWidth/6
         height: Define.multiImg_sourcwHeight/6
     }
-    Rectangle{
-        id: pointerMouse
-        anchors.centerIn: pointer
-        width: pointer.width + 60
-        height: pointer.height +60
-        radius: width/2
-        color: "transparent"
-
-        Repeater{
-            model: 10
-            Rectangle{
-                id: rtg
-                width: 25
-                height: pointerMouse.width
-                anchors.centerIn: pointerMouse
-                color: "transparent"
-                rotation: index * 18
-                MouseArea{
-                    id: upMouse
-                    width: parent.width
-                    height: parent.height/2
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.top: parent.top
-                    onClicked: {
-                        ModelData.pointerMode = index
-                    }
-                }
-                MouseArea{
-                    id: downMouse
-                    width: parent.width
-                    height: parent.height/2
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.bottom: parent.bottom
-                    onClicked: {
-                        ModelData.pointerMode = index + 10
-                    }
-                }
-            }
-        }
-    }
     Image {
         id: pointer
         width: Define.multiPointerRaius/6
@@ -71,16 +31,68 @@ Item {
             anchors.fill: parent
             propagateComposedEvents: true
         }
+    }
+    Rectangle{
+        id: pointerMouse
+        anchors.centerIn: pointer
+        width: pointer.width + 60
+        height: pointer.height +60
+        radius: width/2
+        color: "transparent"
 
-        Rectangle{
-            anchors.centerIn: parent
-            width: pointer.width - 10
-            height: pointer.width - 10
-            radius: width/2
-            color: "transparent"
-            MouseArea{
-                anchors.fill: parent
-                propagateComposedEvents: false
+        Rectangle {
+            id: center
+            anchors.centerIn: pointerMouse
+            width: 1
+            height: 1
+            color: "red"
+        }
+
+        Repeater{
+            model: 10
+            Rectangle{
+                id: rtg
+                width: 25
+                height: pointerMouse.width
+                anchors.centerIn: pointerMouse
+                color: "transparent"
+                rotation: index * 18
+                Rectangle{
+                    id: upMouse
+                    width: parent.width
+                    height: parent.height/2
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    color: "transparent"
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            var radius = Math.abs(mouseY - center.y);
+                            console.log("Radius: " + radius)
+                            if(radius >= pointer.width/2 && radius <= pointerMouse.width/2){
+                                ModelData.pointerMode = index
+                            }
+                        }
+                    }
+                }
+                Rectangle{
+                    id: downMouse
+                    width: parent.width
+                    height: parent.height/2
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
+                    color: "transparent"
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            var radius = Math.abs(mouseY/* - center.y*/);
+                            console.log("Radius: " + radius)
+                            if(radius >= pointer.width/2 && radius <= pointerMouse.width/2){
+                                ModelData.pointerMode = index + 10
+                            }
+                        }
+                    }
+                }
             }
         }
     }

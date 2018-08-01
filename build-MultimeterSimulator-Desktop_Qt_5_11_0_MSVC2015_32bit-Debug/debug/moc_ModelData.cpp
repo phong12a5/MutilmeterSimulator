@@ -238,8 +238,8 @@ void CommonObject::sourceImageChanged()
     QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
 struct qt_meta_stringdata_MultimeterObject_t {
-    QByteArrayData data[12];
-    char stringdata0[149];
+    QByteArrayData data[16];
+    char stringdata0[227];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -255,18 +255,24 @@ QT_MOC_LITERAL(3, 29, 17), // "objectNameChanged"
 QT_MOC_LITERAL(4, 47, 17), // "objectTypeChanged"
 QT_MOC_LITERAL(5, 65, 14), // "soureBgChanged"
 QT_MOC_LITERAL(6, 80, 20), // "sourcePointerChanged"
-QT_MOC_LITERAL(7, 101, 3), // "idx"
-QT_MOC_LITERAL(8, 105, 10), // "objectName"
-QT_MOC_LITERAL(9, 116, 10), // "objectType"
-QT_MOC_LITERAL(10, 127, 7), // "soureBg"
-QT_MOC_LITERAL(11, 135, 13) // "sourcePointer"
+QT_MOC_LITERAL(7, 101, 22), // "activedPositiveChanged"
+QT_MOC_LITERAL(8, 124, 22), // "activedNegativeChanged"
+QT_MOC_LITERAL(9, 147, 3), // "idx"
+QT_MOC_LITERAL(10, 151, 10), // "objectName"
+QT_MOC_LITERAL(11, 162, 10), // "objectType"
+QT_MOC_LITERAL(12, 173, 7), // "soureBg"
+QT_MOC_LITERAL(13, 181, 13), // "sourcePointer"
+QT_MOC_LITERAL(14, 195, 15), // "activedPositive"
+QT_MOC_LITERAL(15, 211, 15) // "activedNegative"
 
     },
     "MultimeterObject\0idxChanged\0\0"
     "objectNameChanged\0objectTypeChanged\0"
     "soureBgChanged\0sourcePointerChanged\0"
+    "activedPositiveChanged\0activedNegativeChanged\0"
     "idx\0objectName\0objectType\0soureBg\0"
-    "sourcePointer"
+    "sourcePointer\0activedPositive\0"
+    "activedNegative"
 };
 #undef QT_MOC_LITERAL
 
@@ -276,19 +282,21 @@ static const uint qt_meta_data_MultimeterObject[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
-       5,   44, // properties
+       7,   14, // methods
+       7,   56, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       5,       // signalCount
+       7,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x06 /* Public */,
-       3,    0,   40,    2, 0x06 /* Public */,
-       4,    0,   41,    2, 0x06 /* Public */,
-       5,    0,   42,    2, 0x06 /* Public */,
-       6,    0,   43,    2, 0x06 /* Public */,
+       1,    0,   49,    2, 0x06 /* Public */,
+       3,    0,   50,    2, 0x06 /* Public */,
+       4,    0,   51,    2, 0x06 /* Public */,
+       5,    0,   52,    2, 0x06 /* Public */,
+       6,    0,   53,    2, 0x06 /* Public */,
+       7,    0,   54,    2, 0x06 /* Public */,
+       8,    0,   55,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -296,13 +304,17 @@ static const uint qt_meta_data_MultimeterObject[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
  // properties: name, type, flags
-       7, QMetaType::Int, 0x00495103,
-       8, QMetaType::QString, 0x00495103,
        9, QMetaType::Int, 0x00495103,
       10, QMetaType::QString, 0x00495103,
-      11, QMetaType::QString, 0x00495103,
+      11, QMetaType::Int, 0x00495103,
+      12, QMetaType::QString, 0x00495103,
+      13, QMetaType::QString, 0x00495103,
+      14, QMetaType::Bool, 0x00495103,
+      15, QMetaType::Bool, 0x00495103,
 
  // properties: notify_signal_id
        0,
@@ -310,6 +322,8 @@ static const uint qt_meta_data_MultimeterObject[] = {
        2,
        3,
        4,
+       5,
+       6,
 
        0        // eod
 };
@@ -325,6 +339,8 @@ void MultimeterObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 2: _t->objectTypeChanged(); break;
         case 3: _t->soureBgChanged(); break;
         case 4: _t->sourcePointerChanged(); break;
+        case 5: _t->activedPositiveChanged(); break;
+        case 6: _t->activedNegativeChanged(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -364,6 +380,20 @@ void MultimeterObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
                 return;
             }
         }
+        {
+            using _t = void (MultimeterObject::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MultimeterObject::activedPositiveChanged)) {
+                *result = 5;
+                return;
+            }
+        }
+        {
+            using _t = void (MultimeterObject::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MultimeterObject::activedNegativeChanged)) {
+                *result = 6;
+                return;
+            }
+        }
     }
 #ifndef QT_NO_PROPERTIES
     else if (_c == QMetaObject::ReadProperty) {
@@ -376,6 +406,8 @@ void MultimeterObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 2: *reinterpret_cast< int*>(_v) = _t->objectType(); break;
         case 3: *reinterpret_cast< QString*>(_v) = _t->soureBg(); break;
         case 4: *reinterpret_cast< QString*>(_v) = _t->sourcePointer(); break;
+        case 5: *reinterpret_cast< bool*>(_v) = _t->activedPositive(); break;
+        case 6: *reinterpret_cast< bool*>(_v) = _t->activedNegative(); break;
         default: break;
         }
     } else if (_c == QMetaObject::WriteProperty) {
@@ -388,6 +420,8 @@ void MultimeterObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 2: _t->setObjectType(*reinterpret_cast< int*>(_v)); break;
         case 3: _t->setSoureBg(*reinterpret_cast< QString*>(_v)); break;
         case 4: _t->setSourcePointer(*reinterpret_cast< QString*>(_v)); break;
+        case 5: _t->setActivedPositive(*reinterpret_cast< bool*>(_v)); break;
+        case 6: _t->setActivedNegative(*reinterpret_cast< bool*>(_v)); break;
         default: break;
         }
     } else if (_c == QMetaObject::ResetProperty) {
@@ -421,29 +455,29 @@ int MultimeterObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 7;
     }
 #ifndef QT_NO_PROPERTIES
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::QueryPropertyDesignable) {
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::QueryPropertyScriptable) {
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::QueryPropertyStored) {
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::QueryPropertyEditable) {
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::QueryPropertyUser) {
-        _id -= 5;
+        _id -= 7;
     }
 #endif // QT_NO_PROPERTIES
     return _id;
@@ -477,6 +511,18 @@ void MultimeterObject::soureBgChanged()
 void MultimeterObject::sourcePointerChanged()
 {
     QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
+}
+
+// SIGNAL 5
+void MultimeterObject::activedPositiveChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
+}
+
+// SIGNAL 6
+void MultimeterObject::activedNegativeChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 6, nullptr);
 }
 struct qt_meta_stringdata_ModelData_t {
     QByteArrayData data[24];

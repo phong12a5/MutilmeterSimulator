@@ -79,6 +79,8 @@ public:
     Q_PROPERTY(int objectType READ objectType WRITE setObjectType NOTIFY objectTypeChanged)
     Q_PROPERTY(QString soureBg READ soureBg WRITE setSoureBg NOTIFY soureBgChanged)
     Q_PROPERTY(QString sourcePointer READ sourcePointer WRITE setSourcePointer NOTIFY sourcePointerChanged)
+    Q_PROPERTY(bool activedPositive READ activedPositive WRITE setActivedPositive NOTIFY activedPositiveChanged)
+    Q_PROPERTY(bool activedNegative READ activedNegative WRITE setActivedNegative NOTIFY activedNegativeChanged)
 
 signals:
     void idxChanged();
@@ -86,6 +88,8 @@ signals:
     void objectTypeChanged();
     void soureBgChanged();
     void sourcePointerChanged();
+    void activedPositiveChanged();
+    void activedNegativeChanged();
 
 public:
     MultimeterObject(int _idx, QString _objectName, int _objectType, QString _soureBg, QString _sourcePointer):
@@ -93,7 +97,9 @@ public:
     m_objectName(_objectName),
     m_objectType(_objectType),
     m_sourceBg(_soureBg),
-    m_sourcePointer(_sourcePointer)
+    m_sourcePointer(_sourcePointer),
+    m_activedPositive(false),
+    m_activedNegative(false)
     {
     }
     ~MultimeterObject(){}
@@ -103,6 +109,8 @@ public:
     int objectType(){return m_objectType;}
     QString soureBg(){return m_sourceBg;}
     QString sourcePointer(){return m_sourcePointer;}
+    bool activedPositive(){return m_activedPositive;}
+    bool activedNegative(){return m_activedNegative;}
 
     void setIdx(int _idx){
         if(_idx != m_idx){
@@ -134,6 +142,20 @@ public:
             emit sourcePointerChanged();
         }
     }
+    void setActivedPositive(bool _activedPositive){
+        if(_activedPositive != m_activedPositive){
+            m_activedPositive = _activedPositive;
+            emit activedPositiveChanged();
+        }
+    }
+
+    void setActivedNegative(bool _activedNegative){
+        if(_activedNegative != m_activedNegative){
+            m_activedNegative = _activedNegative;
+            emit activedNegativeChanged();
+        }
+    }
+
 
 private:
     int m_idx;
@@ -141,6 +163,8 @@ private:
     int m_objectType;
     QString m_sourceBg;
     QString m_sourcePointer;
+    bool m_activedPositive;
+    bool m_activedNegative;
 };
 
 class ModelData : public QObject
