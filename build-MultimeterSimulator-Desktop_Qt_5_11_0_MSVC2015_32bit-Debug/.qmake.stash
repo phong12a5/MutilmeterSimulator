@@ -1,4 +1,4 @@
-QMAKE_LICHECK_TIMESTAMP = "Mon Jul 30"
+QMAKE_LICHECK_TIMESTAMP = "Wed Aug 1"
 QMAKE_CXX.INCDIRS = \
     "C:\\Program Files\\Microsoft Visual Studio 14.0\\VC\\INCLUDE" \
     "C:\\Program Files\\Microsoft Visual Studio 14.0\\VC\\ATLMFC\\INCLUDE" \
@@ -20,5 +20,3 @@ QMAKE_CXX.COMPILER_MACROS = \
     QT_COMPILER_STDCXX \
     QMAKE_MSC_VER \
     QMAKE_MSC_FULL_VER
-QMAKE_LICHECK_TIMESTAMP = "Tue Jul 31"
-QMAKE_LICHECK_TIMESTAMP = "Wed Aug 1"

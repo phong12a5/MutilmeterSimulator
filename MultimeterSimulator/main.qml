@@ -68,10 +68,20 @@ Window {
 
     Multimeter{
         id: multimeter
-        width: 400
+        width: Define.multiMeterWidth
         height: parent.height - lsv.height
         anchors.top: lsv.bottom
         anchors.right: parent.right
+    }
+
+    PointerWire{
+        id: wire
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: parent.height - lsv.height
+        anchors.bottom: parent.bottom
+        stopRedPoint:[multimeter.stopRedPoint[0] + multimeter.x, multimeter.stopRedPoint[1] ]
+        stopBlackPoint:[multimeter.stopBlackPoint[0] + multimeter.x, multimeter.stopBlackPoint[1]]
     }
 
     function creatModel(){

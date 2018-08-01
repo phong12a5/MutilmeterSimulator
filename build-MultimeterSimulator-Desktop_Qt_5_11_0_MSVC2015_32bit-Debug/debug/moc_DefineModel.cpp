@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DefineModel_t {
-    QByteArrayData data[8];
-    char stringdata0[148];
+    QByteArrayData data[9];
+    char stringdata0[164];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,13 +38,14 @@ QT_MOC_LITERAL(3, 39, 20), // "multiImg_sourcwWidth"
 QT_MOC_LITERAL(4, 60, 21), // "multiImg_sourcwHeight"
 QT_MOC_LITERAL(5, 82, 23), // "multiPointerStartXPoint"
 QT_MOC_LITERAL(6, 106, 23), // "multiPointerStartYPoint"
-QT_MOC_LITERAL(7, 130, 17) // "multiPointerRaius"
+QT_MOC_LITERAL(7, 130, 17), // "multiPointerRaius"
+QT_MOC_LITERAL(8, 148, 15) // "multiMeterWidth"
 
     },
     "DefineModel\0WIDGET_WIDTH\0WIDGET_HEIGHT\0"
     "multiImg_sourcwWidth\0multiImg_sourcwHeight\0"
     "multiPointerStartXPoint\0multiPointerStartYPoint\0"
-    "multiPointerRaius"
+    "multiPointerRaius\0multiMeterWidth"
 };
 #undef QT_MOC_LITERAL
 
@@ -55,7 +56,7 @@ static const uint qt_meta_data_DefineModel[] = {
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
-       7,   14, // properties
+       8,   14, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
@@ -69,6 +70,7 @@ static const uint qt_meta_data_DefineModel[] = {
        5, QMetaType::Int, 0x00095401,
        6, QMetaType::Int, 0x00095401,
        7, QMetaType::Int, 0x00095401,
+       8, QMetaType::Int, 0x00095401,
 
        0        // eod
 };
@@ -89,6 +91,7 @@ void DefineModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 4: *reinterpret_cast< int*>(_v) = _t->multiPointerStartXPoint(); break;
         case 5: *reinterpret_cast< int*>(_v) = _t->multiPointerStartYPoint(); break;
         case 6: *reinterpret_cast< int*>(_v) = _t->multiPointerRaius(); break;
+        case 7: *reinterpret_cast< int*>(_v) = _t->multiMeterWidth(); break;
         default: break;
         }
     } else if (_c == QMetaObject::WriteProperty) {
@@ -130,17 +133,17 @@ int DefineModel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
    if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::QueryPropertyDesignable) {
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::QueryPropertyScriptable) {
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::QueryPropertyStored) {
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::QueryPropertyEditable) {
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::QueryPropertyUser) {
-        _id -= 7;
+        _id -= 8;
     }
 #endif // QT_NO_PROPERTIES
     return _id;

@@ -17,6 +17,7 @@ class DefineModel : public QObject
     Q_PROPERTY(int multiPointerStartXPoint READ multiPointerStartXPoint CONSTANT)
     Q_PROPERTY(int multiPointerStartYPoint READ multiPointerStartYPoint CONSTANT)
     Q_PROPERTY(int multiPointerRaius READ multiPointerRaius CONSTANT)
+    Q_PROPERTY(int multiMeterWidth READ multiMeterWidth CONSTANT)
 
 private:
     int WIDGET_WIDTH(){return 150;}
@@ -26,6 +27,7 @@ private:
     int multiPointerStartXPoint(){return 603;}
     int multiPointerStartYPoint(){return 2025;}
     int multiPointerRaius(){return 1020;}
+    int multiMeterWidth(){return 400;}
 
 public:
     explicit DefineModel(QObject *parent = nullptr);

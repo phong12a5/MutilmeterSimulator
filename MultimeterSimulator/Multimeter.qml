@@ -3,6 +3,10 @@ import App_Enum 1.0
 Item {
     id: root
 
+    property var stopRedPoint: [280/6 + bg.x,2519/6 + bg.y]
+    property var stopBlackPoint: [280/6 + bg.x,2943/6 +bg.y]
+
+
     Rectangle{
         width: 2
         height: parent.height

@@ -215,7 +215,6 @@ Makefile: ..\MultimeterSimulator\MultimeterSimulator.pro C:\QtMqtt\5.11.0\msvc20
 		C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\qt_config.prf \
 		C:\QtMqtt\5.11.0\msvc2015\mkspecs\win32-msvc\qmake.conf \
 		C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\spec_post.prf \
-		.qmake.stash \
 		C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\exclusive_builds.prf \
 		C:\QtMqtt\5.11.0\msvc2015\mkspecs\common\msvc-version.conf \
 		C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\toolchain.prf \
@@ -386,7 +385,6 @@ C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\qt_functions.prf:
 C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\qt_config.prf:
 C:\QtMqtt\5.11.0\msvc2015\mkspecs\win32-msvc\qmake.conf:
 C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\spec_post.prf:
-.qmake.stash:
 C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\exclusive_builds.prf:
 C:\QtMqtt\5.11.0\msvc2015\mkspecs\common\msvc-version.conf:
 C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\toolchain.prf:

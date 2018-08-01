@@ -238,8 +238,8 @@ void CommonObject::sourceImageChanged()
     QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
 struct qt_meta_stringdata_MultimeterObject_t {
-    QByteArrayData data[16];
-    char stringdata0[227];
+    QByteArrayData data[20];
+    char stringdata0[297];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -257,22 +257,28 @@ QT_MOC_LITERAL(5, 65, 14), // "soureBgChanged"
 QT_MOC_LITERAL(6, 80, 20), // "sourcePointerChanged"
 QT_MOC_LITERAL(7, 101, 22), // "activedPositiveChanged"
 QT_MOC_LITERAL(8, 124, 22), // "activedNegativeChanged"
-QT_MOC_LITERAL(9, 147, 3), // "idx"
-QT_MOC_LITERAL(10, 151, 10), // "objectName"
-QT_MOC_LITERAL(11, 162, 10), // "objectType"
-QT_MOC_LITERAL(12, 173, 7), // "soureBg"
-QT_MOC_LITERAL(13, 181, 13), // "sourcePointer"
-QT_MOC_LITERAL(14, 195, 15), // "activedPositive"
-QT_MOC_LITERAL(15, 211, 15) // "activedNegative"
+QT_MOC_LITERAL(9, 147, 19), // "redSourceImgChanged"
+QT_MOC_LITERAL(10, 167, 21), // "blackSourceImgChanged"
+QT_MOC_LITERAL(11, 189, 3), // "idx"
+QT_MOC_LITERAL(12, 193, 10), // "objectName"
+QT_MOC_LITERAL(13, 204, 10), // "objectType"
+QT_MOC_LITERAL(14, 215, 7), // "soureBg"
+QT_MOC_LITERAL(15, 223, 13), // "sourcePointer"
+QT_MOC_LITERAL(16, 237, 15), // "activedPositive"
+QT_MOC_LITERAL(17, 253, 15), // "activedNegative"
+QT_MOC_LITERAL(18, 269, 12), // "redSourceImg"
+QT_MOC_LITERAL(19, 282, 14) // "blackSourceImg"
 
     },
     "MultimeterObject\0idxChanged\0\0"
     "objectNameChanged\0objectTypeChanged\0"
     "soureBgChanged\0sourcePointerChanged\0"
     "activedPositiveChanged\0activedNegativeChanged\0"
+    "redSourceImgChanged\0blackSourceImgChanged\0"
     "idx\0objectName\0objectType\0soureBg\0"
     "sourcePointer\0activedPositive\0"
-    "activedNegative"
+    "activedNegative\0redSourceImg\0"
+    "blackSourceImg"
 };
 #undef QT_MOC_LITERAL
 
@@ -282,21 +288,23 @@ static const uint qt_meta_data_MultimeterObject[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
-       7,   56, // properties
+       9,   14, // methods
+       9,   68, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       7,       // signalCount
+       9,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   49,    2, 0x06 /* Public */,
-       3,    0,   50,    2, 0x06 /* Public */,
-       4,    0,   51,    2, 0x06 /* Public */,
-       5,    0,   52,    2, 0x06 /* Public */,
-       6,    0,   53,    2, 0x06 /* Public */,
-       7,    0,   54,    2, 0x06 /* Public */,
-       8,    0,   55,    2, 0x06 /* Public */,
+       1,    0,   59,    2, 0x06 /* Public */,
+       3,    0,   60,    2, 0x06 /* Public */,
+       4,    0,   61,    2, 0x06 /* Public */,
+       5,    0,   62,    2, 0x06 /* Public */,
+       6,    0,   63,    2, 0x06 /* Public */,
+       7,    0,   64,    2, 0x06 /* Public */,
+       8,    0,   65,    2, 0x06 /* Public */,
+       9,    0,   66,    2, 0x06 /* Public */,
+      10,    0,   67,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -306,15 +314,19 @@ static const uint qt_meta_data_MultimeterObject[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
  // properties: name, type, flags
-       9, QMetaType::Int, 0x00495103,
-      10, QMetaType::QString, 0x00495103,
       11, QMetaType::Int, 0x00495103,
       12, QMetaType::QString, 0x00495103,
-      13, QMetaType::QString, 0x00495103,
-      14, QMetaType::Bool, 0x00495103,
-      15, QMetaType::Bool, 0x00495103,
+      13, QMetaType::Int, 0x00495103,
+      14, QMetaType::QString, 0x00495103,
+      15, QMetaType::QString, 0x00495103,
+      16, QMetaType::Bool, 0x00495103,
+      17, QMetaType::Bool, 0x00495103,
+      18, QMetaType::QString, 0x00495103,
+      19, QMetaType::QString, 0x00495103,
 
  // properties: notify_signal_id
        0,
@@ -324,6 +336,8 @@ static const uint qt_meta_data_MultimeterObject[] = {
        4,
        5,
        6,
+       7,
+       8,
 
        0        // eod
 };
@@ -341,6 +355,8 @@ void MultimeterObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 4: _t->sourcePointerChanged(); break;
         case 5: _t->activedPositiveChanged(); break;
         case 6: _t->activedNegativeChanged(); break;
+        case 7: _t->redSourceImgChanged(); break;
+        case 8: _t->blackSourceImgChanged(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -394,6 +410,20 @@ void MultimeterObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
                 return;
             }
         }
+        {
+            using _t = void (MultimeterObject::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MultimeterObject::redSourceImgChanged)) {
+                *result = 7;
+                return;
+            }
+        }
+        {
+            using _t = void (MultimeterObject::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MultimeterObject::blackSourceImgChanged)) {
+                *result = 8;
+                return;
+            }
+        }
     }
 #ifndef QT_NO_PROPERTIES
     else if (_c == QMetaObject::ReadProperty) {
@@ -408,6 +438,8 @@ void MultimeterObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 4: *reinterpret_cast< QString*>(_v) = _t->sourcePointer(); break;
         case 5: *reinterpret_cast< bool*>(_v) = _t->activedPositive(); break;
         case 6: *reinterpret_cast< bool*>(_v) = _t->activedNegative(); break;
+        case 7: *reinterpret_cast< QString*>(_v) = _t->redSourceImg(); break;
+        case 8: *reinterpret_cast< QString*>(_v) = _t->blackSourceImg(); break;
         default: break;
         }
     } else if (_c == QMetaObject::WriteProperty) {
@@ -422,6 +454,8 @@ void MultimeterObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 4: _t->setSourcePointer(*reinterpret_cast< QString*>(_v)); break;
         case 5: _t->setActivedPositive(*reinterpret_cast< bool*>(_v)); break;
         case 6: _t->setActivedNegative(*reinterpret_cast< bool*>(_v)); break;
+        case 7: _t->setRedSourceImg(*reinterpret_cast< QString*>(_v)); break;
+        case 8: _t->setBlackSourceImg(*reinterpret_cast< QString*>(_v)); break;
         default: break;
         }
     } else if (_c == QMetaObject::ResetProperty) {
@@ -455,29 +489,29 @@ int MultimeterObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 9;
     }
 #ifndef QT_NO_PROPERTIES
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 9;
     } else if (_c == QMetaObject::QueryPropertyDesignable) {
-        _id -= 7;
+        _id -= 9;
     } else if (_c == QMetaObject::QueryPropertyScriptable) {
-        _id -= 7;
+        _id -= 9;
     } else if (_c == QMetaObject::QueryPropertyStored) {
-        _id -= 7;
+        _id -= 9;
     } else if (_c == QMetaObject::QueryPropertyEditable) {
-        _id -= 7;
+        _id -= 9;
     } else if (_c == QMetaObject::QueryPropertyUser) {
-        _id -= 7;
+        _id -= 9;
     }
 #endif // QT_NO_PROPERTIES
     return _id;
@@ -523,6 +557,18 @@ void MultimeterObject::activedPositiveChanged()
 void MultimeterObject::activedNegativeChanged()
 {
     QMetaObject::activate(this, &staticMetaObject, 6, nullptr);
+}
+
+// SIGNAL 7
+void MultimeterObject::redSourceImgChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 7, nullptr);
+}
+
+// SIGNAL 8
+void MultimeterObject::blackSourceImgChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 8, nullptr);
 }
 struct qt_meta_stringdata_ModelData_t {
     QByteArrayData data[24];

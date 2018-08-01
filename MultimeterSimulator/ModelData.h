@@ -81,6 +81,8 @@ public:
     Q_PROPERTY(QString sourcePointer READ sourcePointer WRITE setSourcePointer NOTIFY sourcePointerChanged)
     Q_PROPERTY(bool activedPositive READ activedPositive WRITE setActivedPositive NOTIFY activedPositiveChanged)
     Q_PROPERTY(bool activedNegative READ activedNegative WRITE setActivedNegative NOTIFY activedNegativeChanged)
+    Q_PROPERTY(QString redSourceImg READ redSourceImg WRITE setRedSourceImg NOTIFY redSourceImgChanged)
+    Q_PROPERTY(QString blackSourceImg READ blackSourceImg WRITE setBlackSourceImg NOTIFY blackSourceImgChanged)
 
 signals:
     void idxChanged();
@@ -90,16 +92,20 @@ signals:
     void sourcePointerChanged();
     void activedPositiveChanged();
     void activedNegativeChanged();
+    void redSourceImgChanged();
+    void blackSourceImgChanged();
 
 public:
-    MultimeterObject(int _idx, QString _objectName, int _objectType, QString _soureBg, QString _sourcePointer):
+    MultimeterObject(int _idx, QString _objectName, int _objectType, QString _soureBg, QString _sourcePointer, QString _redSourceImg, QString _blackSourceImg):
     m_idx(_idx),
     m_objectName(_objectName),
     m_objectType(_objectType),
     m_sourceBg(_soureBg),
     m_sourcePointer(_sourcePointer),
     m_activedPositive(false),
-    m_activedNegative(false)
+    m_activedNegative(false),
+    m_redSourceImg(_redSourceImg),
+    m_blackSourceImg(_blackSourceImg)
     {
     }
     ~MultimeterObject(){}
@@ -111,6 +117,8 @@ public:
     QString sourcePointer(){return m_sourcePointer;}
     bool activedPositive(){return m_activedPositive;}
     bool activedNegative(){return m_activedNegative;}
+    QString redSourceImg(){return m_redSourceImg;}
+    QString blackSourceImg(){return m_blackSourceImg;}
 
     void setIdx(int _idx){
         if(_idx != m_idx){
@@ -155,6 +163,18 @@ public:
             emit activedNegativeChanged();
         }
     }
+    void setRedSourceImg(QString _redSourceImg ){
+        if(m_redSourceImg != _redSourceImg){
+            m_redSourceImg = _redSourceImg;
+            emit redSourceImgChanged();
+        }
+    }
+    void setBlackSourceImg(QString _blackSourceImg ){
+        if(m_blackSourceImg != _blackSourceImg){
+            m_blackSourceImg = _blackSourceImg;
+            emit blackSourceImgChanged();
+        }
+    }
 
 
 private:
@@ -165,6 +185,8 @@ private:
     QString m_sourcePointer;
     bool m_activedPositive;
     bool m_activedNegative;
+    QString m_redSourceImg;
+    QString m_blackSourceImg;
 };
 
 class ModelData : public QObject

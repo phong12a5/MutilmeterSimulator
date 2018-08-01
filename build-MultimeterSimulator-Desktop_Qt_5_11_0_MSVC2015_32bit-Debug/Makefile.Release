@@ -178,6 +178,7 @@ compiler_rcc_clean:
 release\qrc_qml.cpp: ..\MultimeterSimulator\qml.qrc \
 		C:\QtMqtt\5.11.0\msvc2015\bin\rcc.exe \
 		..\MultimeterSimulator\TopBar.qml \
+		..\MultimeterSimulator\PointerWire.qml \
 		..\MultimeterSimulator\Multimeter.qml \
 		..\MultimeterSimulator\CommonComponent.qml \
 		..\MultimeterSimulator\main.qml
