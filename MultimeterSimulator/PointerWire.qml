@@ -16,20 +16,25 @@ Item{
     property alias redPointer: redPointer
     property alias blackPointer: blackPointer
 
+    property alias redCanvas: redCanvas
+    property alias blackCanvas: blackCanvas
+
+
     Image{
         id: redPointer
-        width: sourceSize.width
-        height: sourceSize.height
+        width: sourceSize.width/2
+        height: sourceSize.height/2
         source: ModelData.multimeter.redSourceImg
-        x: root.width - 450
-        y: root.height - 300
+        x: root.width - 500
+        y: root.height - 500
         Rectangle{
             anchors.verticalCenter: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: 1
             width: parent.width/2
             height: 10
             radius: 10
-            color: "red"
+            color: "#cc3300"
         }
 
         MouseArea{
@@ -51,14 +56,15 @@ Item{
 
     Image{
         id: blackPointer
-        width: sourceSize.width
-        height: sourceSize.height
+        width: sourceSize.width/2
+        height: sourceSize.height/2
         source: ModelData.multimeter.blackSourceImg
-        x: root.width - 500
-        y: root.height - 300
+        x: root.width - 550
+        y: root.height - 500
         Rectangle{
             anchors.verticalCenter: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: 1
             width: parent.width/2
             height: 10
             radius: 10
@@ -94,7 +100,7 @@ Item{
             ctx.reset()
             ctx.clearRect(0,0, width, height);
 
-            ctx.strokeStyle = "red";
+            ctx.strokeStyle = "#cc3300";
             ctx.lineWidth = 5;
             ctx.beginPath();
             ctx.moveTo(startRedPoint[0], startRedPoint[1]);
@@ -138,55 +144,3 @@ Item{
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    Canvas {
-//        id: canvas
-//        property int prevX: 0
-//        property int prevY: 0
-//        property int lineWidth: 2
-//        property color drawColor: "red"
-//        anchors.fill: parent
-
-//        MouseArea {
-//            id:mousearea
-//            anchors.fill: parent
-//            onPressed: {canvas.prevX = mouseX ; canvas.prevY = mouseY}
-//            onPositionChanged: canvas.requestPaint();
-//        }
-
-//        onPaint: {
-//            var ctx = getContext('2d');
-//            ctx.beginPath();
-//            ctx.strokeStyle = drawColor
-//            ctx.lineWidth = lineWidth
-//            ctx.moveTo(prevX, prevY);
-//            ctx.lineTo(mousearea.mouseX, mousearea.mouseY);
-//            ctx.stroke();
-//            ctx.closePath();
-//            prevX = mousearea.mouseX;
-//            prevY = mousearea.mouseY;
-//        }
-//    }

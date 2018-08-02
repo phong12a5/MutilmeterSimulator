@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DefineModel_t {
-    QByteArrayData data[9];
-    char stringdata0[164];
+    QByteArrayData data[15];
+    char stringdata0[239];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,13 +39,22 @@ QT_MOC_LITERAL(4, 60, 21), // "multiImg_sourcwHeight"
 QT_MOC_LITERAL(5, 82, 23), // "multiPointerStartXPoint"
 QT_MOC_LITERAL(6, 106, 23), // "multiPointerStartYPoint"
 QT_MOC_LITERAL(7, 130, 17), // "multiPointerRaius"
-QT_MOC_LITERAL(8, 148, 15) // "multiMeterWidth"
+QT_MOC_LITERAL(8, 148, 15), // "multiMeterWidth"
+QT_MOC_LITERAL(9, 164, 15), // "indicatorXpoint"
+QT_MOC_LITERAL(10, 180, 15), // "indicatorYpoint"
+QT_MOC_LITERAL(11, 196, 10), // "maskXpoint"
+QT_MOC_LITERAL(12, 207, 10), // "maskYpoint"
+QT_MOC_LITERAL(13, 218, 9), // "maskWidth"
+QT_MOC_LITERAL(14, 228, 10) // "maskHeight"
 
     },
     "DefineModel\0WIDGET_WIDTH\0WIDGET_HEIGHT\0"
     "multiImg_sourcwWidth\0multiImg_sourcwHeight\0"
     "multiPointerStartXPoint\0multiPointerStartYPoint\0"
-    "multiPointerRaius\0multiMeterWidth"
+    "multiPointerRaius\0multiMeterWidth\0"
+    "indicatorXpoint\0indicatorYpoint\0"
+    "maskXpoint\0maskYpoint\0maskWidth\0"
+    "maskHeight"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,7 +65,7 @@ static const uint qt_meta_data_DefineModel[] = {
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
-       8,   14, // properties
+      14,   14, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
@@ -71,6 +80,12 @@ static const uint qt_meta_data_DefineModel[] = {
        6, QMetaType::Int, 0x00095401,
        7, QMetaType::Int, 0x00095401,
        8, QMetaType::Int, 0x00095401,
+       9, QMetaType::Int, 0x00095401,
+      10, QMetaType::Int, 0x00095401,
+      11, QMetaType::Int, 0x00095401,
+      12, QMetaType::Int, 0x00095401,
+      13, QMetaType::Int, 0x00095401,
+      14, QMetaType::Int, 0x00095401,
 
        0        // eod
 };
@@ -92,6 +107,12 @@ void DefineModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 5: *reinterpret_cast< int*>(_v) = _t->multiPointerStartYPoint(); break;
         case 6: *reinterpret_cast< int*>(_v) = _t->multiPointerRaius(); break;
         case 7: *reinterpret_cast< int*>(_v) = _t->multiMeterWidth(); break;
+        case 8: *reinterpret_cast< int*>(_v) = _t->indicatorXpoint(); break;
+        case 9: *reinterpret_cast< int*>(_v) = _t->indicatorYpoint(); break;
+        case 10: *reinterpret_cast< int*>(_v) = _t->maskXpoint(); break;
+        case 11: *reinterpret_cast< int*>(_v) = _t->maskYpoint(); break;
+        case 12: *reinterpret_cast< int*>(_v) = _t->maskWidth(); break;
+        case 13: *reinterpret_cast< int*>(_v) = _t->maskHeight(); break;
         default: break;
         }
     } else if (_c == QMetaObject::WriteProperty) {
@@ -133,17 +154,17 @@ int DefineModel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
    if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 14;
     } else if (_c == QMetaObject::QueryPropertyDesignable) {
-        _id -= 8;
+        _id -= 14;
     } else if (_c == QMetaObject::QueryPropertyScriptable) {
-        _id -= 8;
+        _id -= 14;
     } else if (_c == QMetaObject::QueryPropertyStored) {
-        _id -= 8;
+        _id -= 14;
     } else if (_c == QMetaObject::QueryPropertyEditable) {
-        _id -= 8;
+        _id -= 14;
     } else if (_c == QMetaObject::QueryPropertyUser) {
-        _id -= 8;
+        _id -= 14;
     }
 #endif // QT_NO_PROPERTIES
     return _id;

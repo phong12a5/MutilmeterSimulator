@@ -6,6 +6,7 @@ ModelData* ModelData::m_instantce = nullptr;
 ModelData::ModelData(QObject *parent) : QObject(parent)
 {
     m_pointerMode = 0;
+    m_activedDeviced = -1;
     initObjects();
 }
 
@@ -88,6 +89,19 @@ void ModelData::setPointerMode(int _mode)
     }
 }
 
+int ModelData::activedDeviced()
+{
+    return m_activedDeviced;
+}
+
+void ModelData::setActivedDeviced(int data)
+{
+    if(m_activedDeviced != data){
+        m_activedDeviced = data;
+        emit activedDevicedChanged();
+    }
+}
+
 ModelData *ModelData::getInstance()
 {
     if (!m_instantce) {
@@ -118,5 +132,6 @@ void ModelData::initObjects()
     m_multimeter        = new MultimeterObject(static_cast<int>(App_Enum::E_OBJECT_INDEX_MULTIMETER),    "Multimeter"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_MULTIMETER ), "file:///" + QDir::currentPath() + "/Image/Multimeter_bg.png",
                                                "file:///" + QDir::currentPath() + "/Image/Multimeter_pointer.png",
                                                "file:///" + QDir::currentPath() + "/Image/positivePonter.png",
-                                               "file:///" + QDir::currentPath() + "/Image/negativePonter.png");
+                                               "file:///" + QDir::currentPath() + "/Image/negativePonter.png",
+                                               "file:///" + QDir::currentPath() + "/Image/mask.png");
 }

@@ -100,6 +100,7 @@ public:
     Q_PROPERTY(bool activedNegative READ activedNegative WRITE setActivedNegative NOTIFY activedNegativeChanged)
     Q_PROPERTY(QString redSourceImg READ redSourceImg WRITE setRedSourceImg NOTIFY redSourceImgChanged)
     Q_PROPERTY(QString blackSourceImg READ blackSourceImg WRITE setBlackSourceImg NOTIFY blackSourceImgChanged)
+    Q_PROPERTY(QString maskSource READ maskSource CONSTANT)
 
 signals:
     void idxChanged();
@@ -113,7 +114,7 @@ signals:
     void blackSourceImgChanged();
 
 public:
-    MultimeterObject(int _idx, QString _objectName, int _objectType, QString _soureBg, QString _sourcePointer, QString _redSourceImg, QString _blackSourceImg):
+    MultimeterObject(int _idx, QString _objectName, int _objectType, QString _soureBg, QString _sourcePointer, QString _redSourceImg, QString _blackSourceImg, QString _maskSource):
     m_idx(_idx),
     m_objectName(_objectName),
     m_objectType(_objectType),
@@ -122,7 +123,8 @@ public:
     m_activedPositive(false),
     m_activedNegative(false),
     m_redSourceImg(_redSourceImg),
-    m_blackSourceImg(_blackSourceImg)
+    m_blackSourceImg(_blackSourceImg),
+    m_maskSource(_maskSource)
     {
     }
     ~MultimeterObject(){}
@@ -136,6 +138,7 @@ public:
     bool activedNegative(){return m_activedNegative;}
     QString redSourceImg(){return m_redSourceImg;}
     QString blackSourceImg(){return m_blackSourceImg;}
+    QString maskSource(){return m_maskSource;}
 
     void setIdx(int _idx){
         if(_idx != m_idx){
@@ -204,6 +207,7 @@ private:
     bool m_activedNegative;
     QString m_redSourceImg;
     QString m_blackSourceImg;
+    QString m_maskSource;
 };
 
 class ModelData : public QObject
@@ -223,9 +227,8 @@ public:
     Q_PROPERTY(QObject* diode               READ diode             NOTIFY diodeChanged)
     Q_PROPERTY(QObject* transistor          READ transistor        NOTIFY transistorChanged)
     Q_PROPERTY(QObject* multimeter          READ multimeter        NOTIFY multimeterChanged)
-
-    Q_PROPERTY(int pointerMode      READ pointerMode    WRITE setPointerMode    NOTIFY pointerModeChanged)
-
+    Q_PROPERTY(int pointerMode              READ pointerMode        WRITE setPointerMode    NOTIFY pointerModeChanged)
+    Q_PROPERTY(int activedDeviced           READ activedDeviced     WRITE setActivedDeviced NOTIFY activedDevicedChanged)
 
     Q_INVOKABLE void updateActivedDevice(int index, int posConnectedWire, int negaConnectedWire, int extConnectedWire);
 private:
@@ -244,6 +247,7 @@ private:
     QObject* m_multimeter;
 
     int m_pointerMode;
+    int m_activedDeviced;
 
 public:
     static ModelData* getInstance();
@@ -261,6 +265,8 @@ public:
     QObject* multimeter();
     int pointerMode();
     void setPointerMode(int _mode);
+    int activedDeviced();
+    void setActivedDeviced(int data);
 
 
 signals:
@@ -275,7 +281,7 @@ signals:
     void transistorChanged();
     void multimeterChanged();
     void pointerModeChanged();
-
+    void activedDevicedChanged();
 public slots:
 };
 

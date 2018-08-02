@@ -1,10 +1,12 @@
-import QtQuick 2.0
+import QtQuick 2.3
 import App_Enum 1.0
 Item {
     id: root
 
-    property var stopRedPoint: [280/6 + bg.x,2519/6 + bg.y]
-    property var stopBlackPoint: [280/6 + bg.x,2943/6 +bg.y]
+    property real _FACTOR: 5.5
+
+    property var stopRedPoint: [280/_FACTOR + bg.x,2519/_FACTOR + bg.y]
+    property var stopBlackPoint: [280/_FACTOR + bg.x,2943/_FACTOR +bg.y]
 
 
     Rectangle{
@@ -16,18 +18,19 @@ Item {
 
     Image {
         id: bg
-        y: 10
+        y: -5
         anchors.horizontalCenter: parent.horizontalCenter
         source: ModelData.multimeter.soureBg
-        width: Define.multiImg_sourcwWidth/6
-        height: Define.multiImg_sourcwHeight/6
+        width: Define.multiImg_sourcwWidth/_FACTOR
+        height: Define.multiImg_sourcwHeight/_FACTOR
+        mipmap: true
     }
     Image {
         id: pointer
-        width: Define.multiPointerRaius/6
-        height: Define.multiPointerRaius/6
-        x: Define.multiPointerStartXPoint/6
-        y: bg.y + Define.multiPointerStartYPoint/6
+        width: Define.multiPointerRaius/_FACTOR
+        height: Define.multiPointerRaius/_FACTOR
+        x: Define.multiPointerStartXPoint/_FACTOR
+        y: bg.y + Define.multiPointerStartYPoint/_FACTOR
         source: ModelData.multimeter.sourcePointer
         anchors.horizontalCenter: parent.horizontalCenter
         rotation: ModelData.pointerMode * 18
@@ -107,7 +110,7 @@ Item {
         radius: 10
         x: stopRedPoint[0] - 10
         y: stopRedPoint[1] - 10
-        color: "red"
+        color: "#cc3300"
     }
 
     Rectangle{
@@ -117,5 +120,35 @@ Item {
         x: stopBlackPoint[0] - 10
         y: stopBlackPoint[1] - 10
         color: "black"
+    }
+
+    Item{
+        id: anchorIndicator
+        x: bg.x + Define.indicatorXpoint/_FACTOR
+        y: bg.y + Define.indicatorYpoint/_FACTOR
+        width: 1
+        height: 1
+    }
+    Item{
+        id: indicator
+        anchors.centerIn: anchorIndicator
+        width: 2
+        height: 460
+        rotation: -45
+        Rectangle{
+            width: parent.width
+            height: parent.height/2
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            color: "#666666"
+        }
+    }
+    Image {
+        id: mask
+        source: ModelData.multimeter.maskSource
+        width: Define.maskWidth/_FACTOR
+        height: Define.maskHeight/_FACTOR
+        x: bg.x + Define.maskXpoint/_FACTOR
+        y: bg.y + Define.maskYpoint/_FACTOR
     }
 }

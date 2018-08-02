@@ -12,15 +12,6 @@ Window {
     ListModel{
         id: mod
     }
-    Rectangle{
-        id: line
-        width: window.width
-        height: 2
-        color: "grey"
-        anchors.left: parent.left
-        anchors.top: parent.top
-        anchors.topMargin: Define.WIDGET_HEIGHT - 2
-    }
 
     Multimeter{
         id: multimeter
@@ -68,7 +59,7 @@ Window {
                     }
 
                     if(dlg.x + dlg.width > multimeter.x &&
-                       dlg.y + dlg.height > multimeter.y){
+                            dlg.y + dlg.height > multimeter.y){
                         dlg.x = dlg.prevPoint.x
                         dlg.y = dlg.prevPoint.y
                     }
@@ -182,11 +173,21 @@ Window {
                             " >> changed: " + dlg.active +
                             " >> dlg._positive.connetedWire: " + dlg._positive.connetedWire +
                             " >> dlg._negative.connetedWire: " + dlg._negative.connetedWire)
+                ModelData.activedDeviced = index;
                 ModelData.updateActivedDevice(index,dlg._positive.connetedWire,dlg._negative.connetedWire,dlg._extend.connetedWire)
             }
         }
     }
 
+    Rectangle{
+        id: line
+        width: window.width
+        height: 2
+        color: "grey"
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.topMargin: Define.WIDGET_HEIGHT - 2
+    }
 
     PointerWire{
         id: wire
@@ -211,6 +212,10 @@ Window {
     }
     Component.onCompleted: {
         creatModel()
-//        window.showMaximized()
+        window.showMaximized()
+    }
+    onWidthChanged: {
+        wire.redCanvas.requestPaint()
+        wire.blackCanvas.requestPaint()
     }
 }
