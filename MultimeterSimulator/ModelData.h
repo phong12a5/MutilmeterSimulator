@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <QDir>
 #include "App_Enum.h"
+#include <QPointF>
 
 class CommonObject: public QObject
 {
@@ -16,19 +17,29 @@ public:
     Q_PROPERTY(QString objectName READ objectName WRITE setObjectName NOTIFY objectNameChanged)
     Q_PROPERTY(int objectType READ objectType WRITE setObjectType NOTIFY objectTypeChanged)
     Q_PROPERTY(QString sourceImage READ sourceImage WRITE setSourceImage NOTIFY sourceImageChanged)
+    Q_PROPERTY(QVariant positivePoint READ positivePoint  NOTIFY positivePointChanged)
+    Q_PROPERTY(QVariant negativePoint READ negativePoint  NOTIFY negativePointChanged)
+    Q_PROPERTY(QVariant extendPoint READ extendPoint  NOTIFY extendPointChanged)
+
 
 signals:
     void idxChanged();
     void objectNameChanged();
     void objectTypeChanged();
     void sourceImageChanged();
+    void positivePointChanged();
+    void negativePointChanged();
+    void extendPointChanged();
 
 public:
-    CommonObject(int _idx, QString _objectName, int _objectType, QString _sourceImage):
+    CommonObject(int _idx, QString _objectName, int _objectType, QString _sourceImage, QPointF _positivePoint, QPointF _negativePoint, QPointF _extendPoint):
     m_idx(_idx),
     m_objectName(_objectName),
     m_objectType(_objectType),
-    m_sourceImage(_sourceImage)
+    m_sourceImage(_sourceImage),
+    m_positivePoint(_positivePoint),
+    m_negativePoint(_negativePoint),
+    m_extendPoint(_extendPoint)
     {
     }
     ~CommonObject(){}
@@ -37,6 +48,9 @@ public:
     QString objectName(){ return m_objectName;}
     int objectType(){return m_objectType;}
     QString sourceImage(){return m_sourceImage;}
+    QVariant positivePoint(){return QVariant(m_positivePoint);}
+    QVariant negativePoint(){return QVariant(m_negativePoint);}
+    QVariant extendPoint(){return QVariant(m_extendPoint);}
 
     void setIdx(int _idx){
         if(_idx != m_idx){
@@ -68,6 +82,9 @@ private:
     QString m_objectName;
     int m_objectType;
     QString m_sourceImage;
+    QPointF m_positivePoint;
+    QPointF m_negativePoint;
+    QPointF m_extendPoint;
 };
 
 class MultimeterObject: public QObject
@@ -209,6 +226,8 @@ public:
 
     Q_PROPERTY(int pointerMode      READ pointerMode    WRITE setPointerMode    NOTIFY pointerModeChanged)
 
+
+    Q_INVOKABLE void updateActivedDevice(int index, int posConnectedWire, int negaConnectedWire, int extConnectedWire);
 private:
 
     static ModelData* m_instantce;

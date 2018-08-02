@@ -100,4 +100,22 @@ Item {
             }
         }
     }
+
+    Rectangle{
+        width: 20
+        height: 20
+        radius: 10
+        x: stopRedPoint[0] - 10
+        y: stopRedPoint[1] - 10
+        color: "red"
+    }
+
+    Rectangle{
+        width: 20
+        height: 20
+        radius: 10
+        x: stopBlackPoint[0] - 10
+        y: stopBlackPoint[1] - 10
+        color: "black"
+    }
 }

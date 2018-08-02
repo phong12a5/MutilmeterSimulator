@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CommonObject_t {
-    QByteArrayData data[10];
-    char stringdata0[118];
+    QByteArrayData data[16];
+    char stringdata0[219];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,15 +37,24 @@ QT_MOC_LITERAL(2, 24, 0), // ""
 QT_MOC_LITERAL(3, 25, 17), // "objectNameChanged"
 QT_MOC_LITERAL(4, 43, 17), // "objectTypeChanged"
 QT_MOC_LITERAL(5, 61, 18), // "sourceImageChanged"
-QT_MOC_LITERAL(6, 80, 3), // "idx"
-QT_MOC_LITERAL(7, 84, 10), // "objectName"
-QT_MOC_LITERAL(8, 95, 10), // "objectType"
-QT_MOC_LITERAL(9, 106, 11) // "sourceImage"
+QT_MOC_LITERAL(6, 80, 20), // "positivePointChanged"
+QT_MOC_LITERAL(7, 101, 20), // "negativePointChanged"
+QT_MOC_LITERAL(8, 122, 18), // "extendPointChanged"
+QT_MOC_LITERAL(9, 141, 3), // "idx"
+QT_MOC_LITERAL(10, 145, 10), // "objectName"
+QT_MOC_LITERAL(11, 156, 10), // "objectType"
+QT_MOC_LITERAL(12, 167, 11), // "sourceImage"
+QT_MOC_LITERAL(13, 179, 13), // "positivePoint"
+QT_MOC_LITERAL(14, 193, 13), // "negativePoint"
+QT_MOC_LITERAL(15, 207, 11) // "extendPoint"
 
     },
     "CommonObject\0idxChanged\0\0objectNameChanged\0"
     "objectTypeChanged\0sourceImageChanged\0"
-    "idx\0objectName\0objectType\0sourceImage"
+    "positivePointChanged\0negativePointChanged\0"
+    "extendPointChanged\0idx\0objectName\0"
+    "objectType\0sourceImage\0positivePoint\0"
+    "negativePoint\0extendPoint"
 };
 #undef QT_MOC_LITERAL
 
@@ -55,36 +64,48 @@ static const uint qt_meta_data_CommonObject[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
-       4,   38, // properties
+       7,   14, // methods
+       7,   56, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       4,       // signalCount
+       7,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   34,    2, 0x06 /* Public */,
-       3,    0,   35,    2, 0x06 /* Public */,
-       4,    0,   36,    2, 0x06 /* Public */,
-       5,    0,   37,    2, 0x06 /* Public */,
+       1,    0,   49,    2, 0x06 /* Public */,
+       3,    0,   50,    2, 0x06 /* Public */,
+       4,    0,   51,    2, 0x06 /* Public */,
+       5,    0,   52,    2, 0x06 /* Public */,
+       6,    0,   53,    2, 0x06 /* Public */,
+       7,    0,   54,    2, 0x06 /* Public */,
+       8,    0,   55,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
  // properties: name, type, flags
-       6, QMetaType::Int, 0x00495103,
-       7, QMetaType::QString, 0x00495103,
-       8, QMetaType::Int, 0x00495103,
-       9, QMetaType::QString, 0x00495103,
+       9, QMetaType::Int, 0x00495103,
+      10, QMetaType::QString, 0x00495103,
+      11, QMetaType::Int, 0x00495103,
+      12, QMetaType::QString, 0x00495103,
+      13, QMetaType::QVariant, 0x00495001,
+      14, QMetaType::QVariant, 0x00495001,
+      15, QMetaType::QVariant, 0x00495001,
 
  // properties: notify_signal_id
        0,
        1,
        2,
        3,
+       4,
+       5,
+       6,
 
        0        // eod
 };
@@ -99,6 +120,9 @@ void CommonObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 1: _t->objectNameChanged(); break;
         case 2: _t->objectTypeChanged(); break;
         case 3: _t->sourceImageChanged(); break;
+        case 4: _t->positivePointChanged(); break;
+        case 5: _t->negativePointChanged(); break;
+        case 6: _t->extendPointChanged(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -131,6 +155,27 @@ void CommonObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
                 return;
             }
         }
+        {
+            using _t = void (CommonObject::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CommonObject::positivePointChanged)) {
+                *result = 4;
+                return;
+            }
+        }
+        {
+            using _t = void (CommonObject::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CommonObject::negativePointChanged)) {
+                *result = 5;
+                return;
+            }
+        }
+        {
+            using _t = void (CommonObject::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CommonObject::extendPointChanged)) {
+                *result = 6;
+                return;
+            }
+        }
     }
 #ifndef QT_NO_PROPERTIES
     else if (_c == QMetaObject::ReadProperty) {
@@ -142,6 +187,9 @@ void CommonObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 1: *reinterpret_cast< QString*>(_v) = _t->objectName(); break;
         case 2: *reinterpret_cast< int*>(_v) = _t->objectType(); break;
         case 3: *reinterpret_cast< QString*>(_v) = _t->sourceImage(); break;
+        case 4: *reinterpret_cast< QVariant*>(_v) = _t->positivePoint(); break;
+        case 5: *reinterpret_cast< QVariant*>(_v) = _t->negativePoint(); break;
+        case 6: *reinterpret_cast< QVariant*>(_v) = _t->extendPoint(); break;
         default: break;
         }
     } else if (_c == QMetaObject::WriteProperty) {
@@ -186,29 +234,29 @@ int CommonObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 7;
     }
 #ifndef QT_NO_PROPERTIES
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 7;
     } else if (_c == QMetaObject::QueryPropertyDesignable) {
-        _id -= 4;
+        _id -= 7;
     } else if (_c == QMetaObject::QueryPropertyScriptable) {
-        _id -= 4;
+        _id -= 7;
     } else if (_c == QMetaObject::QueryPropertyStored) {
-        _id -= 4;
+        _id -= 7;
     } else if (_c == QMetaObject::QueryPropertyEditable) {
-        _id -= 4;
+        _id -= 7;
     } else if (_c == QMetaObject::QueryPropertyUser) {
-        _id -= 4;
+        _id -= 7;
     }
 #endif // QT_NO_PROPERTIES
     return _id;
@@ -236,6 +284,24 @@ void CommonObject::objectTypeChanged()
 void CommonObject::sourceImageChanged()
 {
     QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
+}
+
+// SIGNAL 4
+void CommonObject::positivePointChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
+}
+
+// SIGNAL 5
+void CommonObject::negativePointChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
+}
+
+// SIGNAL 6
+void CommonObject::extendPointChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 6, nullptr);
 }
 struct qt_meta_stringdata_MultimeterObject_t {
     QByteArrayData data[20];
@@ -571,8 +637,8 @@ void MultimeterObject::blackSourceImgChanged()
     QMetaObject::activate(this, &staticMetaObject, 8, nullptr);
 }
 struct qt_meta_stringdata_ModelData_t {
-    QByteArrayData data[24];
-    char stringdata0[370];
+    QByteArrayData data[29];
+    char stringdata0[448];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -594,17 +660,22 @@ QT_MOC_LITERAL(9, 161, 12), // "diodeChanged"
 QT_MOC_LITERAL(10, 174, 17), // "transistorChanged"
 QT_MOC_LITERAL(11, 192, 17), // "multimeterChanged"
 QT_MOC_LITERAL(12, 210, 18), // "pointerModeChanged"
-QT_MOC_LITERAL(13, 229, 9), // "resistor1"
-QT_MOC_LITERAL(14, 239, 9), // "resistor2"
-QT_MOC_LITERAL(15, 249, 15), // "capictor_normal"
-QT_MOC_LITERAL(16, 265, 17), // "capictor_abnormal"
-QT_MOC_LITERAL(17, 283, 15), // "cappictor_error"
-QT_MOC_LITERAL(18, 299, 15), // "condutor_normal"
-QT_MOC_LITERAL(19, 315, 14), // "condutor_error"
-QT_MOC_LITERAL(20, 330, 5), // "diode"
-QT_MOC_LITERAL(21, 336, 10), // "transistor"
-QT_MOC_LITERAL(22, 347, 10), // "multimeter"
-QT_MOC_LITERAL(23, 358, 11) // "pointerMode"
+QT_MOC_LITERAL(13, 229, 19), // "updateActivedDevice"
+QT_MOC_LITERAL(14, 249, 5), // "index"
+QT_MOC_LITERAL(15, 255, 16), // "posConnectedWire"
+QT_MOC_LITERAL(16, 272, 17), // "negaConnectedWire"
+QT_MOC_LITERAL(17, 290, 16), // "extConnectedWire"
+QT_MOC_LITERAL(18, 307, 9), // "resistor1"
+QT_MOC_LITERAL(19, 317, 9), // "resistor2"
+QT_MOC_LITERAL(20, 327, 15), // "capictor_normal"
+QT_MOC_LITERAL(21, 343, 17), // "capictor_abnormal"
+QT_MOC_LITERAL(22, 361, 15), // "cappictor_error"
+QT_MOC_LITERAL(23, 377, 15), // "condutor_normal"
+QT_MOC_LITERAL(24, 393, 14), // "condutor_error"
+QT_MOC_LITERAL(25, 408, 5), // "diode"
+QT_MOC_LITERAL(26, 414, 10), // "transistor"
+QT_MOC_LITERAL(27, 425, 10), // "multimeter"
+QT_MOC_LITERAL(28, 436, 11) // "pointerMode"
 
     },
     "ModelData\0resistor1Changed\0\0"
@@ -613,7 +684,9 @@ QT_MOC_LITERAL(23, 358, 11) // "pointerMode"
     "cappictor_errorChanged\0condutor_normalChanged\0"
     "condutor_errorChanged\0diodeChanged\0"
     "transistorChanged\0multimeterChanged\0"
-    "pointerModeChanged\0resistor1\0resistor2\0"
+    "pointerModeChanged\0updateActivedDevice\0"
+    "index\0posConnectedWire\0negaConnectedWire\0"
+    "extConnectedWire\0resistor1\0resistor2\0"
     "capictor_normal\0capictor_abnormal\0"
     "cappictor_error\0condutor_normal\0"
     "condutor_error\0diode\0transistor\0"
@@ -627,25 +700,28 @@ static const uint qt_meta_data_ModelData[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
-      11,   80, // properties
+      12,   14, // methods
+      11,   94, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
       11,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   69,    2, 0x06 /* Public */,
-       3,    0,   70,    2, 0x06 /* Public */,
-       4,    0,   71,    2, 0x06 /* Public */,
-       5,    0,   72,    2, 0x06 /* Public */,
-       6,    0,   73,    2, 0x06 /* Public */,
-       7,    0,   74,    2, 0x06 /* Public */,
-       8,    0,   75,    2, 0x06 /* Public */,
-       9,    0,   76,    2, 0x06 /* Public */,
-      10,    0,   77,    2, 0x06 /* Public */,
-      11,    0,   78,    2, 0x06 /* Public */,
-      12,    0,   79,    2, 0x06 /* Public */,
+       1,    0,   74,    2, 0x06 /* Public */,
+       3,    0,   75,    2, 0x06 /* Public */,
+       4,    0,   76,    2, 0x06 /* Public */,
+       5,    0,   77,    2, 0x06 /* Public */,
+       6,    0,   78,    2, 0x06 /* Public */,
+       7,    0,   79,    2, 0x06 /* Public */,
+       8,    0,   80,    2, 0x06 /* Public */,
+       9,    0,   81,    2, 0x06 /* Public */,
+      10,    0,   82,    2, 0x06 /* Public */,
+      11,    0,   83,    2, 0x06 /* Public */,
+      12,    0,   84,    2, 0x06 /* Public */,
+
+ // methods: name, argc, parameters, tag, flags
+      13,    4,   85,    2, 0x02 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -660,18 +736,21 @@ static const uint qt_meta_data_ModelData[] = {
     QMetaType::Void,
     QMetaType::Void,
 
+ // methods: parameters
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   14,   15,   16,   17,
+
  // properties: name, type, flags
-      13, QMetaType::QObjectStar, 0x00495001,
-      14, QMetaType::QObjectStar, 0x00495001,
-      15, QMetaType::QObjectStar, 0x00495001,
-      16, QMetaType::QObjectStar, 0x00495001,
-      17, QMetaType::QObjectStar, 0x00495001,
       18, QMetaType::QObjectStar, 0x00495001,
       19, QMetaType::QObjectStar, 0x00495001,
       20, QMetaType::QObjectStar, 0x00495001,
       21, QMetaType::QObjectStar, 0x00495001,
       22, QMetaType::QObjectStar, 0x00495001,
-      23, QMetaType::Int, 0x00495103,
+      23, QMetaType::QObjectStar, 0x00495001,
+      24, QMetaType::QObjectStar, 0x00495001,
+      25, QMetaType::QObjectStar, 0x00495001,
+      26, QMetaType::QObjectStar, 0x00495001,
+      27, QMetaType::QObjectStar, 0x00495001,
+      28, QMetaType::Int, 0x00495103,
 
  // properties: notify_signal_id
        0,
@@ -706,6 +785,7 @@ void ModelData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 8: _t->transistorChanged(); break;
         case 9: _t->multimeterChanged(); break;
         case 10: _t->pointerModeChanged(); break;
+        case 11: _t->updateActivedDevice((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -818,7 +898,6 @@ void ModelData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     } else if (_c == QMetaObject::ResetProperty) {
     }
 #endif // QT_NO_PROPERTIES
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject ModelData::staticMetaObject = {
@@ -846,13 +925,13 @@ int ModelData::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 11;
+        _id -= 12;
     }
 #ifndef QT_NO_PROPERTIES
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty

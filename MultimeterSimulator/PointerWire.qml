@@ -8,6 +8,13 @@ Item{
 
     property var stopRedPoint: [0,0]
     property var stopBlackPoint: [0,0]
+    signal redWireChangingPos(int posX, int posY)
+    signal blackWireChangingPos(int posX, int posY)
+    signal redWireRelesedPos()
+    signal blackWireRelesedPos()
+
+    property alias redPointer: redPointer
+    property alias blackPointer: blackPointer
 
     Image{
         id: redPointer
@@ -33,7 +40,11 @@ Item{
             drag.minimumY: 0
             drag.maximumY: root.height - parent.height
             onPositionChanged: {
-                canvas.requestPaint()
+                redCanvas.requestPaint()
+                redWireChangingPos(redPointer.x + redPointer.width/2, redPointer.y)
+            }
+            onReleased: {
+                redWireRelesedPos()
             }
         }
     }
@@ -61,23 +72,25 @@ Item{
             drag.minimumY: 0
             drag.maximumY: root.height - parent.height
             onPositionChanged: {
-                canvas.requestPaint()
+                blackCanvas.requestPaint()
+                blackWireChangingPos(blackPointer.x + blackPointer.width/2, blackPointer.y)
+            }
+            onReleased: {
+                blackWireRelesedPos()
             }
         }
     }
 
     Canvas {
 
-        id: canvas;
+        id: redCanvas;
         anchors.fill: parent
         z: 1000
 
         property var startRedPoint: [redPointer.x + redPointer.width/2,redPointer.y + redPointer.height]
-        property var startBlackPoint: [blackPointer.x + blackPointer.width/2,blackPointer.y + blackPointer.height]
 
         onPaint: {
-            console.log("Painting ")
-            var ctx = canvas.getContext("2d");
+            var ctx = redCanvas.getContext("2d");
             ctx.reset()
             ctx.clearRect(0,0, width, height);
 
@@ -93,8 +106,35 @@ Item{
             ctx.stroke();
         }
     }
+
+    Canvas {
+
+        id: blackCanvas;
+        anchors.fill: parent
+        z: 1000
+
+        property var startBlackPoint: [blackPointer.x + blackPointer.width/2,blackPointer.y + blackPointer.height]
+
+        onPaint: {
+            var ctx = blackCanvas.getContext("2d");
+            ctx.reset()
+            ctx.clearRect(0,0, width, height);
+
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.moveTo(startBlackPoint[0], startBlackPoint[1]);
+//            for (var i=1; i<20; i++) {
+                //              ctx.bezierCurveTo(xPos(j-0.5),yPos(i,j-1),xPos(j-0.5),yPos(i,j),xPos(j),yPos(i,j));
+                ctx.lineTo(root.stopBlackPoint[0],root.stopBlackPoint[1]);
+//            }
+
+            ctx.stroke();
+        }
+    }
     Component.onCompleted: {
-        canvas.requestPaint()
+        redCanvas.requestPaint()
+        blackCanvas.requestPaint()
     }
 }
 

@@ -21,7 +21,7 @@ class DefineModel : public QObject
 
 private:
     int WIDGET_WIDTH(){return 150;}
-    int WIDGET_HEIGHT(){return 120;}
+    int WIDGET_HEIGHT(){return 150;}
     int multiImg_sourcwWidth(){return 2225;}
     int multiImg_sourcwHeight(){return 3305;}
     int multiPointerStartXPoint(){return 603;}

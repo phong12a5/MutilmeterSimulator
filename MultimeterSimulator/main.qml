@@ -1,15 +1,33 @@
 import QtQuick 2.11
 import QtQuick.Window 2.11
+import App_Enum 1.0
 
 Window {
     id: window
     visible: true
     title: qsTr("Electronic circurt simulator Software")
-    width: 1200
-    height: 720
+    width: Screen.width
+    height: Screen.height
 
     ListModel{
         id: mod
+    }
+    Rectangle{
+        id: line
+        width: window.width
+        height: 2
+        color: "grey"
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.topMargin: Define.WIDGET_HEIGHT - 2
+    }
+
+    Multimeter{
+        id: multimeter
+        width: Define.multiMeterWidth
+        height: parent.height - lsv.height
+        anchors.top: lsv.bottom
+        anchors.right: parent.right
     }
 
     ListView{
@@ -21,6 +39,7 @@ Window {
         model: mod
         delegate: CommonComponent{
             id: dlg
+            property point prevPoint: Qt.point(index * dlg.width,0)
             width: Define.WIDGET_WIDTH
             height: Define.WIDGET_HEIGHT
             model: mod.get(index)
@@ -39,40 +58,135 @@ Window {
                 drag.maximumY: window.height - Define.WIDGET_HEIGHT
                 drag.minimumY: 0
                 onPressed: {
-                    console.log("Pressing")
                     lsv.currentIndex = index
-                }
-
-                onPressAndHold: {
-                    console.log("Pressing and hold")
+                    prevPoint = Qt.point(dlg.x,dlg.y)
                 }
                 onReleased: {
                     if(dlg.y <= 0 || (dlg.y - lsv.y < dlg.height)){
                         dlg.y = 0
                         dlg.x = index* dlg.width
                     }
+
+                    if(dlg.x + dlg.width > multimeter.x &&
+                       dlg.y + dlg.height > multimeter.y){
+                        dlg.x = dlg.prevPoint.x
+                        dlg.y = dlg.prevPoint.y
+                    }
                 }
+                onPositionChanged: {
+                    dlg.matchingNegative = dlg._EMPTY
+                    dlg.matchingPositive = dlg._EMPTY
+                    dlg.matchingExtend = dlg._EMPTY
+                }
+            }
+            Connections{
+                target: wire
+                onRedWireChangingPos:{
+                    var _point = Qt.point(posX - dlg.x,posY + lsv.height - dlg.y)
+                    if(posX >= dlg.x &&
+                            posX <= dlg.x + dlg.width &&
+                            posY >= (dlg.y - lsv.height) &&
+                            posY <= dlg.y){
+                        if(_point.x >= dlg._positive.x &&
+                                _point.x <= dlg._positive.x + dlg._positive.width &&
+                                _point.y >= dlg._positive.y &&
+                                _point.y <= dlg._positive.y + dlg._positive.height)
+                        {
+                            if(dlg.matchingPositive == dlg._CONNECTED && dlg._positive.connetedWire == dlg._BLACK_WIRE){
+                                return;
+                            }
+                            dlg.matchingPositive = dlg._FOCUSED;
+                        }else if(_point.x >= dlg._negative.x &&
+                                 _point.x <= dlg._negative.x + dlg._negative.width &&
+                                 _point.y >= dlg._negative.y &&
+                                 _point.y <= dlg._negative.y + dlg._negative.height)
+                        {
+                            if(dlg.matchingNegative == dlg._CONNECTED && dlg._negative.connetedWire == dlg._BLACK_WIRE){
+                                return;
+                            }
+                            dlg.matchingNegative = dlg._FOCUSED;
+                        }else{
+                            if(dlg.matchingPositive == dlg._FOCUSED)
+                                dlg.matchingPositive = dlg._EMPTY;
+                            if(dlg.matchingNegative == dlg._FOCUSED)
+                                dlg.matchingNegative = dlg._EMPTY;
+                        }
+                    }else{
+                        if(dlg.matchingPositive == dlg._FOCUSED)
+                            dlg.matchingPositive = dlg._EMPTY;
+                        if(dlg.matchingNegative == dlg._FOCUSED)
+                            dlg.matchingNegative = dlg._EMPTY;
+                    }
+                }
+                onBlackWireChangingPos:{
+                    var _point = Qt.point(posX - dlg.x,posY + lsv.height - dlg.y)
+                    if(posX >= dlg.x &&
+                            posX <= dlg.x + dlg.width &&
+                            posY >= (dlg.y - lsv.height) &&
+                            posY <= dlg.y){
+                        if(_point.x >= dlg._positive.x &&
+                                _point.x <= dlg._positive.x + dlg._positive.width &&
+                                _point.y >= dlg._positive.y &&
+                                _point.y <= dlg._positive.y + dlg._positive.height)
+                        {
+                            if(dlg.matchingPositive == dlg._CONNECTED && dlg._positive.connetedWire == dlg._RED_WIRE){
+                                return;
+                            }
+                            dlg.matchingPositive = dlg._FOCUSED;
+                        }else if(_point.x >= dlg._negative.x &&
+                                 _point.x <= dlg._negative.x + dlg._negative.width &&
+                                 _point.y >= dlg._negative.y &&
+                                 _point.y <= dlg._negative.y + dlg._negative.height)
+                        {
+                            if(dlg.matchingNegative == dlg._CONNECTED && dlg._negative.connetedWire == dlg._RED_WIRE){
+                                return;
+                            }
+                            dlg.matchingNegative = dlg._FOCUSED;
+                        }else{
+                            if(dlg.matchingPositive == dlg._FOCUSED)
+                                dlg.matchingPositive = dlg._EMPTY;
+                            if(dlg.matchingNegative == dlg._FOCUSED)
+                                dlg.matchingNegative = dlg._EMPTY;
+                        }
+                    }else {
+                        if(dlg.matchingPositive == dlg._FOCUSED)
+                            dlg.matchingPositive = dlg._EMPTY;
+                        if(dlg.matchingNegative == dlg._FOCUSED)
+                            dlg.matchingNegative = dlg._EMPTY;
+                    }
+                }
+                onRedWireRelesedPos:{
+                    if(dlg.matchingPositive == dlg._FOCUSED){
+                        dlg._positive.connetedWire = dlg._RED_WIRE;
+                        dlg.matchingPositive = dlg._CONNECTED;
+                    }
+
+                    if(dlg.matchingNegative == dlg._FOCUSED){
+                        dlg._negative.connetedWire = dlg._RED_WIRE;
+                        dlg.matchingNegative = dlg._CONNECTED;
+                    }
+                }
+                onBlackWireRelesedPos:{
+                    if(dlg.matchingPositive == dlg._FOCUSED){
+                        dlg._positive.connetedWire = dlg._BLACK_WIRE;
+                        dlg.matchingPositive = dlg._CONNECTED;
+                    }
+                    if(dlg.matchingNegative == dlg._FOCUSED){
+                        dlg._negative.connetedWire = dlg._BLACK_WIRE;
+                        dlg.matchingNegative = dlg._CONNECTED;
+                    }
+                }
+            }
+            onActiveChanged: {
+                console.log("ACtive of " + index +
+                            " >> changed: " + dlg.active +
+                            " >> dlg._positive.connetedWire: " + dlg._positive.connetedWire +
+                            " >> dlg._negative.connetedWire: " + dlg._negative.connetedWire)
+                ModelData.updateActivedDevice(index,dlg._positive.connetedWire,dlg._negative.connetedWire,dlg._extend.connetedWire)
             }
         }
     }
 
-    Rectangle{
-        id: line
-        width: window.width
-        height: 2
-        color: "grey"
-        anchors.left: parent.left
-        anchors.top: parent.top
-        anchors.topMargin: Define.WIDGET_HEIGHT - 2
-    }
-
-    Multimeter{
-        id: multimeter
-        width: Define.multiMeterWidth
-        height: parent.height - lsv.height
-        anchors.top: lsv.bottom
-        anchors.right: parent.right
-    }
 
     PointerWire{
         id: wire
@@ -97,6 +211,6 @@ Window {
     }
     Component.onCompleted: {
         creatModel()
-        window.showMaximized()
+//        window.showMaximized()
     }
 }

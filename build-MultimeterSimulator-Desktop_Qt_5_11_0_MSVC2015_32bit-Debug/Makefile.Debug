@@ -265,6 +265,7 @@ debug\moc_ModelData.cpp: C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QObject \
 		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfile.h \
 		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfiledevice.h \
 		..\MultimeterSimulator\App_Enum.h \
+		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QPointF \
 		..\MultimeterSimulator\ModelData.h \
 		debug\moc_predefs.h \
 		C:\QtMqtt\5.11.0\msvc2015\bin\moc.exe
@@ -514,6 +515,7 @@ debug\main.obj: ..\MultimeterSimulator\main.cpp C:\QtMqtt\5.11.0\msvc2015\includ
 		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfile.h \
 		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfiledevice.h \
 		../MultimeterSimulator/App_Enum.h \
+		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QPointF \
 		../MultimeterSimulator/DefineModel.h
 
 debug\ModelData.obj: ..\MultimeterSimulator\ModelData.cpp ../MultimeterSimulator/ModelData.h \
@@ -588,7 +590,8 @@ debug\ModelData.obj: ..\MultimeterSimulator\ModelData.cpp ../MultimeterSimulator
 		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfileinfo.h \
 		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfile.h \
 		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfiledevice.h \
-		../MultimeterSimulator/App_Enum.h
+		../MultimeterSimulator/App_Enum.h \
+		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QPointF
 
 debug\DefineModel.obj: ..\MultimeterSimulator\DefineModel.cpp ../MultimeterSimulator/DefineModel.h \
 		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QObject \
