@@ -1,2 +1,0 @@
-var WIDGET_WIDTH    100
-var WIDGET_HEIGHT   100
