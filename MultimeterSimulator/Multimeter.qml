@@ -4,7 +4,7 @@ Item {
     id: root
 
     property real _FACTOR: 5.5
-    property int _FIX: -5
+    property int _FIX: -10
 
     property var stopRedPoint: [280/_FACTOR + bg.x,2519/_FACTOR  + bg.y]
     property var stopBlackPoint: [280/_FACTOR + bg.x,2943/_FACTOR  + bg.y]
@@ -19,7 +19,7 @@ Item {
 
     Image {
         id: bg
-        y: -5
+        y: _FIX
         anchors.horizontalCenter: parent.horizontalCenter
         source: ModelData.multimeter.soureBg
         width: Define.multiImg_sourcwWidth/_FACTOR
@@ -148,7 +148,7 @@ Item {
             from: ModelData.multimeter.currentRotation
             to: ModelData.multimeter.nextRotation
             duration: ModelData.multimeter.animationDuration
-            easing.type: Easing.InOutCubic
+            easing.type: Easing.InCirc
             onRunningChanged: {
                 console.log("running: " + running)
                 if(!running)

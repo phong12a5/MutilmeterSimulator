@@ -8,6 +8,7 @@
 #include <QDir>
 #include "App_Enum.h"
 #include <QPointF>
+#include <QTimer>
 
 class CommonObject: public QObject
 {
@@ -333,6 +334,8 @@ private:
     QObject* m_transistor;
     QObject* m_multimeter;
     QList<QObject*> m_listModel;
+    QTimer m_capNormalTimer;
+    QTimer m_capAbnormalTimer;
 
     int m_pointerMode;
     int m_activedDeviced;
@@ -385,8 +388,9 @@ signals:
     void pointerModeChanged();
     void activedDevicedChanged();
     void listModelChanged();
-
 public slots:
+    void onCapNormalTimerTrigged();
+    void onCapAbnormalTimerTrigged();
 };
 
 #endif // MODELDATA_H

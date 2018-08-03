@@ -63,7 +63,7 @@ Window {
                     }
 
                     if(dlg.x + dlg.width > multimeter.x &&
-                            dlg.y + dlg.height > multimeter.y){
+                            dlg.y > 0){
                         dlg.x = dlg.prevPoint.x
                         dlg.y = dlg.prevPoint.y
                     }
@@ -78,28 +78,35 @@ Window {
                 target: wire
                 onRedWireChangingPos:{
                     var _point = Qt.point(posX - dlg.x,posY + lsv.height - dlg.y)
-                    if(posX >= dlg.x &&
-                            posX <= dlg.x + dlg.width &&
-                            posY >= (dlg.y - lsv.height) &&
-                            posY <= dlg.y){
-                        if(_point.x >= dlg._positive.x &&
-                                _point.x <= dlg._positive.x + dlg._positive.width &&
-                                _point.y >= dlg._positive.y &&
-                                _point.y <= dlg._positive.y + dlg._positive.height)
-                        {
-                            if(dlg.matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED && dlg._positive.connetedWire == App_Enum.E_WIRE_TYPE_BLACK){
-                                return;
+                    if(index !== App_Enum.E_OBJECT_INDEX_TRANSISTOR){
+                        if(posX >= dlg.x &&
+                                posX <= dlg.x + dlg.width &&
+                                posY >= (dlg.y - lsv.height) &&
+                                posY <= dlg.y){
+                            if(_point.x >= dlg._positive.x &&
+                                    _point.x <= dlg._positive.x + dlg._positive.width &&
+                                    _point.y >= dlg._positive.y &&
+                                    _point.y <= dlg._positive.y + dlg._positive.height)
+                            {
+                                if(dlg.matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED && dlg._positive.connetedWire == App_Enum.E_WIRE_TYPE_BLACK){
+                                    return;
+                                }
+                                dlg.matchingPositive = App_Enum.E_WIRE_STATUS_FOCUSED;
+                            }else if(_point.x >= dlg._negative.x &&
+                                     _point.x <= dlg._negative.x + dlg._negative.width &&
+                                     _point.y >= dlg._negative.y &&
+                                     _point.y <= dlg._negative.y + dlg._negative.height)
+                            {
+                                if(dlg.matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED && dlg._negative.connetedWire == App_Enum.E_WIRE_TYPE_BLACK){
+                                    return;
+                                }
+                                dlg.matchingNegative = App_Enum.E_WIRE_STATUS_FOCUSED;
+                            }else{
+                                if(dlg.matchingPositive == App_Enum.E_WIRE_STATUS_FOCUSED)
+                                    dlg.matchingPositive = App_Enum.E_WIRE_STATUS_EMPTY;
+                                if(dlg.matchingNegative == App_Enum.E_WIRE_STATUS_FOCUSED)
+                                    dlg.matchingNegative = App_Enum.E_WIRE_STATUS_EMPTY;
                             }
-                            dlg.matchingPositive = App_Enum.E_WIRE_STATUS_FOCUSED;
-                        }else if(_point.x >= dlg._negative.x &&
-                                 _point.x <= dlg._negative.x + dlg._negative.width &&
-                                 _point.y >= dlg._negative.y &&
-                                 _point.y <= dlg._negative.y + dlg._negative.height)
-                        {
-                            if(dlg.matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED && dlg._negative.connetedWire == App_Enum.E_WIRE_TYPE_BLACK){
-                                return;
-                            }
-                            dlg.matchingNegative = App_Enum.E_WIRE_STATUS_FOCUSED;
                         }else{
                             if(dlg.matchingPositive == App_Enum.E_WIRE_STATUS_FOCUSED)
                                 dlg.matchingPositive = App_Enum.E_WIRE_STATUS_EMPTY;
@@ -107,10 +114,7 @@ Window {
                                 dlg.matchingNegative = App_Enum.E_WIRE_STATUS_EMPTY;
                         }
                     }else{
-                        if(dlg.matchingPositive == App_Enum.E_WIRE_STATUS_FOCUSED)
-                            dlg.matchingPositive = App_Enum.E_WIRE_STATUS_EMPTY;
-                        if(dlg.matchingNegative == App_Enum.E_WIRE_STATUS_FOCUSED)
-                            dlg.matchingNegative = App_Enum.E_WIRE_STATUS_EMPTY;
+
                     }
                 }
                 onBlackWireChangingPos:{
@@ -173,18 +177,8 @@ Window {
                 }
             }
             onActiveChanged: {
-                console.log("ACtive of " + index +
-                            " >> changed: " + dlg.active +
-                            " >> dlg._positive.connetedWire: " + dlg._positive.connetedWire +
-                            " >> dlg._negative.connetedWire: " + dlg._negative.connetedWire)
-
                 ModelData.activedDeviced = dlg.active?index:-1;
                 ModelData.updateActivedDevice(dlg.active,index,dlg._positive.connetedWire,dlg._negative.connetedWire,dlg._extend.connetedWire)
-            }
-        }
-        Component.onCompleted: {
-            for(var i = 0; i < ModelData.listModel.length; i++){
-            console.log("ModelData.listModel[i]: " + ModelData.listModel[i].objectName)
             }
         }
     }
