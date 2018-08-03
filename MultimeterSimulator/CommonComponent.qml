@@ -5,13 +5,13 @@ Item {
     id: root
 
     property int type: modelData.objectType
-    property int matchingPositive: Define._EMPTY
-    property int matchingNegative: Define._EMPTY
-    property int matchingExtend: Define._EMPTY
+    property int matchingPositive: App_Enum.E_WIRE_STATUS_EMPTY
+    property int matchingNegative: App_Enum.E_WIRE_STATUS_EMPTY
+    property int matchingExtend: App_Enum.E_WIRE_STATUS_EMPTY
     property bool active: type != App_Enum.E_OBJECT_TYPE_TRANSISTOR &&
                           type != App_Enum.E_OBJECT_TYPE_MULTIMETER?
-                              (matchingPositive == Define._CONNECTED && matchingNegative == Define._CONNECTED):
-                              (matchingPositive == Define._CONNECTED && matchingNegative == Define._CONNECTED && matchingExtend == Define._CONNECTED)
+                              (matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED && matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED):
+                              (matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED && matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED && matchingExtend == App_Enum.E_WIRE_STATUS_CONNECTED)
 
     property alias _positive: positive
     property alias _negative: negative
@@ -25,15 +25,15 @@ Item {
     }
     Rectangle{
         id: positive
-        property int connetedWire: Define._NONE_WIRE
+        property int connetedWire: App_Enum.E_WIRE_TYPE_NONE
         x: modelData.positivePoint.x - width/2
         y: modelData.positivePoint.y - height/2
         width: 10
         height: 10
-        radius: matchingPositive == Define._CONNECTED? width/2:0
-        color: matchingPositive == Define._CONNECTED? "black":"red"
-        opacity: matchingPositive == Define._CONNECTED? 1:0.2
-        visible: matchingPositive!= Define._EMPTY
+        radius: matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED? width/2:0
+        color: matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED? "black":"red"
+        opacity: matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED? 1:0.2
+        visible: matchingPositive!= App_Enum.E_WIRE_STATUS_EMPTY
         onConnetedWireChanged: {
             modelData.posConnectedWire = connetedWire
         }
@@ -41,15 +41,15 @@ Item {
 
     Rectangle{
         id: negative
-        property int connetedWire: Define._NONE_WIRE
+        property int connetedWire: App_Enum.E_WIRE_TYPE_NONE
         x: modelData.negativePoint.x - width/2
         y: modelData.negativePoint.y - height/2
         width: 10
         height: 10
-        radius: matchingNegative == Define._CONNECTED? width/2:0
-        color: matchingNegative == Define._CONNECTED? "black":"red"
-        opacity: matchingNegative == Define._CONNECTED? 1:0.2
-        visible: matchingNegative != Define._EMPTY
+        radius: matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED? width/2:0
+        color: matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED? "black":"red"
+        opacity: matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED? 1:0.2
+        visible: matchingNegative != App_Enum.E_WIRE_STATUS_EMPTY
         onConnetedWireChanged: {
             modelData.negaConnectedWire = connetedWire
         }
@@ -57,33 +57,33 @@ Item {
 
     Rectangle{
         id: extend
-        property int connetedWire: Define._NONE_WIRE
+        property int connetedWire: App_Enum.E_WIRE_TYPE_NONE
         x: modelData.extendPoint.x - width/2
         y: modelData.extendPoint.y - height/2
         width: 10
         height: 10
-        radius: matchingExtend == Define._CONNECTED? width/2:0
-        color: matchingExtend == Define._CONNECTED? "black":"red"
-        opacity: matchingExtend == Define._CONNECTED? 1:0.2
-        visible: matchingExtend != Define._EMPTY
+        radius: matchingExtend == App_Enum.E_WIRE_STATUS_CONNECTED? width/2:0
+        color: matchingExtend == App_Enum.E_WIRE_STATUS_CONNECTED? "black":"red"
+        opacity: matchingExtend == App_Enum.E_WIRE_STATUS_CONNECTED? 1:0.2
+        visible: matchingExtend != App_Enum.E_WIRE_STATUS_EMPTY
         onConnetedWireChanged: {
             modelData.extConnectedWire = connetedWire
         }
     }
 
     onMatchingPositiveChanged: {
-        if(matchingPositive != Define._CONNECTED){
-            positive.connetedWire = Define._NONE_WIRE
+        if(matchingPositive != App_Enum.E_WIRE_STATUS_CONNECTED){
+            positive.connetedWire = App_Enum.E_WIRE_TYPE_NONE
         }
     }
     onMatchingNegativeChanged: {
-        if(matchingNegative != Define._CONNECTED){
-            negative.connetedWire = Define._NONE_WIRE
+        if(matchingNegative != App_Enum.E_WIRE_STATUS_CONNECTED){
+            negative.connetedWire = App_Enum.E_WIRE_TYPE_NONE
         }
     }
     onMatchingExtendChanged: {
-        if(matchingExtend != Define._CONNECTED){
-            extend.connetedWire = Define._NONE_WIRE
+        if(matchingExtend != App_Enum.E_WIRE_STATUS_CONNECTED){
+            extend.connetedWire = App_Enum.E_WIRE_TYPE_NONE
         }
     }
 }

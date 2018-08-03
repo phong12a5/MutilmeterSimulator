@@ -1,6 +1,5 @@
-import QtQuick 2.0
-
 import QtQuick 2.3
+import App_Enum 1.0
 
 
 Item{

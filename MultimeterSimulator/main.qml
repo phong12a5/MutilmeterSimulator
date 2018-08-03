@@ -5,7 +5,7 @@ import App_Enum 1.0
 Window {
     id: window
     visible: true
-    title: qsTr("Electronic circurt simulator Software")
+    title: qsTr("Electronic circuit simulator Software")
     width: Screen.width
     height: Screen.height
 
@@ -16,9 +16,14 @@ Window {
     Multimeter{
         id: multimeter
         width: Define.multiMeterWidth
-        height: parent.height - lsv.height
+        anchors.bottom: parent.bottom
         anchors.top: lsv.bottom
+        anchors.topMargin: -10
         anchors.right: parent.right
+    }
+
+    Rectangle{
+        anchors.fill: lsv
     }
 
     ListView{
@@ -64,9 +69,9 @@ Window {
                     }
                 }
                 onPositionChanged: {
-                    dlg.matchingNegative = Define._EMPTY
-                    dlg.matchingPositive = Define._EMPTY
-                    dlg.matchingExtend = Define._EMPTY
+                    dlg.matchingNegative = App_Enum.E_WIRE_STATUS_EMPTY
+                    dlg.matchingPositive = App_Enum.E_WIRE_STATUS_EMPTY
+                    dlg.matchingExtend = App_Enum.E_WIRE_STATUS_EMPTY
                 }
             }
             Connections{
@@ -82,30 +87,30 @@ Window {
                                 _point.y >= dlg._positive.y &&
                                 _point.y <= dlg._positive.y + dlg._positive.height)
                         {
-                            if(dlg.matchingPositive == Define._CONNECTED && dlg._positive.connetedWire == Define._BLACK_WIRE){
+                            if(dlg.matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED && dlg._positive.connetedWire == App_Enum.E_WIRE_TYPE_BLACK){
                                 return;
                             }
-                            dlg.matchingPositive = Define._FOCUSED;
+                            dlg.matchingPositive = App_Enum.E_WIRE_STATUS_FOCUSED;
                         }else if(_point.x >= dlg._negative.x &&
                                  _point.x <= dlg._negative.x + dlg._negative.width &&
                                  _point.y >= dlg._negative.y &&
                                  _point.y <= dlg._negative.y + dlg._negative.height)
                         {
-                            if(dlg.matchingNegative == Define._CONNECTED && dlg._negative.connetedWire == Define._BLACK_WIRE){
+                            if(dlg.matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED && dlg._negative.connetedWire == App_Enum.E_WIRE_TYPE_BLACK){
                                 return;
                             }
-                            dlg.matchingNegative = Define._FOCUSED;
+                            dlg.matchingNegative = App_Enum.E_WIRE_STATUS_FOCUSED;
                         }else{
-                            if(dlg.matchingPositive == Define._FOCUSED)
-                                dlg.matchingPositive = Define._EMPTY;
-                            if(dlg.matchingNegative == Define._FOCUSED)
-                                dlg.matchingNegative = Define._EMPTY;
+                            if(dlg.matchingPositive == App_Enum.E_WIRE_STATUS_FOCUSED)
+                                dlg.matchingPositive = App_Enum.E_WIRE_STATUS_EMPTY;
+                            if(dlg.matchingNegative == App_Enum.E_WIRE_STATUS_FOCUSED)
+                                dlg.matchingNegative = App_Enum.E_WIRE_STATUS_EMPTY;
                         }
                     }else{
-                        if(dlg.matchingPositive == Define._FOCUSED)
-                            dlg.matchingPositive = Define._EMPTY;
-                        if(dlg.matchingNegative == Define._FOCUSED)
-                            dlg.matchingNegative = Define._EMPTY;
+                        if(dlg.matchingPositive == App_Enum.E_WIRE_STATUS_FOCUSED)
+                            dlg.matchingPositive = App_Enum.E_WIRE_STATUS_EMPTY;
+                        if(dlg.matchingNegative == App_Enum.E_WIRE_STATUS_FOCUSED)
+                            dlg.matchingNegative = App_Enum.E_WIRE_STATUS_EMPTY;
                     }
                 }
                 onBlackWireChangingPos:{
@@ -119,51 +124,51 @@ Window {
                                 _point.y >= dlg._positive.y &&
                                 _point.y <= dlg._positive.y + dlg._positive.height)
                         {
-                            if(dlg.matchingPositive == Define._CONNECTED && dlg._positive.connetedWire == Define._RED_WIRE){
+                            if(dlg.matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED && dlg._positive.connetedWire == App_Enum.E_WIRE_TYPE_RED){
                                 return;
                             }
-                            dlg.matchingPositive = Define._FOCUSED;
+                            dlg.matchingPositive = App_Enum.E_WIRE_STATUS_FOCUSED;
                         }else if(_point.x >= dlg._negative.x &&
                                  _point.x <= dlg._negative.x + dlg._negative.width &&
                                  _point.y >= dlg._negative.y &&
                                  _point.y <= dlg._negative.y + dlg._negative.height)
                         {
-                            if(dlg.matchingNegative == Define._CONNECTED && dlg._negative.connetedWire == Define._RED_WIRE){
+                            if(dlg.matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED && dlg._negative.connetedWire == App_Enum.E_WIRE_TYPE_RED){
                                 return;
                             }
-                            dlg.matchingNegative = Define._FOCUSED;
+                            dlg.matchingNegative = App_Enum.E_WIRE_STATUS_FOCUSED;
                         }else{
-                            if(dlg.matchingPositive == Define._FOCUSED)
-                                dlg.matchingPositive = Define._EMPTY;
-                            if(dlg.matchingNegative == Define._FOCUSED)
-                                dlg.matchingNegative = Define._EMPTY;
+                            if(dlg.matchingPositive == App_Enum.E_WIRE_STATUS_FOCUSED)
+                                dlg.matchingPositive = App_Enum.E_WIRE_STATUS_EMPTY;
+                            if(dlg.matchingNegative == App_Enum.E_WIRE_STATUS_FOCUSED)
+                                dlg.matchingNegative = App_Enum.E_WIRE_STATUS_EMPTY;
                         }
                     }else {
-                        if(dlg.matchingPositive == Define._FOCUSED)
-                            dlg.matchingPositive = Define._EMPTY;
-                        if(dlg.matchingNegative == Define._FOCUSED)
-                            dlg.matchingNegative = Define._EMPTY;
+                        if(dlg.matchingPositive == App_Enum.E_WIRE_STATUS_FOCUSED)
+                            dlg.matchingPositive = App_Enum.E_WIRE_STATUS_EMPTY;
+                        if(dlg.matchingNegative == App_Enum.E_WIRE_STATUS_FOCUSED)
+                            dlg.matchingNegative = App_Enum.E_WIRE_STATUS_EMPTY;
                     }
                 }
                 onRedWireRelesedPos:{
-                    if(dlg.matchingPositive == Define._FOCUSED){
-                        dlg._positive.connetedWire = Define._RED_WIRE;
-                        dlg.matchingPositive = Define._CONNECTED;
+                    if(dlg.matchingPositive == App_Enum.E_WIRE_STATUS_FOCUSED){
+                        dlg._positive.connetedWire = App_Enum.E_WIRE_TYPE_RED;
+                        dlg.matchingPositive = App_Enum.E_WIRE_STATUS_CONNECTED;
                     }
 
-                    if(dlg.matchingNegative == Define._FOCUSED){
-                        dlg._negative.connetedWire = Define._RED_WIRE;
-                        dlg.matchingNegative = Define._CONNECTED;
+                    if(dlg.matchingNegative == App_Enum.E_WIRE_STATUS_FOCUSED){
+                        dlg._negative.connetedWire = App_Enum.E_WIRE_TYPE_RED;
+                        dlg.matchingNegative = App_Enum.E_WIRE_STATUS_CONNECTED;
                     }
                 }
                 onBlackWireRelesedPos:{
-                    if(dlg.matchingPositive == Define._FOCUSED){
-                        dlg._positive.connetedWire = Define._BLACK_WIRE;
-                        dlg.matchingPositive = Define._CONNECTED;
+                    if(dlg.matchingPositive == App_Enum.E_WIRE_STATUS_FOCUSED){
+                        dlg._positive.connetedWire = App_Enum.E_WIRE_TYPE_BLACK;
+                        dlg.matchingPositive = App_Enum.E_WIRE_STATUS_CONNECTED;
                     }
-                    if(dlg.matchingNegative == Define._FOCUSED){
-                        dlg._negative.connetedWire = Define._BLACK_WIRE;
-                        dlg.matchingNegative = Define._CONNECTED;
+                    if(dlg.matchingNegative == App_Enum.E_WIRE_STATUS_FOCUSED){
+                        dlg._negative.connetedWire = App_Enum.E_WIRE_TYPE_BLACK;
+                        dlg.matchingNegative = App_Enum.E_WIRE_STATUS_CONNECTED;
                     }
                 }
             }
@@ -200,8 +205,8 @@ Window {
         anchors.right: parent.right
         height: parent.height - lsv.height
         anchors.bottom: parent.bottom
-        stopRedPoint:[multimeter.stopRedPoint[0] + multimeter.x, multimeter.stopRedPoint[1] ]
-        stopBlackPoint:[multimeter.stopBlackPoint[0] + multimeter.x, multimeter.stopBlackPoint[1]]
+        stopRedPoint:[multimeter.stopRedPoint[0] + multimeter.x, multimeter.stopRedPoint[1] + multimeter._FIX]
+        stopBlackPoint:[multimeter.stopBlackPoint[0] + multimeter.x, multimeter.stopBlackPoint[1] + multimeter._FIX]
     }
 
     Component.onCompleted: {

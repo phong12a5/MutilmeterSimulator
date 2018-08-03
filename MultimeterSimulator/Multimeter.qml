@@ -4,9 +4,10 @@ Item {
     id: root
 
     property real _FACTOR: 5.5
+    property int _FIX: -5
 
-    property var stopRedPoint: [280/_FACTOR + bg.x,2519/_FACTOR + bg.y]
-    property var stopBlackPoint: [280/_FACTOR + bg.x,2943/_FACTOR +bg.y]
+    property var stopRedPoint: [280/_FACTOR + bg.x,2519/_FACTOR  + bg.y]
+    property var stopBlackPoint: [280/_FACTOR + bg.x,2943/_FACTOR  + bg.y]
 
 
     Rectangle{

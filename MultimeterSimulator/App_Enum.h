@@ -9,6 +9,8 @@ class App_Enum : public QObject
     Q_ENUMS(OBJECT_INDEX)
     Q_ENUMS(OBJECT_TYPE)
     Q_ENUMS(MULTI_POINTER_MODE)
+    Q_ENUMS(E_WIRE_TYPE)
+    Q_ENUMS(E_WIRE_STATUS)
 
 public:
     enum OBJECT_INDEX: int{
@@ -54,6 +56,16 @@ public:
         E_MULTI_POINTER_MODE_50_DC,
         E_MULTI_POINTER_MODE_250_DC,
         E_MULTI_POINTER_MODE_1000_DC,
+    };
+    enum E_WIRE_TYPE: int{
+        E_WIRE_TYPE_NONE = 0,
+        E_WIRE_TYPE_RED = 1,
+        E_WIRE_TYPE_BLACK = 2
+    };
+    enum E_WIRE_STATUS: int{
+        E_WIRE_STATUS_EMPTY,
+        E_WIRE_STATUS_FOCUSED,
+        E_WIRE_STATUS_CONNECTED,
     };
 
 

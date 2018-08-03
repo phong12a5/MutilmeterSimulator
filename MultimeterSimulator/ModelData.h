@@ -169,8 +169,8 @@ public:
     m_maskSource(_maskSource),
     m_line(_line)
     {
-        m_nextRotation = 45;
-        m_currentRotation = 45;
+        m_nextRotation = -45;
+        m_currentRotation = -45;
         m_runningAnimation = false;
         m_animationDuration = 500;
     }
