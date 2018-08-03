@@ -24,6 +24,12 @@ class DefineModel : public QObject
     Q_PROPERTY(int maskYpoint READ maskYpoint CONSTANT)
     Q_PROPERTY(int maskWidth    READ maskWidth CONSTANT)
     Q_PROPERTY(int maskHeight   READ maskHeight CONSTANT)
+    Q_PROPERTY(int _EMPTY   READ _EMPTY CONSTANT)
+    Q_PROPERTY(int _FOCUSED   READ _FOCUSED CONSTANT)
+    Q_PROPERTY(int _CONNECTED   READ _CONNECTED CONSTANT)
+    Q_PROPERTY(int _NONE_WIRE   READ _NONE_WIRE CONSTANT)
+    Q_PROPERTY(int _RED_WIRE   READ _RED_WIRE CONSTANT)
+    Q_PROPERTY(int _BLACK_WIRE   READ _BLACK_WIRE CONSTANT)
 private:
     int WIDGET_WIDTH(){return 150;}
     int WIDGET_HEIGHT(){return 150;}
@@ -39,6 +45,13 @@ private:
     int maskYpoint(){return  1257;}
     int maskWidth(){return  679;}
     int maskHeight(){return  506;}
+    int _EMPTY(){return  0;}
+    int _FOCUSED(){return  1;}
+    int _CONNECTED(){return  2;}
+    int _NONE_WIRE(){return  0;}
+    int _RED_WIRE(){return  1;}
+    int _BLACK_WIRE(){return  2;}
+
 
 public:
     explicit DefineModel(QObject *parent = nullptr);

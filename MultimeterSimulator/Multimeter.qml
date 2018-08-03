@@ -134,7 +134,7 @@ Item {
         anchors.centerIn: anchorIndicator
         width: 1
         height: 460
-        rotation: -45
+        rotation: ModelData.multimeter.currentRotation
         Image{
             height: parent.height/2
             width: sourceSize.width/3

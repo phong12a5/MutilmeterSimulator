@@ -20,7 +20,9 @@ public:
     Q_PROPERTY(QVariant positivePoint READ positivePoint  NOTIFY positivePointChanged)
     Q_PROPERTY(QVariant negativePoint READ negativePoint  NOTIFY negativePointChanged)
     Q_PROPERTY(QVariant extendPoint READ extendPoint  NOTIFY extendPointChanged)
-
+    Q_PROPERTY(int posConnectedWire     READ posConnectedWire   WRITE setPosConnectedWire   NOTIFY posConnectedWireChanged)
+    Q_PROPERTY(int negaConnectedWire    READ negaConnectedWire  WRITE setNegaConnectedWire  NOTIFY negaConnectedWireChanged)
+    Q_PROPERTY(int extConnectedWire     READ extConnectedWire   WRITE setExtConnectedWire   NOTIFY extConnectedWireChanged)
 
 signals:
     void idxChanged();
@@ -30,6 +32,9 @@ signals:
     void positivePointChanged();
     void negativePointChanged();
     void extendPointChanged();
+    void posConnectedWireChanged() ;
+    void negaConnectedWireChanged();
+    void extConnectedWireChanged() ;
 
 public:
     CommonObject(int _idx, QString _objectName, int _objectType, QString _sourceImage, QPointF _positivePoint, QPointF _negativePoint, QPointF _extendPoint):
@@ -51,6 +56,9 @@ public:
     QVariant positivePoint(){return QVariant(m_positivePoint);}
     QVariant negativePoint(){return QVariant(m_negativePoint);}
     QVariant extendPoint(){return QVariant(m_extendPoint);}
+    int posConnectedWire (){return m_posConnectedWire ;}
+    int negaConnectedWire(){return m_negaConnectedWire;}
+    int extConnectedWire (){return m_extConnectedWire ;}
 
     void setIdx(int _idx){
         if(_idx != m_idx){
@@ -76,6 +84,28 @@ public:
             emit sourceImageChanged();
         }
     }
+    void setPosConnectedWire (int data){
+        DLT_LOG << data;
+        if(m_posConnectedWire != data){
+            m_posConnectedWire = data;
+            emit posConnectedWireChanged();
+        }
+    }
+
+    void setNegaConnectedWire(int data){
+        DLT_LOG << data;
+        if(m_negaConnectedWire != data){
+            m_negaConnectedWire = data;
+            emit negaConnectedWireChanged();
+        }
+    }
+    void setExtConnectedWire (int data){
+        DLT_LOG << data;
+        if(m_extConnectedWire != data){
+            m_extConnectedWire = data;
+            emit extConnectedWireChanged();
+        }
+    }
 
 private:
     int m_idx;
@@ -85,6 +115,9 @@ private:
     QPointF m_positivePoint;
     QPointF m_negativePoint;
     QPointF m_extendPoint;
+    int m_posConnectedWire ;
+    int m_negaConnectedWire;
+    int m_extConnectedWire ;
 };
 
 class MultimeterObject: public QObject
@@ -136,8 +169,8 @@ public:
     m_maskSource(_maskSource),
     m_line(_line)
     {
-        m_nextRotation = -45;
-        m_currentRotation = -45;
+        m_nextRotation = 45;
+        m_currentRotation = 45;
         m_runningAnimation = false;
         m_animationDuration = 500;
     }
@@ -282,6 +315,7 @@ public:
     Q_PROPERTY(QObject* multimeter          READ multimeter        NOTIFY multimeterChanged)
     Q_PROPERTY(int pointerMode              READ pointerMode        WRITE setPointerMode    NOTIFY pointerModeChanged)
     Q_PROPERTY(int activedDeviced           READ activedDeviced     WRITE setActivedDeviced NOTIFY activedDevicedChanged)
+    Q_PROPERTY(QList<QObject*> listModel    READ listModel          NOTIFY listModelChanged)
 
     Q_INVOKABLE void updateActivedDevice(bool actived, int index, int posConnectedWire, int negaConnectedWire, int extConnectedWire);
 private:
@@ -298,6 +332,7 @@ private:
     QObject* m_diode;
     QObject* m_transistor;
     QObject* m_multimeter;
+    QList<QObject*> m_listModel;
 
     int m_pointerMode;
     int m_activedDeviced;
@@ -313,6 +348,7 @@ private:
     void handleActivedDiode(int posConnectedWire, int negaConnectedWire);
     void handleActivedTransistor(int posConnectedWire, int negaConnectedWire, int extConnectedWire);
 
+    void updateStateOfDeActviedMultimeter();
 public:
     static ModelData* getInstance();
     void initObjects();
@@ -327,6 +363,8 @@ public:
     QObject* diode();
     QObject* transistor();
     QObject* multimeter();
+    QList<QObject *> listModel();
+
     int pointerMode();
     void setPointerMode(int _mode);
     int activedDeviced();
@@ -346,6 +384,8 @@ signals:
     void multimeterChanged();
     void pointerModeChanged();
     void activedDevicedChanged();
+    void listModelChanged();
+
 public slots:
 };
 

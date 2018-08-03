@@ -5,7 +5,7 @@ ModelData* ModelData::m_instantce = nullptr;
 
 ModelData::ModelData(QObject *parent) : QObject(parent)
 {
-    m_pointerMode = 0;
+    m_pointerMode = static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_OFF);
     m_activedDeviced = -1;
     initObjects();
 }
@@ -57,11 +57,7 @@ void ModelData::updateActivedDevice(bool actived, int index, int posConnectedWir
             break;
         }
     }else{
-        DLT_LOG << "RESET ANIMATION";
-        m_multimeter->setProperty("nextRotation",QVariant(-45));
-        m_multimeter->setProperty("animationDuration",QVariant(200));
-        m_multimeter->setProperty("runningAnimation",QVariant(true));
-        emit multimeterChanged();
+        updateStateOfDeActviedMultimeter();
     }
     
 }
@@ -193,6 +189,135 @@ void ModelData::handleActivedTransistor(int posConnectedWire, int negaConnectedW
     DLT_LOG << "posConnectedWire: " << posConnectedWire << " >> negaConnectedWire: " << negaConnectedWire << " >> extConnectedWire: " << extConnectedWire;
 }
 
+void ModelData::updateStateOfDeActviedMultimeter()
+{
+    DLT_LOG;
+    switch (this->pointerMode()) {
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_OFF):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1000_AC):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_250_AC):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_50_AC):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10_AC):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_NA):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10K_R):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(-45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1K_R):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(-45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10_R):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(-45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(-45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_250_MA):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_25_MA):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_2_5_MA):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_0_1_DC):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_0_5_DC):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_2_5_DC):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10_DC):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_50_DC):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_250_DC):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1000_DC):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    default:
+        break;
+    }
+}
+
 QObject *ModelData::resistor1()
 {
     return m_resistor1;
@@ -243,6 +368,22 @@ QObject *ModelData::multimeter()
     return m_multimeter;
 }
 
+QList<QObject *> ModelData::listModel()
+{
+    if(m_listModel.count() == 0){
+        m_listModel.append(m_resistor1);
+        m_listModel.append(m_resistor2);
+        m_listModel.append(m_capictor_normal);
+        m_listModel.append(m_capictor_abnormal);
+        m_listModel.append(m_cappictor_error);
+        m_listModel.append(m_condutor_normal);
+        m_listModel.append(m_condutor_error);
+        m_listModel.append(m_diode);
+        m_listModel.append(m_transistor);
+    }
+    return m_listModel;
+}
+
 int ModelData::pointerMode()
 {
     return m_pointerMode;
@@ -250,66 +391,16 @@ int ModelData::pointerMode()
 
 void ModelData::setPointerMode(int _mode)
 {
-    DLT_LOG << _mode;
     if(m_pointerMode != _mode){
+        DLT_LOG << _mode;
         m_pointerMode = _mode;
         emit pointerModeChanged();
 
-        if(m_activedDeviced < static_cast<int>(App_Enum::E_OBJECT_INDEX_RESISTOR_1) ||
-                m_activedDeviced > static_cast<int>(App_Enum::E_OBJECT_INDEX_TRANSISTOR)){
+        bool existActivedDevice =   m_activedDeviced >= static_cast<int>(App_Enum::E_OBJECT_INDEX_RESISTOR_1) &&
+                m_activedDeviced <= static_cast<int>(App_Enum::E_OBJECT_INDEX_TRANSISTOR);
+        if(!existActivedDevice){
             DLT_LOG << "Don't have any active deviced";
-            switch (this->pointerMode()) {
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_OFF):
-                m_multimeter->setProperty("runningAnimation",QVariant(false));
-                m_multimeter->setProperty("nextRotation",QVariant(-45));
-                m_multimeter->setProperty("animationDuration",QVariant(300));
-                m_multimeter->setProperty("runningAnimation",QVariant(true));
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1000_AC):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_250_AC):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_50_AC):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10_AC):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_NA):
-                m_multimeter->setProperty("runningAnimation",QVariant(false));
-                m_multimeter->setProperty("nextRotation",QVariant(-45));
-                m_multimeter->setProperty("animationDuration",QVariant(300));
-                m_multimeter->setProperty("runningAnimation",QVariant(true));
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10K_R):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1K_R):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10_R):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_250_MA):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_25_MA):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_2_5_MA):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_0_1_MA):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_0_1_DC):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_0_5_DC):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_2_5_DC):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10_DC):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_50_DC):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_250_DC):
-                break;
-            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1000_DC):
-                break;
-            }
+            updateStateOfDeActviedMultimeter();
         }
     }
 }

@@ -27,13 +27,12 @@ Window {
         height: Define.WIDGET_HEIGHT
         orientation : ListView.Horizontal
         boundsBehavior: ListView.StopAtBounds
-        model: mod
+        model: ModelData.listModel
         delegate: CommonComponent{
             id: dlg
             property point prevPoint: Qt.point(index * dlg.width,0)
             width: Define.WIDGET_WIDTH
             height: Define.WIDGET_HEIGHT
-            model: mod.get(index)
             Rectangle{
                 anchors.fill: parent
                 visible: mousePress.pressed
@@ -65,9 +64,9 @@ Window {
                     }
                 }
                 onPositionChanged: {
-                    dlg.matchingNegative = dlg._EMPTY
-                    dlg.matchingPositive = dlg._EMPTY
-                    dlg.matchingExtend = dlg._EMPTY
+                    dlg.matchingNegative = Define._EMPTY
+                    dlg.matchingPositive = Define._EMPTY
+                    dlg.matchingExtend = Define._EMPTY
                 }
             }
             Connections{
@@ -83,30 +82,30 @@ Window {
                                 _point.y >= dlg._positive.y &&
                                 _point.y <= dlg._positive.y + dlg._positive.height)
                         {
-                            if(dlg.matchingPositive == dlg._CONNECTED && dlg._positive.connetedWire == dlg._BLACK_WIRE){
+                            if(dlg.matchingPositive == Define._CONNECTED && dlg._positive.connetedWire == Define._BLACK_WIRE){
                                 return;
                             }
-                            dlg.matchingPositive = dlg._FOCUSED;
+                            dlg.matchingPositive = Define._FOCUSED;
                         }else if(_point.x >= dlg._negative.x &&
                                  _point.x <= dlg._negative.x + dlg._negative.width &&
                                  _point.y >= dlg._negative.y &&
                                  _point.y <= dlg._negative.y + dlg._negative.height)
                         {
-                            if(dlg.matchingNegative == dlg._CONNECTED && dlg._negative.connetedWire == dlg._BLACK_WIRE){
+                            if(dlg.matchingNegative == Define._CONNECTED && dlg._negative.connetedWire == Define._BLACK_WIRE){
                                 return;
                             }
-                            dlg.matchingNegative = dlg._FOCUSED;
+                            dlg.matchingNegative = Define._FOCUSED;
                         }else{
-                            if(dlg.matchingPositive == dlg._FOCUSED)
-                                dlg.matchingPositive = dlg._EMPTY;
-                            if(dlg.matchingNegative == dlg._FOCUSED)
-                                dlg.matchingNegative = dlg._EMPTY;
+                            if(dlg.matchingPositive == Define._FOCUSED)
+                                dlg.matchingPositive = Define._EMPTY;
+                            if(dlg.matchingNegative == Define._FOCUSED)
+                                dlg.matchingNegative = Define._EMPTY;
                         }
                     }else{
-                        if(dlg.matchingPositive == dlg._FOCUSED)
-                            dlg.matchingPositive = dlg._EMPTY;
-                        if(dlg.matchingNegative == dlg._FOCUSED)
-                            dlg.matchingNegative = dlg._EMPTY;
+                        if(dlg.matchingPositive == Define._FOCUSED)
+                            dlg.matchingPositive = Define._EMPTY;
+                        if(dlg.matchingNegative == Define._FOCUSED)
+                            dlg.matchingNegative = Define._EMPTY;
                     }
                 }
                 onBlackWireChangingPos:{
@@ -120,51 +119,51 @@ Window {
                                 _point.y >= dlg._positive.y &&
                                 _point.y <= dlg._positive.y + dlg._positive.height)
                         {
-                            if(dlg.matchingPositive == dlg._CONNECTED && dlg._positive.connetedWire == dlg._RED_WIRE){
+                            if(dlg.matchingPositive == Define._CONNECTED && dlg._positive.connetedWire == Define._RED_WIRE){
                                 return;
                             }
-                            dlg.matchingPositive = dlg._FOCUSED;
+                            dlg.matchingPositive = Define._FOCUSED;
                         }else if(_point.x >= dlg._negative.x &&
                                  _point.x <= dlg._negative.x + dlg._negative.width &&
                                  _point.y >= dlg._negative.y &&
                                  _point.y <= dlg._negative.y + dlg._negative.height)
                         {
-                            if(dlg.matchingNegative == dlg._CONNECTED && dlg._negative.connetedWire == dlg._RED_WIRE){
+                            if(dlg.matchingNegative == Define._CONNECTED && dlg._negative.connetedWire == Define._RED_WIRE){
                                 return;
                             }
-                            dlg.matchingNegative = dlg._FOCUSED;
+                            dlg.matchingNegative = Define._FOCUSED;
                         }else{
-                            if(dlg.matchingPositive == dlg._FOCUSED)
-                                dlg.matchingPositive = dlg._EMPTY;
-                            if(dlg.matchingNegative == dlg._FOCUSED)
-                                dlg.matchingNegative = dlg._EMPTY;
+                            if(dlg.matchingPositive == Define._FOCUSED)
+                                dlg.matchingPositive = Define._EMPTY;
+                            if(dlg.matchingNegative == Define._FOCUSED)
+                                dlg.matchingNegative = Define._EMPTY;
                         }
                     }else {
-                        if(dlg.matchingPositive == dlg._FOCUSED)
-                            dlg.matchingPositive = dlg._EMPTY;
-                        if(dlg.matchingNegative == dlg._FOCUSED)
-                            dlg.matchingNegative = dlg._EMPTY;
+                        if(dlg.matchingPositive == Define._FOCUSED)
+                            dlg.matchingPositive = Define._EMPTY;
+                        if(dlg.matchingNegative == Define._FOCUSED)
+                            dlg.matchingNegative = Define._EMPTY;
                     }
                 }
                 onRedWireRelesedPos:{
-                    if(dlg.matchingPositive == dlg._FOCUSED){
-                        dlg._positive.connetedWire = dlg._RED_WIRE;
-                        dlg.matchingPositive = dlg._CONNECTED;
+                    if(dlg.matchingPositive == Define._FOCUSED){
+                        dlg._positive.connetedWire = Define._RED_WIRE;
+                        dlg.matchingPositive = Define._CONNECTED;
                     }
 
-                    if(dlg.matchingNegative == dlg._FOCUSED){
-                        dlg._negative.connetedWire = dlg._RED_WIRE;
-                        dlg.matchingNegative = dlg._CONNECTED;
+                    if(dlg.matchingNegative == Define._FOCUSED){
+                        dlg._negative.connetedWire = Define._RED_WIRE;
+                        dlg.matchingNegative = Define._CONNECTED;
                     }
                 }
                 onBlackWireRelesedPos:{
-                    if(dlg.matchingPositive == dlg._FOCUSED){
-                        dlg._positive.connetedWire = dlg._BLACK_WIRE;
-                        dlg.matchingPositive = dlg._CONNECTED;
+                    if(dlg.matchingPositive == Define._FOCUSED){
+                        dlg._positive.connetedWire = Define._BLACK_WIRE;
+                        dlg.matchingPositive = Define._CONNECTED;
                     }
-                    if(dlg.matchingNegative == dlg._FOCUSED){
-                        dlg._negative.connetedWire = dlg._BLACK_WIRE;
-                        dlg.matchingNegative = dlg._CONNECTED;
+                    if(dlg.matchingNegative == Define._FOCUSED){
+                        dlg._negative.connetedWire = Define._BLACK_WIRE;
+                        dlg.matchingNegative = Define._CONNECTED;
                     }
                 }
             }
@@ -176,6 +175,11 @@ Window {
 
                 ModelData.activedDeviced = dlg.active?index:-1;
                 ModelData.updateActivedDevice(dlg.active,index,dlg._positive.connetedWire,dlg._negative.connetedWire,dlg._extend.connetedWire)
+            }
+        }
+        Component.onCompleted: {
+            for(var i = 0; i < ModelData.listModel.length; i++){
+            console.log("ModelData.listModel[i]: " + ModelData.listModel[i].objectName)
             }
         }
     }
@@ -200,19 +204,7 @@ Window {
         stopBlackPoint:[multimeter.stopBlackPoint[0] + multimeter.x, multimeter.stopBlackPoint[1]]
     }
 
-    function creatModel(){
-        mod.append(ModelData.resistor1);
-        mod.append(ModelData.resistor2);
-        mod.append(ModelData.capictor_normal);
-        mod.append(ModelData.capictor_abnormal);
-        mod.append(ModelData.cappictor_error);
-        mod.append(ModelData.condutor_normal);
-        mod.append(ModelData.condutor_error);
-        mod.append(ModelData.diode);
-        mod.append(ModelData.transistor);
-    }
     Component.onCompleted: {
-        creatModel()
         window.showMaximized()
     }
     onWidthChanged: {
