@@ -303,13 +303,13 @@ private:
     int m_activedDeviced;
 
 private:
-    void handleActivedRes1(int posConnectedWire, int negaConnectedWire);
-    void handleActivedRes2(int posConnectedWire, int negaConnectedWire);
+    void handleActivedRes1();
+    void handleActivedRes2();
     void handleActivedCapNormal(int posConnectedWire, int negaConnectedWire);
     void handleActivedCapAbnormal(int posConnectedWire, int negaConnectedWire);
     void handleActivedCapError(int posConnectedWire, int negaConnectedWire);
-    void handleActivedConductorNormal(int posConnectedWire, int negaConnectedWire);
-    void handleActivedConductorError(int posConnectedWire, int negaConnectedWire);
+    void handleActivedConductorNormal();
+    void handleActivedConductorError();
     void handleActivedDiode(int posConnectedWire, int negaConnectedWire);
     void handleActivedTransistor(int posConnectedWire, int negaConnectedWire, int extConnectedWire);
 

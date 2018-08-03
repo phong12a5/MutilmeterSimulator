@@ -27,10 +27,10 @@ void ModelData::updateActivedDevice(bool actived, int index, int posConnectedWir
     if(actived){
         switch (index) {
         case static_cast<int>(App_Enum::E_OBJECT_INDEX_RESISTOR_1):
-            handleActivedRes1(posConnectedWire,negaConnectedWire);
+            handleActivedRes1();
             break;
         case static_cast<int>(App_Enum::E_OBJECT_INDEX_RESISTOR_2):
-            handleActivedRes2(posConnectedWire,negaConnectedWire);
+            handleActivedRes2();
             break;
         case static_cast<int>(App_Enum::E_OBJECT_INDEX_CAPICTOR_1):
             handleActivedCapNormal(posConnectedWire,negaConnectedWire);
@@ -42,10 +42,10 @@ void ModelData::updateActivedDevice(bool actived, int index, int posConnectedWir
             handleActivedCapError(posConnectedWire,negaConnectedWire);
             break;
         case static_cast<int>(App_Enum::E_OBJECT_INDEX_CONDUTOR_1):
-            handleActivedConductorNormal(posConnectedWire,negaConnectedWire);
+            handleActivedConductorNormal();
             break;
         case static_cast<int>(App_Enum::E_OBJECT_INDEX_CONDUTOR_2):
-            handleActivedConductorError(posConnectedWire,negaConnectedWire);
+            handleActivedConductorError();
             break;
         case static_cast<int>(App_Enum::E_OBJECT_INDEX_DIODE):
             handleActivedDiode(posConnectedWire,negaConnectedWire);
@@ -66,11 +66,10 @@ void ModelData::updateActivedDevice(bool actived, int index, int posConnectedWir
     
 }
 
-void ModelData::handleActivedRes1(int posConnectedWire, int negaConnectedWire)
+void ModelData::handleActivedRes1()
 {
-    DLT_LOG << "posConnectedWire: " << posConnectedWire << " >> negaConnectedWire: " << negaConnectedWire;
     switch (this->pointerMode()) {
-        case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R):
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R):
         m_multimeter->setProperty("runningAnimation",QVariant(false));
         m_multimeter->setProperty("nextRotation",QVariant(-42));
         m_multimeter->setProperty("animationDuration",QVariant(300));
@@ -99,9 +98,8 @@ void ModelData::handleActivedRes1(int posConnectedWire, int negaConnectedWire)
     }
 }
 
-void ModelData::handleActivedRes2(int posConnectedWire, int negaConnectedWire)
+void ModelData::handleActivedRes2()
 {
-    DLT_LOG << "posConnectedWire: " << posConnectedWire << " >> negaConnectedWire: " << negaConnectedWire;
     switch (this->pointerMode()) {
         case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R):
         m_multimeter->setProperty("runningAnimation",QVariant(false));
@@ -147,14 +145,14 @@ void ModelData::handleActivedCapError(int posConnectedWire, int negaConnectedWir
     DLT_LOG << "posConnectedWire: " << posConnectedWire << " >> negaConnectedWire: " << negaConnectedWire;
 }
 
-void ModelData::handleActivedConductorNormal(int posConnectedWire, int negaConnectedWire)
+void ModelData::handleActivedConductorNormal()
 {
-    DLT_LOG << "posConnectedWire: " << posConnectedWire << " >> negaConnectedWire: " << negaConnectedWire;
+    DLT_LOG;
 }
 
-void ModelData::handleActivedConductorError(int posConnectedWire, int negaConnectedWire)
+void ModelData::handleActivedConductorError()
 {
-    DLT_LOG << "posConnectedWire: " << posConnectedWire << " >> negaConnectedWire: " << negaConnectedWire;
+    DLT_LOG;
 }
 
 void ModelData::handleActivedDiode(int posConnectedWire, int negaConnectedWire)
@@ -228,6 +226,63 @@ void ModelData::setPointerMode(int _mode)
     if(m_pointerMode != _mode){
         m_pointerMode = _mode;
         emit pointerModeChanged();
+
+        if(m_activedDeviced < static_cast<int>(App_Enum::E_OBJECT_INDEX_RESISTOR_1) ||
+                m_activedDeviced > static_cast<int>(App_Enum::E_OBJECT_INDEX_TRANSISTOR)){
+            DLT_LOG << "Don't have any active deviced";
+            switch (this->pointerMode()) {
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_OFF):
+                m_multimeter->setProperty("runningAnimation",QVariant(false));
+                m_multimeter->setProperty("nextRotation",QVariant(-45));
+                m_multimeter->setProperty("animationDuration",QVariant(300));
+                m_multimeter->setProperty("runningAnimation",QVariant(true));
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1000_AC):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_250_AC):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_50_AC):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10_AC):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_NA):
+                m_multimeter->setProperty("runningAnimation",QVariant(false));
+                m_multimeter->setProperty("nextRotation",QVariant(-45));
+                m_multimeter->setProperty("animationDuration",QVariant(300));
+                m_multimeter->setProperty("runningAnimation",QVariant(true));
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10K_R):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1K_R):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10_R):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_250_MA):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_25_MA):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_2_5_MA):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_0_1_MA):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_0_1_DC):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_0_5_DC):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_2_5_DC):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10_DC):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_50_DC):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_250_DC):
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1000_DC):
+                break;
+            }
+        }
     }
 }
 
@@ -242,9 +297,6 @@ void ModelData::setActivedDeviced(int data)
     if(m_activedDeviced != data){
         m_activedDeviced = data;
         emit activedDevicedChanged();
-        if(!m_activedDeviced){
-
-        }
     }
 
 }
