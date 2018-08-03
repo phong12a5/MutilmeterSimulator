@@ -14,11 +14,11 @@ CXX           = cl
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -nologo -Zc:wchar_t -FS -Zc:strictStrings -Zi -MDd -W3 -w44456 -w44457 -w44458 /Fddebug\MultimeterSimulator.vc.pdb $(DEFINES)
 CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -EHsc /Fddebug\MultimeterSimulator.vc.pdb $(DEFINES)
-INCPATH       = -I..\MultimeterSimulator -I. -IC:\QtMqtt\5.11.0\msvc2015\include -IC:\QtMqtt\5.11.0\msvc2015\include\QtQuick -IC:\QtMqtt\5.11.0\msvc2015\include\QtGui -IC:\QtMqtt\5.11.0\msvc2015\include\QtANGLE -IC:\QtMqtt\5.11.0\msvc2015\include\QtQml -IC:\QtMqtt\5.11.0\msvc2015\include\QtNetwork -IC:\QtMqtt\5.11.0\msvc2015\include\QtCore -Idebug -I\include -IC:\QtMqtt\5.11.0\msvc2015\mkspecs\win32-msvc 
+INCPATH       = -I..\MultimeterSimulator -I. -IC:\Qt\Qt5.11.0\5.11.0\msvc2015\include -IC:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQuick -IC:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtGui -IC:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtANGLE -IC:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml -IC:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtNetwork -IC:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore -Idebug -I\include -IC:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /DEBUG /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:C:\QtMqtt\5.11.0\msvc2015\lib C:\QtMqtt\5.11.0\msvc2015\lib\qtmaind.lib /LIBPATH:C:\opensslx86\lib /LIBPATH:C:\Utils\my_sql\my_sqlx86\lib /LIBPATH:C:\Utils\postgresqlx86\pgsql\lib shell32.lib C:\QtMqtt\5.11.0\msvc2015\lib\Qt5Quickd.lib C:\QtMqtt\5.11.0\msvc2015\lib\Qt5Guid.lib C:\QtMqtt\5.11.0\msvc2015\lib\Qt5Qmld.lib C:\QtMqtt\5.11.0\msvc2015\lib\Qt5Networkd.lib C:\QtMqtt\5.11.0\msvc2015\lib\Qt5Cored.lib 
-QMAKE         = C:\QtMqtt\5.11.0\msvc2015\bin\qmake.exe
+LIBS          = /LIBPATH:C:\Qt\Qt5.11.0\5.11.0\msvc2015\lib C:\Qt\Qt5.11.0\5.11.0\msvc2015\lib\qtmaind.lib /LIBPATH:C:\opensslx86\lib /LIBPATH:C:\Utils\my_sql\my_sqlx86\lib /LIBPATH:C:\Utils\postgresqlx86\pgsql\lib shell32.lib C:\Qt\Qt5.11.0\5.11.0\msvc2015\lib\Qt5Quickd.lib C:\Qt\Qt5.11.0\5.11.0\msvc2015\lib\Qt5Guid.lib C:\Qt\Qt5.11.0\5.11.0\msvc2015\lib\Qt5Qmld.lib C:\Qt\Qt5.11.0\5.11.0\msvc2015\lib\Qt5Networkd.lib C:\Qt\Qt5.11.0\5.11.0\msvc2015\lib\Qt5Cored.lib 
+QMAKE         = C:\Qt\Qt5.11.0\5.11.0\msvc2015\bin\qmake.exe
 IDC           = idc
 IDL           = midl /NOLOGO
 ZIP           = zip -r -9
@@ -36,8 +36,8 @@ MKDIR         = mkdir
 INSTALL_FILE    = copy /y
 INSTALL_PROGRAM = copy /y
 INSTALL_DIR     = xcopy /s /q /y /i
-QINSTALL        = C:\QtMqtt\5.11.0\msvc2015\bin\qmake.exe -install qinstall
-QINSTALL_PROGRAM = C:\QtMqtt\5.11.0\msvc2015\bin\qmake.exe -install qinstall -exe
+QINSTALL        = C:\Qt\Qt5.11.0\5.11.0\msvc2015\bin\qmake.exe -install qinstall
+QINSTALL_PROGRAM = C:\Qt\Qt5.11.0\5.11.0\msvc2015\bin\qmake.exe -install qinstall -exe
 
 ####### Output directory
 
@@ -151,7 +151,7 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) MultimeterSimulator.zip $(SOURCES) $(DIST) ..\MultimeterSimulator\MultimeterSimulator.pro C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\spec_pre.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\common\angle.conf C:\QtMqtt\5.11.0\msvc2015\mkspecs\common\windows-vulkan.conf C:\QtMqtt\5.11.0\msvc2015\mkspecs\common\msvc-desktop.conf C:\QtMqtt\5.11.0\msvc2015\mkspecs\qconfig.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3danimation.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3danimation_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dcore.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dcore_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dextras.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dextras_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dinput.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dinput_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dlogic.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dlogic_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquick.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquick_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickanimation.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickextras.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickinput.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickrender.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3drender.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_3drender_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_axbase.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_axbase_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_axcontainer.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_axcontainer_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_axserver.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_axserver_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_bluetooth.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_bluetooth_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_bootstrap_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_concurrent.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_concurrent_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_core.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_core_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_dbus.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_dbus_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_designer.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_designer_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_designercomponents_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_edid_support_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_egl_support_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_fb_support_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_gamepad.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_gamepad_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_gui.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_gui_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_help.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_help_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_location.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_location_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_mqtt.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_mqtt_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_multimedia.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_multimedia_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_multimediawidgets.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_network.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_network_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_nfc.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_nfc_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_opengl.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_opengl_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_openglextensions.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_openglextensions_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_positioning.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_positioning_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_positioningquick.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_positioningquick_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_printsupport.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_printsupport_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_qml.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_qml_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_qmldebug_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_qmltest.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_qmltest_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_quick.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_quick_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_quickcontrols2.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_quickparticles_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_quickwidgets.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_scxml.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_scxml_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_sensors.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_sensors_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_serialbus.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_serialbus_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_serialport.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_serialport_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_sql.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_sql_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_svg.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_svg_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_testlib.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_testlib_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_texttospeech.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_texttospeech_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_theme_support_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_uiplugin.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_uitools.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_uitools_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_webchannel.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_webchannel_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_websockets.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_websockets_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_webview.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_webview_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_widgets.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_widgets_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_winextras.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_winextras_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_xml.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_xml_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_xmlpatterns.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\modules\qt_lib_zlib_private.pri C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\qt_functions.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\qt_config.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\win32-msvc\qmake.conf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\spec_post.prf .qmake.stash C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\exclusive_builds.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\common\msvc-version.conf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\toolchain.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\default_pre.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\win32\default_pre.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\resolve_config.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\exclusive_builds_post.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\default_post.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\build_pass.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\qml_debug.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\precompile_header.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\warn_on.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\qt.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\resources.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\moc.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\win32\opengl.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\qmake_use.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\file_copies.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\win32\windows.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\testcase_targets.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\exceptions.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\yacc.prf C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\lex.prf ..\MultimeterSimulator\MultimeterSimulator.pro ..\MultimeterSimulator\qml.qrc C:\QtMqtt\5.11.0\msvc2015\lib\qtmaind.prl C:\QtMqtt\5.11.0\msvc2015\lib\Qt5Quickd.prl C:\QtMqtt\5.11.0\msvc2015\lib\Qt5Guid.prl C:\QtMqtt\5.11.0\msvc2015\lib\Qt5Qmld.prl C:\QtMqtt\5.11.0\msvc2015\lib\Qt5Networkd.prl C:\QtMqtt\5.11.0\msvc2015\lib\Qt5Cored.prl   ..\MultimeterSimulator\qml.qrc C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\data\dummy.cpp ..\MultimeterSimulator\ModelData.h ..\MultimeterSimulator\AppDefine.h ..\MultimeterSimulator\DefineModel.h ..\MultimeterSimulator\App_Enum.h  ..\MultimeterSimulator\main.cpp ..\MultimeterSimulator\ModelData.cpp ..\MultimeterSimulator\DefineModel.cpp    
+	$(ZIP) MultimeterSimulator.zip $(SOURCES) $(DIST) ..\MultimeterSimulator\MultimeterSimulator.pro C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\spec_pre.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\common\angle.conf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\common\windows-vulkan.conf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\common\msvc-desktop.conf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\qconfig.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_webview.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\qt_functions.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\qt_config.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\win32-msvc\qmake.conf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\common\msvc-version.conf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\toolchain.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\default_pre.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\win32\default_pre.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\resolve_config.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\default_post.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\build_pass.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\qml_debug.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\precompile_header.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\warn_on.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\qt.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\resources.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\moc.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\qmake_use.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\file_copies.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\win32\windows.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\exceptions.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\yacc.prf C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\lex.prf ..\MultimeterSimulator\MultimeterSimulator.pro ..\MultimeterSimulator\qml.qrc C:\Qt\Qt5.11.0\5.11.0\msvc2015\lib\qtmaind.prl C:\Qt\Qt5.11.0\5.11.0\msvc2015\lib\Qt5Quickd.prl C:\Qt\Qt5.11.0\5.11.0\msvc2015\lib\Qt5Guid.prl C:\Qt\Qt5.11.0\5.11.0\msvc2015\lib\Qt5Qmld.prl C:\Qt\Qt5.11.0\5.11.0\msvc2015\lib\Qt5Networkd.prl C:\Qt\Qt5.11.0\5.11.0\msvc2015\lib\Qt5Cored.prl   ..\MultimeterSimulator\qml.qrc C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\data\dummy.cpp ..\MultimeterSimulator\ModelData.h ..\MultimeterSimulator\AppDefine.h ..\MultimeterSimulator\DefineModel.h ..\MultimeterSimulator\App_Enum.h  ..\MultimeterSimulator\main.cpp ..\MultimeterSimulator\ModelData.cpp ..\MultimeterSimulator\DefineModel.cpp    
 
 clean: compiler_clean 
 	-$(DEL_FILE) debug\main.obj debug\ModelData.obj debug\DefineModel.obj debug\qrc_qml.obj debug\moc_ModelData.obj debug\moc_DefineModel.obj debug\moc_App_Enum.obj
@@ -176,223 +176,223 @@ compiler_rcc_make_all: debug\qrc_qml.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) debug\qrc_qml.cpp
 debug\qrc_qml.cpp: ..\MultimeterSimulator\qml.qrc \
-		C:\QtMqtt\5.11.0\msvc2015\bin\rcc.exe \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\bin\rcc.exe \
 		..\MultimeterSimulator\PointerWire.qml \
 		..\MultimeterSimulator\Multimeter.qml \
 		..\MultimeterSimulator\CommonComponent.qml \
 		..\MultimeterSimulator\main.qml
-	C:\QtMqtt\5.11.0\msvc2015\bin\rcc.exe -name qml ..\MultimeterSimulator\qml.qrc -o debug\qrc_qml.cpp
+	C:\Qt\Qt5.11.0\5.11.0\msvc2015\bin\rcc.exe -name qml ..\MultimeterSimulator\qml.qrc -o debug\qrc_qml.cpp
 
 compiler_moc_predefs_make_all: debug\moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) debug\moc_predefs.h
-debug\moc_predefs.h: C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\data\dummy.cpp
-	cl -BxC:\QtMqtt\5.11.0\msvc2015\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E C:\QtMqtt\5.11.0\msvc2015\mkspecs\features\data\dummy.cpp 2>NUL >debug\moc_predefs.h
+debug\moc_predefs.h: C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\data\dummy.cpp
+	cl -BxC:\Qt\Qt5.11.0\5.11.0\msvc2015\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E C:\Qt\Qt5.11.0\5.11.0\msvc2015\mkspecs\features\data\dummy.cpp 2>NUL >debug\moc_predefs.h
 
 compiler_moc_header_make_all: debug\moc_ModelData.cpp debug\moc_DefineModel.cpp debug\moc_App_Enum.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) debug\moc_ModelData.cpp debug\moc_DefineModel.cpp debug\moc_App_Enum.cpp
-debug\moc_ModelData.cpp: C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QObject \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobject.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobjectdefs.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qnamespace.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qglobal.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qconfig-bootstrapped.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qconfig.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtcore-config.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsystemdetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qprocessordetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcompilerdetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtypeinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsysinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlogging.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qflags.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbasicatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic_bootstrap.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qgenericatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic_cxx11.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qglobalstatic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmutex.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qnumeric.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qversiontagging.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobjectdefs_impl.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstring.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qchar.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbytearray.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qrefcount.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qarraydata.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringliteral.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringalgorithms.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringview.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringbuilder.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qalgorithms.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qiterator.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qhashfunctions.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qpair.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbytearraylist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringlist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qregexp.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringmatcher.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcoreevent.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qscopedpointer.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmetatype.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvarlengtharray.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcontainerfwd.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobject_impl.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QMap \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmap.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qdebug.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qhash.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtextstream.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qiodevice.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlocale.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvariant.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qshareddata.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvector.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qpoint.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qset.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcontiguouscache.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsharedpointer.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsharedpointer_impl.h \
+debug\moc_ModelData.cpp: C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QObject \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QMap \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qhash.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsharedpointer_impl.h \
 		..\MultimeterSimulator\AppDefine.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QDebug \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QDir \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qdir.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfileinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfile.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QDebug \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QDir \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qdir.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qfileinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qfiledevice.h \
 		..\MultimeterSimulator\App_Enum.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QPointF \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QPointF \
 		..\MultimeterSimulator\ModelData.h \
 		debug\moc_predefs.h \
-		C:\QtMqtt\5.11.0\msvc2015\bin\moc.exe
-	C:\QtMqtt\5.11.0\msvc2015\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/QtMqtt/5.11.0/msvc2015/mkspecs/win32-msvc -IF:/WorkSpace/MultimeterSimulator/MultimeterSimulator -IC:/QtMqtt/5.11.0/msvc2015/include -IC:/QtMqtt/5.11.0/msvc2015/include/QtQuick -IC:/QtMqtt/5.11.0/msvc2015/include/QtGui -IC:/QtMqtt/5.11.0/msvc2015/include/QtANGLE -IC:/QtMqtt/5.11.0/msvc2015/include/QtQml -IC:/QtMqtt/5.11.0/msvc2015/include/QtNetwork -IC:/QtMqtt/5.11.0/msvc2015/include/QtCore -I. -I"C:\Program Files\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"C:\Program Files\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files\Windows Kits\8.1\include\shared" -I"C:\Program Files\Windows Kits\8.1\include\um" -I"C:\Program Files\Windows Kits\8.1\include\winrt" ..\MultimeterSimulator\ModelData.h -o debug\moc_ModelData.cpp
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\bin\moc.exe
+	C:\Qt\Qt5.11.0\5.11.0\msvc2015\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/mkspecs/win32-msvc -IC:/Users/NgocAnh/Desktop/WorkSpace/MultimeterSimulator -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtQuick -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtGui -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtANGLE -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtQml -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtNetwork -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtCore -I. -I"C:\Program Files\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"C:\Program Files\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files\Windows Kits\8.1\include\shared" -I"C:\Program Files\Windows Kits\8.1\include\um" -I"C:\Program Files\Windows Kits\8.1\include\winrt" ..\MultimeterSimulator\ModelData.h -o debug\moc_ModelData.cpp
 
-debug\moc_DefineModel.cpp: C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QObject \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobject.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobjectdefs.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qnamespace.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qglobal.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qconfig-bootstrapped.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qconfig.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtcore-config.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsystemdetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qprocessordetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcompilerdetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtypeinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsysinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlogging.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qflags.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbasicatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic_bootstrap.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qgenericatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic_cxx11.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qglobalstatic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmutex.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qnumeric.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qversiontagging.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobjectdefs_impl.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstring.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qchar.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbytearray.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qrefcount.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qarraydata.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringliteral.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringalgorithms.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringview.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringbuilder.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qalgorithms.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qiterator.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qhashfunctions.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qpair.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbytearraylist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringlist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qregexp.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringmatcher.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcoreevent.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qscopedpointer.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmetatype.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvarlengtharray.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcontainerfwd.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobject_impl.h \
+debug\moc_DefineModel.cpp: C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QObject \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobject_impl.h \
 		..\MultimeterSimulator\AppDefine.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QDebug \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qdebug.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qhash.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmap.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtextstream.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qiodevice.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlocale.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvariant.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qshareddata.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvector.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qpoint.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qset.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcontiguouscache.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsharedpointer.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QDebug \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qhash.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsharedpointer_impl.h \
 		..\MultimeterSimulator\DefineModel.h \
 		debug\moc_predefs.h \
-		C:\QtMqtt\5.11.0\msvc2015\bin\moc.exe
-	C:\QtMqtt\5.11.0\msvc2015\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/QtMqtt/5.11.0/msvc2015/mkspecs/win32-msvc -IF:/WorkSpace/MultimeterSimulator/MultimeterSimulator -IC:/QtMqtt/5.11.0/msvc2015/include -IC:/QtMqtt/5.11.0/msvc2015/include/QtQuick -IC:/QtMqtt/5.11.0/msvc2015/include/QtGui -IC:/QtMqtt/5.11.0/msvc2015/include/QtANGLE -IC:/QtMqtt/5.11.0/msvc2015/include/QtQml -IC:/QtMqtt/5.11.0/msvc2015/include/QtNetwork -IC:/QtMqtt/5.11.0/msvc2015/include/QtCore -I. -I"C:\Program Files\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"C:\Program Files\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files\Windows Kits\8.1\include\shared" -I"C:\Program Files\Windows Kits\8.1\include\um" -I"C:\Program Files\Windows Kits\8.1\include\winrt" ..\MultimeterSimulator\DefineModel.h -o debug\moc_DefineModel.cpp
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\bin\moc.exe
+	C:\Qt\Qt5.11.0\5.11.0\msvc2015\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/mkspecs/win32-msvc -IC:/Users/NgocAnh/Desktop/WorkSpace/MultimeterSimulator -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtQuick -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtGui -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtANGLE -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtQml -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtNetwork -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtCore -I. -I"C:\Program Files\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"C:\Program Files\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files\Windows Kits\8.1\include\shared" -I"C:\Program Files\Windows Kits\8.1\include\um" -I"C:\Program Files\Windows Kits\8.1\include\winrt" ..\MultimeterSimulator\DefineModel.h -o debug\moc_DefineModel.cpp
 
-debug\moc_App_Enum.cpp: C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QObject \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobject.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobjectdefs.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qnamespace.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qglobal.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qconfig-bootstrapped.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qconfig.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtcore-config.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsystemdetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qprocessordetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcompilerdetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtypeinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsysinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlogging.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qflags.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbasicatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic_bootstrap.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qgenericatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic_cxx11.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qglobalstatic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmutex.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qnumeric.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qversiontagging.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobjectdefs_impl.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstring.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qchar.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbytearray.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qrefcount.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qarraydata.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringliteral.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringalgorithms.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringview.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringbuilder.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qalgorithms.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qiterator.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qhashfunctions.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qpair.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbytearraylist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringlist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qregexp.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringmatcher.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcoreevent.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qscopedpointer.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmetatype.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvarlengtharray.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcontainerfwd.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobject_impl.h \
+debug\moc_App_Enum.cpp: C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QObject \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobject_impl.h \
 		..\MultimeterSimulator\App_Enum.h \
 		debug\moc_predefs.h \
-		C:\QtMqtt\5.11.0\msvc2015\bin\moc.exe
-	C:\QtMqtt\5.11.0\msvc2015\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/QtMqtt/5.11.0/msvc2015/mkspecs/win32-msvc -IF:/WorkSpace/MultimeterSimulator/MultimeterSimulator -IC:/QtMqtt/5.11.0/msvc2015/include -IC:/QtMqtt/5.11.0/msvc2015/include/QtQuick -IC:/QtMqtt/5.11.0/msvc2015/include/QtGui -IC:/QtMqtt/5.11.0/msvc2015/include/QtANGLE -IC:/QtMqtt/5.11.0/msvc2015/include/QtQml -IC:/QtMqtt/5.11.0/msvc2015/include/QtNetwork -IC:/QtMqtt/5.11.0/msvc2015/include/QtCore -I. -I"C:\Program Files\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"C:\Program Files\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files\Windows Kits\8.1\include\shared" -I"C:\Program Files\Windows Kits\8.1\include\um" -I"C:\Program Files\Windows Kits\8.1\include\winrt" ..\MultimeterSimulator\App_Enum.h -o debug\moc_App_Enum.cpp
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\bin\moc.exe
+	C:\Qt\Qt5.11.0\5.11.0\msvc2015\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/mkspecs/win32-msvc -IC:/Users/NgocAnh/Desktop/WorkSpace/MultimeterSimulator -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtQuick -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtGui -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtANGLE -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtQml -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtNetwork -IC:/Qt/Qt5.11.0/5.11.0/msvc2015/include/QtCore -I. -I"C:\Program Files\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"C:\Program Files\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files\Windows Kits\8.1\include\shared" -I"C:\Program Files\Windows Kits\8.1\include\um" -I"C:\Program Files\Windows Kits\8.1\include\winrt" ..\MultimeterSimulator\App_Enum.h -o debug\moc_App_Enum.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -410,254 +410,254 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
-debug\main.obj: ..\MultimeterSimulator\main.cpp C:\QtMqtt\5.11.0\msvc2015\include\QtGui\QGuiApplication \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtGui\qguiapplication.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtGui\qtguiglobal.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qglobal.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qconfig-bootstrapped.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qconfig.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtcore-config.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsystemdetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qprocessordetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcompilerdetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtypeinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsysinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlogging.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qflags.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbasicatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic_bootstrap.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qgenericatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic_cxx11.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qglobalstatic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmutex.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qnumeric.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qversiontagging.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtGui\qtgui-config.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcoreapplication.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstring.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qchar.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbytearray.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qrefcount.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qnamespace.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qarraydata.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringliteral.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringalgorithms.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringview.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringbuilder.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobject.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobjectdefs.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobjectdefs_impl.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qalgorithms.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qiterator.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qhashfunctions.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qpair.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbytearraylist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringlist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qregexp.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringmatcher.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcoreevent.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qscopedpointer.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmetatype.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvarlengtharray.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcontainerfwd.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobject_impl.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qeventloop.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtGui\qwindowdefs.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtGui\qwindowdefs_win.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtGui\qinputmethod.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlocale.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvariant.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmap.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qdebug.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qhash.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtextstream.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qiodevice.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvector.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qpoint.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qset.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcontiguouscache.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsharedpointer.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qshareddata.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsharedpointer_impl.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsize.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\QQmlApplicationEngine \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qqmlapplicationengine.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qqmlengine.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qurl.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qurlquery.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qjsengine.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qjsvalue.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qtqmlglobal.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qtqml-config.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtNetwork\qtnetworkglobal.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtNetwork\qtnetwork-config.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qqmldebug.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qqml.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qqmlprivate.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qqmlparserstatus.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qqmlpropertyvaluesource.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qqmllist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmetaobject.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qqmlerror.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\QQmlContext \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtQml\qqmlcontext.h \
+debug\main.obj: ..\MultimeterSimulator\main.cpp C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtGui\QGuiApplication \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtGui\qguiapplication.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcoreapplication.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qeventloop.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtGui\qinputmethod.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qhash.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsize.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\QQmlApplicationEngine \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qqmlapplicationengine.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qqmlengine.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qurl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qjsengine.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qjsvalue.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qtqmlglobal.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qtqml-config.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qqmldebug.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qqml.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qqmlprivate.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qqmlparserstatus.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qqmlpropertyvaluesource.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qqmllist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qqmlerror.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\QQmlContext \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtQml\qqmlcontext.h \
 		../MultimeterSimulator/ModelData.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QObject \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QMap \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QObject \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QMap \
 		../MultimeterSimulator/AppDefine.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QDebug \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QDir \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qdir.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfileinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfile.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QDebug \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QDir \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qdir.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qfileinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qfiledevice.h \
 		../MultimeterSimulator/App_Enum.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QPointF \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QPointF \
 		../MultimeterSimulator/DefineModel.h
 
 debug\ModelData.obj: ..\MultimeterSimulator\ModelData.cpp ../MultimeterSimulator/ModelData.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QObject \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobject.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobjectdefs.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qnamespace.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qglobal.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qconfig-bootstrapped.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qconfig.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtcore-config.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsystemdetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qprocessordetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcompilerdetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtypeinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsysinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlogging.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qflags.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbasicatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic_bootstrap.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qgenericatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic_cxx11.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qglobalstatic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmutex.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qnumeric.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qversiontagging.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobjectdefs_impl.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstring.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qchar.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbytearray.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qrefcount.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qarraydata.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringliteral.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringalgorithms.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringview.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringbuilder.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qalgorithms.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qiterator.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qhashfunctions.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qpair.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbytearraylist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringlist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qregexp.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringmatcher.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcoreevent.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qscopedpointer.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmetatype.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvarlengtharray.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcontainerfwd.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobject_impl.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QMap \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmap.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qdebug.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qhash.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtextstream.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qiodevice.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlocale.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvariant.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qshareddata.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvector.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qpoint.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qset.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcontiguouscache.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsharedpointer.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QObject \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QMap \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qhash.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsharedpointer_impl.h \
 		../MultimeterSimulator/AppDefine.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QDebug \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QDir \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qdir.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfileinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfile.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QDebug \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QDir \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qdir.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qfileinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qfiledevice.h \
 		../MultimeterSimulator/App_Enum.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QPointF
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QPointF
 
 debug\DefineModel.obj: ..\MultimeterSimulator\DefineModel.cpp ../MultimeterSimulator/DefineModel.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QObject \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobject.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobjectdefs.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qnamespace.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qglobal.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qconfig-bootstrapped.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qconfig.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtcore-config.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsystemdetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qprocessordetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcompilerdetection.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtypeinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsysinfo.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlogging.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qflags.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbasicatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic_bootstrap.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qgenericatomic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qatomic_cxx11.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qglobalstatic.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmutex.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qnumeric.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qversiontagging.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobjectdefs_impl.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstring.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qchar.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbytearray.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qrefcount.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qarraydata.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringliteral.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringalgorithms.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringview.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringbuilder.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qalgorithms.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qiterator.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qhashfunctions.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qpair.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qbytearraylist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringlist.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qregexp.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qstringmatcher.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcoreevent.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qscopedpointer.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmetatype.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvarlengtharray.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcontainerfwd.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QObject \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qobject_impl.h \
 		../MultimeterSimulator/AppDefine.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\QDebug \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qdebug.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qhash.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qmap.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qtextstream.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qiodevice.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qlocale.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvariant.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qshareddata.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qvector.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qpoint.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qset.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qcontiguouscache.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsharedpointer.h \
-		C:\QtMqtt\5.11.0\msvc2015\include\QtCore\qsharedpointer_impl.h
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\QDebug \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qhash.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.0\5.11.0\msvc2015\include\QtCore\qsharedpointer_impl.h
 
 debug\qrc_qml.obj: debug\qrc_qml.cpp 
 

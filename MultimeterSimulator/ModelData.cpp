@@ -148,6 +148,34 @@ void ModelData::handleActivedCapError(int posConnectedWire, int negaConnectedWir
 void ModelData::handleActivedConductorNormal()
 {
     DLT_LOG;
+    switch (this->pointerMode()) {
+        case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(-42));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10_R):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(-29));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1K_R):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(40.5));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10K_R):
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(44));
+        m_multimeter->setProperty("animationDuration",QVariant(300));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+        break;
+    default:
+        break;
+    }
 }
 
 void ModelData::handleActivedConductorError()
