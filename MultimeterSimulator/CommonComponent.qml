@@ -33,6 +33,7 @@ Item {
         width: parent.width - 10
         height: parent.height -10
         source: model.sourceImage
+        smooth: true
     }
     Rectangle{
         id: positive

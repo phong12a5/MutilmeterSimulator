@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>CommonComponent.qml</file>
-        <file>TopBar.qml</file>
         <file>Multimeter.qml</file>
         <file>PointerWire.qml</file>
     </qresource>

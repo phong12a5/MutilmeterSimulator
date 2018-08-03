@@ -304,8 +304,8 @@ void CommonObject::extendPointChanged()
     QMetaObject::activate(this, &staticMetaObject, 6, nullptr);
 }
 struct qt_meta_stringdata_MultimeterObject_t {
-    QByteArrayData data[21];
-    char stringdata0[308];
+    QByteArrayData data[30];
+    char stringdata0[469];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -325,16 +325,25 @@ QT_MOC_LITERAL(7, 101, 22), // "activedPositiveChanged"
 QT_MOC_LITERAL(8, 124, 22), // "activedNegativeChanged"
 QT_MOC_LITERAL(9, 147, 19), // "redSourceImgChanged"
 QT_MOC_LITERAL(10, 167, 21), // "blackSourceImgChanged"
-QT_MOC_LITERAL(11, 189, 3), // "idx"
-QT_MOC_LITERAL(12, 193, 10), // "objectName"
-QT_MOC_LITERAL(13, 204, 10), // "objectType"
-QT_MOC_LITERAL(14, 215, 7), // "soureBg"
-QT_MOC_LITERAL(15, 223, 13), // "sourcePointer"
-QT_MOC_LITERAL(16, 237, 15), // "activedPositive"
-QT_MOC_LITERAL(17, 253, 15), // "activedNegative"
-QT_MOC_LITERAL(18, 269, 12), // "redSourceImg"
-QT_MOC_LITERAL(19, 282, 14), // "blackSourceImg"
-QT_MOC_LITERAL(20, 297, 10) // "maskSource"
+QT_MOC_LITERAL(11, 189, 22), // "currentRotationChanged"
+QT_MOC_LITERAL(12, 212, 19), // "nextRotationChanged"
+QT_MOC_LITERAL(13, 232, 23), // "runningAnimationChanged"
+QT_MOC_LITERAL(14, 256, 24), // "animationDurationChanged"
+QT_MOC_LITERAL(15, 281, 3), // "idx"
+QT_MOC_LITERAL(16, 285, 10), // "objectName"
+QT_MOC_LITERAL(17, 296, 10), // "objectType"
+QT_MOC_LITERAL(18, 307, 7), // "soureBg"
+QT_MOC_LITERAL(19, 315, 13), // "sourcePointer"
+QT_MOC_LITERAL(20, 329, 15), // "activedPositive"
+QT_MOC_LITERAL(21, 345, 15), // "activedNegative"
+QT_MOC_LITERAL(22, 361, 12), // "redSourceImg"
+QT_MOC_LITERAL(23, 374, 14), // "blackSourceImg"
+QT_MOC_LITERAL(24, 389, 10), // "maskSource"
+QT_MOC_LITERAL(25, 400, 4), // "line"
+QT_MOC_LITERAL(26, 405, 15), // "currentRotation"
+QT_MOC_LITERAL(27, 421, 12), // "nextRotation"
+QT_MOC_LITERAL(28, 434, 16), // "runningAnimation"
+QT_MOC_LITERAL(29, 451, 17) // "animationDuration"
 
     },
     "MultimeterObject\0idxChanged\0\0"
@@ -342,10 +351,14 @@ QT_MOC_LITERAL(20, 297, 10) // "maskSource"
     "soureBgChanged\0sourcePointerChanged\0"
     "activedPositiveChanged\0activedNegativeChanged\0"
     "redSourceImgChanged\0blackSourceImgChanged\0"
-    "idx\0objectName\0objectType\0soureBg\0"
-    "sourcePointer\0activedPositive\0"
-    "activedNegative\0redSourceImg\0"
-    "blackSourceImg\0maskSource"
+    "currentRotationChanged\0nextRotationChanged\0"
+    "runningAnimationChanged\0"
+    "animationDurationChanged\0idx\0objectName\0"
+    "objectType\0soureBg\0sourcePointer\0"
+    "activedPositive\0activedNegative\0"
+    "redSourceImg\0blackSourceImg\0maskSource\0"
+    "line\0currentRotation\0nextRotation\0"
+    "runningAnimation\0animationDuration"
 };
 #undef QT_MOC_LITERAL
 
@@ -355,23 +368,27 @@ static const uint qt_meta_data_MultimeterObject[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
-      10,   68, // properties
+      13,   14, // methods
+      15,   92, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       9,       // signalCount
+      13,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   59,    2, 0x06 /* Public */,
-       3,    0,   60,    2, 0x06 /* Public */,
-       4,    0,   61,    2, 0x06 /* Public */,
-       5,    0,   62,    2, 0x06 /* Public */,
-       6,    0,   63,    2, 0x06 /* Public */,
-       7,    0,   64,    2, 0x06 /* Public */,
-       8,    0,   65,    2, 0x06 /* Public */,
-       9,    0,   66,    2, 0x06 /* Public */,
-      10,    0,   67,    2, 0x06 /* Public */,
+       1,    0,   79,    2, 0x06 /* Public */,
+       3,    0,   80,    2, 0x06 /* Public */,
+       4,    0,   81,    2, 0x06 /* Public */,
+       5,    0,   82,    2, 0x06 /* Public */,
+       6,    0,   83,    2, 0x06 /* Public */,
+       7,    0,   84,    2, 0x06 /* Public */,
+       8,    0,   85,    2, 0x06 /* Public */,
+       9,    0,   86,    2, 0x06 /* Public */,
+      10,    0,   87,    2, 0x06 /* Public */,
+      11,    0,   88,    2, 0x06 /* Public */,
+      12,    0,   89,    2, 0x06 /* Public */,
+      13,    0,   90,    2, 0x06 /* Public */,
+      14,    0,   91,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -383,18 +400,27 @@ static const uint qt_meta_data_MultimeterObject[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
  // properties: name, type, flags
-      11, QMetaType::Int, 0x00495103,
-      12, QMetaType::QString, 0x00495103,
-      13, QMetaType::Int, 0x00495103,
-      14, QMetaType::QString, 0x00495103,
-      15, QMetaType::QString, 0x00495103,
-      16, QMetaType::Bool, 0x00495103,
-      17, QMetaType::Bool, 0x00495103,
+      15, QMetaType::Int, 0x00495103,
+      16, QMetaType::QString, 0x00495103,
+      17, QMetaType::Int, 0x00495103,
       18, QMetaType::QString, 0x00495103,
       19, QMetaType::QString, 0x00495103,
-      20, QMetaType::QString, 0x00095401,
+      20, QMetaType::Bool, 0x00495103,
+      21, QMetaType::Bool, 0x00495103,
+      22, QMetaType::QString, 0x00495103,
+      23, QMetaType::QString, 0x00495103,
+      24, QMetaType::QString, 0x00095401,
+      25, QMetaType::QString, 0x00095401,
+      26, QMetaType::Int, 0x00495103,
+      27, QMetaType::Int, 0x00495103,
+      28, QMetaType::Bool, 0x00495103,
+      29, QMetaType::Int, 0x00495103,
 
  // properties: notify_signal_id
        0,
@@ -407,6 +433,11 @@ static const uint qt_meta_data_MultimeterObject[] = {
        7,
        8,
        0,
+       0,
+       9,
+      10,
+      11,
+      12,
 
        0        // eod
 };
@@ -426,6 +457,10 @@ void MultimeterObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 6: _t->activedNegativeChanged(); break;
         case 7: _t->redSourceImgChanged(); break;
         case 8: _t->blackSourceImgChanged(); break;
+        case 9: _t->currentRotationChanged(); break;
+        case 10: _t->nextRotationChanged(); break;
+        case 11: _t->runningAnimationChanged(); break;
+        case 12: _t->animationDurationChanged(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -493,6 +528,34 @@ void MultimeterObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
                 return;
             }
         }
+        {
+            using _t = void (MultimeterObject::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MultimeterObject::currentRotationChanged)) {
+                *result = 9;
+                return;
+            }
+        }
+        {
+            using _t = void (MultimeterObject::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MultimeterObject::nextRotationChanged)) {
+                *result = 10;
+                return;
+            }
+        }
+        {
+            using _t = void (MultimeterObject::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MultimeterObject::runningAnimationChanged)) {
+                *result = 11;
+                return;
+            }
+        }
+        {
+            using _t = void (MultimeterObject::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MultimeterObject::animationDurationChanged)) {
+                *result = 12;
+                return;
+            }
+        }
     }
 #ifndef QT_NO_PROPERTIES
     else if (_c == QMetaObject::ReadProperty) {
@@ -510,6 +573,11 @@ void MultimeterObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 7: *reinterpret_cast< QString*>(_v) = _t->redSourceImg(); break;
         case 8: *reinterpret_cast< QString*>(_v) = _t->blackSourceImg(); break;
         case 9: *reinterpret_cast< QString*>(_v) = _t->maskSource(); break;
+        case 10: *reinterpret_cast< QString*>(_v) = _t->line(); break;
+        case 11: *reinterpret_cast< int*>(_v) = _t->currentRotation(); break;
+        case 12: *reinterpret_cast< int*>(_v) = _t->nextRotation(); break;
+        case 13: *reinterpret_cast< bool*>(_v) = _t->runningAnimation(); break;
+        case 14: *reinterpret_cast< int*>(_v) = _t->animationDuration(); break;
         default: break;
         }
     } else if (_c == QMetaObject::WriteProperty) {
@@ -526,6 +594,10 @@ void MultimeterObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 6: _t->setActivedNegative(*reinterpret_cast< bool*>(_v)); break;
         case 7: _t->setRedSourceImg(*reinterpret_cast< QString*>(_v)); break;
         case 8: _t->setBlackSourceImg(*reinterpret_cast< QString*>(_v)); break;
+        case 11: _t->setCurrentRotation(*reinterpret_cast< int*>(_v)); break;
+        case 12: _t->setNextRotation(*reinterpret_cast< int*>(_v)); break;
+        case 13: _t->setRunningAnimation(*reinterpret_cast< bool*>(_v)); break;
+        case 14: _t->setAnimationDuration(*reinterpret_cast< int*>(_v)); break;
         default: break;
         }
     } else if (_c == QMetaObject::ResetProperty) {
@@ -559,29 +631,29 @@ int MultimeterObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 13;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 13)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 13;
     }
 #ifndef QT_NO_PROPERTIES
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 15;
     } else if (_c == QMetaObject::QueryPropertyDesignable) {
-        _id -= 10;
+        _id -= 15;
     } else if (_c == QMetaObject::QueryPropertyScriptable) {
-        _id -= 10;
+        _id -= 15;
     } else if (_c == QMetaObject::QueryPropertyStored) {
-        _id -= 10;
+        _id -= 15;
     } else if (_c == QMetaObject::QueryPropertyEditable) {
-        _id -= 10;
+        _id -= 15;
     } else if (_c == QMetaObject::QueryPropertyUser) {
-        _id -= 10;
+        _id -= 15;
     }
 #endif // QT_NO_PROPERTIES
     return _id;
@@ -640,9 +712,33 @@ void MultimeterObject::blackSourceImgChanged()
 {
     QMetaObject::activate(this, &staticMetaObject, 8, nullptr);
 }
+
+// SIGNAL 9
+void MultimeterObject::currentRotationChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 9, nullptr);
+}
+
+// SIGNAL 10
+void MultimeterObject::nextRotationChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 10, nullptr);
+}
+
+// SIGNAL 11
+void MultimeterObject::runningAnimationChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 11, nullptr);
+}
+
+// SIGNAL 12
+void MultimeterObject::animationDurationChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 12, nullptr);
+}
 struct qt_meta_stringdata_ModelData_t {
-    QByteArrayData data[31];
-    char stringdata0[485];
+    QByteArrayData data[32];
+    char stringdata0[493];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -666,22 +762,23 @@ QT_MOC_LITERAL(11, 192, 17), // "multimeterChanged"
 QT_MOC_LITERAL(12, 210, 18), // "pointerModeChanged"
 QT_MOC_LITERAL(13, 229, 21), // "activedDevicedChanged"
 QT_MOC_LITERAL(14, 251, 19), // "updateActivedDevice"
-QT_MOC_LITERAL(15, 271, 5), // "index"
-QT_MOC_LITERAL(16, 277, 16), // "posConnectedWire"
-QT_MOC_LITERAL(17, 294, 17), // "negaConnectedWire"
-QT_MOC_LITERAL(18, 312, 16), // "extConnectedWire"
-QT_MOC_LITERAL(19, 329, 9), // "resistor1"
-QT_MOC_LITERAL(20, 339, 9), // "resistor2"
-QT_MOC_LITERAL(21, 349, 15), // "capictor_normal"
-QT_MOC_LITERAL(22, 365, 17), // "capictor_abnormal"
-QT_MOC_LITERAL(23, 383, 15), // "cappictor_error"
-QT_MOC_LITERAL(24, 399, 15), // "condutor_normal"
-QT_MOC_LITERAL(25, 415, 14), // "condutor_error"
-QT_MOC_LITERAL(26, 430, 5), // "diode"
-QT_MOC_LITERAL(27, 436, 10), // "transistor"
-QT_MOC_LITERAL(28, 447, 10), // "multimeter"
-QT_MOC_LITERAL(29, 458, 11), // "pointerMode"
-QT_MOC_LITERAL(30, 470, 14) // "activedDeviced"
+QT_MOC_LITERAL(15, 271, 7), // "actived"
+QT_MOC_LITERAL(16, 279, 5), // "index"
+QT_MOC_LITERAL(17, 285, 16), // "posConnectedWire"
+QT_MOC_LITERAL(18, 302, 17), // "negaConnectedWire"
+QT_MOC_LITERAL(19, 320, 16), // "extConnectedWire"
+QT_MOC_LITERAL(20, 337, 9), // "resistor1"
+QT_MOC_LITERAL(21, 347, 9), // "resistor2"
+QT_MOC_LITERAL(22, 357, 15), // "capictor_normal"
+QT_MOC_LITERAL(23, 373, 17), // "capictor_abnormal"
+QT_MOC_LITERAL(24, 391, 15), // "cappictor_error"
+QT_MOC_LITERAL(25, 407, 15), // "condutor_normal"
+QT_MOC_LITERAL(26, 423, 14), // "condutor_error"
+QT_MOC_LITERAL(27, 438, 5), // "diode"
+QT_MOC_LITERAL(28, 444, 10), // "transistor"
+QT_MOC_LITERAL(29, 455, 10), // "multimeter"
+QT_MOC_LITERAL(30, 466, 11), // "pointerMode"
+QT_MOC_LITERAL(31, 478, 14) // "activedDeviced"
 
     },
     "ModelData\0resistor1Changed\0\0"
@@ -691,13 +788,13 @@ QT_MOC_LITERAL(30, 470, 14) // "activedDeviced"
     "condutor_errorChanged\0diodeChanged\0"
     "transistorChanged\0multimeterChanged\0"
     "pointerModeChanged\0activedDevicedChanged\0"
-    "updateActivedDevice\0index\0posConnectedWire\0"
-    "negaConnectedWire\0extConnectedWire\0"
-    "resistor1\0resistor2\0capictor_normal\0"
-    "capictor_abnormal\0cappictor_error\0"
-    "condutor_normal\0condutor_error\0diode\0"
-    "transistor\0multimeter\0pointerMode\0"
-    "activedDeviced"
+    "updateActivedDevice\0actived\0index\0"
+    "posConnectedWire\0negaConnectedWire\0"
+    "extConnectedWire\0resistor1\0resistor2\0"
+    "capictor_normal\0capictor_abnormal\0"
+    "cappictor_error\0condutor_normal\0"
+    "condutor_error\0diode\0transistor\0"
+    "multimeter\0pointerMode\0activedDeviced"
 };
 #undef QT_MOC_LITERAL
 
@@ -708,7 +805,7 @@ static const uint qt_meta_data_ModelData[] = {
        0,       // classname
        0,    0, // classinfo
       13,   14, // methods
-      12,  100, // properties
+      12,  102, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
@@ -729,7 +826,7 @@ static const uint qt_meta_data_ModelData[] = {
       13,    0,   90,    2, 0x06 /* Public */,
 
  // methods: name, argc, parameters, tag, flags
-      14,    4,   91,    2, 0x02 /* Public */,
+      14,    5,   91,    2, 0x02 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -746,10 +843,9 @@ static const uint qt_meta_data_ModelData[] = {
     QMetaType::Void,
 
  // methods: parameters
-    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   15,   16,   17,   18,
+    QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   15,   16,   17,   18,   19,
 
  // properties: name, type, flags
-      19, QMetaType::QObjectStar, 0x00495001,
       20, QMetaType::QObjectStar, 0x00495001,
       21, QMetaType::QObjectStar, 0x00495001,
       22, QMetaType::QObjectStar, 0x00495001,
@@ -759,8 +855,9 @@ static const uint qt_meta_data_ModelData[] = {
       26, QMetaType::QObjectStar, 0x00495001,
       27, QMetaType::QObjectStar, 0x00495001,
       28, QMetaType::QObjectStar, 0x00495001,
-      29, QMetaType::Int, 0x00495103,
+      29, QMetaType::QObjectStar, 0x00495001,
       30, QMetaType::Int, 0x00495103,
+      31, QMetaType::Int, 0x00495103,
 
  // properties: notify_signal_id
        0,
@@ -797,7 +894,7 @@ void ModelData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 9: _t->multimeterChanged(); break;
         case 10: _t->pointerModeChanged(); break;
         case 11: _t->activedDevicedChanged(); break;
-        case 12: _t->updateActivedDevice((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
+        case 12: _t->updateActivedDevice((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

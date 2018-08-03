@@ -132,15 +132,30 @@ Item {
     Item{
         id: indicator
         anchors.centerIn: anchorIndicator
-        width: 2
+        width: 1
         height: 460
         rotation: -45
-        Rectangle{
-            width: parent.width
+        Image{
             height: parent.height/2
+            width: sourceSize.width/3
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
-            color: "#666666"
+            source: ModelData.multimeter.line
+        }
+        RotationAnimation on rotation {
+            running: ModelData.multimeter.runningAnimation
+            from: ModelData.multimeter.currentRotation
+            to: ModelData.multimeter.nextRotation
+            duration: ModelData.multimeter.animationDuration
+            easing.type: Easing.InOutCubic
+            onRunningChanged: {
+                console.log("running: " + running)
+                if(!running)
+                {
+                    ModelData.multimeter.currentRotation = ModelData.multimeter.nextRotation
+                    ModelData.multimeter.runningAnimation = false
+                }
+            }
         }
     }
     Image {

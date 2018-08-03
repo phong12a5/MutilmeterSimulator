@@ -173,8 +173,9 @@ Window {
                             " >> changed: " + dlg.active +
                             " >> dlg._positive.connetedWire: " + dlg._positive.connetedWire +
                             " >> dlg._negative.connetedWire: " + dlg._negative.connetedWire)
-                ModelData.activedDeviced = index;
-                ModelData.updateActivedDevice(index,dlg._positive.connetedWire,dlg._negative.connetedWire,dlg._extend.connetedWire)
+
+                ModelData.activedDeviced = dlg.active?index:-1;
+                ModelData.updateActivedDevice(dlg.active,index,dlg._positive.connetedWire,dlg._negative.connetedWire,dlg._extend.connetedWire)
             }
         }
     }

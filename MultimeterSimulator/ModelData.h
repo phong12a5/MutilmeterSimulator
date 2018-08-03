@@ -101,6 +101,11 @@ public:
     Q_PROPERTY(QString redSourceImg READ redSourceImg WRITE setRedSourceImg NOTIFY redSourceImgChanged)
     Q_PROPERTY(QString blackSourceImg READ blackSourceImg WRITE setBlackSourceImg NOTIFY blackSourceImgChanged)
     Q_PROPERTY(QString maskSource READ maskSource CONSTANT)
+    Q_PROPERTY(QString line READ line CONSTANT)
+    Q_PROPERTY(int currentRotation READ currentRotation WRITE setCurrentRotation NOTIFY currentRotationChanged)
+    Q_PROPERTY(int nextRotation READ nextRotation WRITE setNextRotation NOTIFY nextRotationChanged)
+    Q_PROPERTY(bool runningAnimation READ runningAnimation WRITE setRunningAnimation NOTIFY runningAnimationChanged)
+    Q_PROPERTY(int animationDuration READ animationDuration WRITE setAnimationDuration NOTIFY animationDurationChanged)
 
 signals:
     void idxChanged();
@@ -112,9 +117,13 @@ signals:
     void activedNegativeChanged();
     void redSourceImgChanged();
     void blackSourceImgChanged();
+    void currentRotationChanged();
+    void nextRotationChanged();
+    void runningAnimationChanged();
+    void animationDurationChanged();
 
 public:
-    MultimeterObject(int _idx, QString _objectName, int _objectType, QString _soureBg, QString _sourcePointer, QString _redSourceImg, QString _blackSourceImg, QString _maskSource):
+    MultimeterObject(int _idx, QString _objectName, int _objectType, QString _soureBg, QString _sourcePointer, QString _redSourceImg, QString _blackSourceImg, QString _maskSource,QString _line):
     m_idx(_idx),
     m_objectName(_objectName),
     m_objectType(_objectType),
@@ -124,8 +133,13 @@ public:
     m_activedNegative(false),
     m_redSourceImg(_redSourceImg),
     m_blackSourceImg(_blackSourceImg),
-    m_maskSource(_maskSource)
+    m_maskSource(_maskSource),
+    m_line(_line)
     {
+        m_nextRotation = -45;
+        m_currentRotation = -45;
+        m_runningAnimation = false;
+        m_animationDuration = 500;
     }
     ~MultimeterObject(){}
 
@@ -139,6 +153,11 @@ public:
     QString redSourceImg(){return m_redSourceImg;}
     QString blackSourceImg(){return m_blackSourceImg;}
     QString maskSource(){return m_maskSource;}
+    int currentRotation(){return m_currentRotation;}
+    int nextRotation(){return m_nextRotation;}
+    bool runningAnimation(){return m_runningAnimation;}
+    int animationDuration(){return m_animationDuration;}
+    QString line(){return m_line;}
 
     void setIdx(int _idx){
         if(_idx != m_idx){
@@ -196,6 +215,35 @@ public:
         }
     }
 
+    void setNextRotation(int _nextRotation){
+        if(m_nextRotation != _nextRotation){
+            m_nextRotation = _nextRotation;
+            emit nextRotationChanged();
+        }
+    }
+
+    void setCurrentRotation(int _currentRotation){
+        if(m_currentRotation != _currentRotation){
+            m_currentRotation = _currentRotation;
+            emit currentRotationChanged();
+        }
+    }
+
+    void setRunningAnimation(bool _runningAnimation){
+        DLT_LOG << _runningAnimation;
+        if(m_runningAnimation != _runningAnimation){
+            m_runningAnimation = _runningAnimation;
+            emit runningAnimationChanged();
+        }
+    }
+
+    void setAnimationDuration(int _animationDuration){
+        if(m_animationDuration != _animationDuration){
+            m_animationDuration = _animationDuration;
+            emit animationDurationChanged();
+        }
+    }
+
 
 private:
     int m_idx;
@@ -208,6 +256,11 @@ private:
     QString m_redSourceImg;
     QString m_blackSourceImg;
     QString m_maskSource;
+    QString m_line;
+    int m_currentRotation;
+    int m_nextRotation;
+    bool m_runningAnimation;
+    int m_animationDuration;
 };
 
 class ModelData : public QObject
@@ -230,7 +283,7 @@ public:
     Q_PROPERTY(int pointerMode              READ pointerMode        WRITE setPointerMode    NOTIFY pointerModeChanged)
     Q_PROPERTY(int activedDeviced           READ activedDeviced     WRITE setActivedDeviced NOTIFY activedDevicedChanged)
 
-    Q_INVOKABLE void updateActivedDevice(int index, int posConnectedWire, int negaConnectedWire, int extConnectedWire);
+    Q_INVOKABLE void updateActivedDevice(bool actived, int index, int posConnectedWire, int negaConnectedWire, int extConnectedWire);
 private:
 
     static ModelData* m_instantce;
@@ -248,6 +301,17 @@ private:
 
     int m_pointerMode;
     int m_activedDeviced;
+
+private:
+    void handleActivedRes1(int posConnectedWire, int negaConnectedWire);
+    void handleActivedRes2(int posConnectedWire, int negaConnectedWire);
+    void handleActivedCapNormal(int posConnectedWire, int negaConnectedWire);
+    void handleActivedCapAbnormal(int posConnectedWire, int negaConnectedWire);
+    void handleActivedCapError(int posConnectedWire, int negaConnectedWire);
+    void handleActivedConductorNormal(int posConnectedWire, int negaConnectedWire);
+    void handleActivedConductorError(int posConnectedWire, int negaConnectedWire);
+    void handleActivedDiode(int posConnectedWire, int negaConnectedWire);
+    void handleActivedTransistor(int posConnectedWire, int negaConnectedWire, int extConnectedWire);
 
 public:
     static ModelData* getInstance();
