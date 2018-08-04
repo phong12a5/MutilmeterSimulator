@@ -8,10 +8,10 @@ Item {
     property int matchingPositive: App_Enum.E_WIRE_STATUS_EMPTY
     property int matchingNegative: App_Enum.E_WIRE_STATUS_EMPTY
     property int matchingExtend: App_Enum.E_WIRE_STATUS_EMPTY
-    property bool active: type != App_Enum.E_OBJECT_TYPE_TRANSISTOR &&
-                          type != App_Enum.E_OBJECT_TYPE_MULTIMETER?
-                              (matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED && matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED):
-                              (matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED && matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED && matchingExtend == App_Enum.E_WIRE_STATUS_CONNECTED)
+    property bool active: type != App_Enum.E_OBJECT_TYPE_TRANSISTOR? (matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED && matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED):
+                                                                     ((matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED && matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED) ||
+                                                                      (matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED && matchingExtend == App_Enum.E_WIRE_STATUS_CONNECTED) ||
+                                                                      (matchingExtend == App_Enum.E_WIRE_STATUS_CONNECTED && matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED))
 
     property alias _positive: positive
     property alias _negative: negative

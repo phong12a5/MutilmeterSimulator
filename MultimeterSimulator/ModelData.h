@@ -47,6 +47,9 @@ public:
     m_negativePoint(_negativePoint),
     m_extendPoint(_extendPoint)
     {
+        m_posConnectedWire = static_cast<int>(App_Enum::E_WIRE_TYPE_NONE);
+        m_negaConnectedWire = static_cast<int>(App_Enum::E_WIRE_TYPE_NONE);
+        m_extConnectedWire = static_cast<int>(App_Enum::E_WIRE_TYPE_NONE);
     }
     ~CommonObject(){}
 
@@ -304,19 +307,20 @@ public:
     explicit ModelData(QObject *parent = nullptr);
     ~ModelData();
 
-    Q_PROPERTY(QObject* resistor1           READ resistor1         NOTIFY resistor1Changed)
-    Q_PROPERTY(QObject* resistor2           READ resistor2         NOTIFY resistor2Changed)
-    Q_PROPERTY(QObject* capictor_normal     READ capictor_normal   NOTIFY capictor_normalChanged)
-    Q_PROPERTY(QObject* capictor_abnormal   READ capictor_abnormal NOTIFY capictor_abnormalChanged)
-    Q_PROPERTY(QObject* cappictor_error     READ cappictor_error   NOTIFY cappictor_errorChanged)
-    Q_PROPERTY(QObject* condutor_normal     READ condutor_normal   NOTIFY condutor_normalChanged)
-    Q_PROPERTY(QObject* condutor_error      READ condutor_error    NOTIFY condutor_errorChanged)
-    Q_PROPERTY(QObject* diode               READ diode             NOTIFY diodeChanged)
-    Q_PROPERTY(QObject* transistor          READ transistor        NOTIFY transistorChanged)
-    Q_PROPERTY(QObject* multimeter          READ multimeter        NOTIFY multimeterChanged)
+    Q_PROPERTY(QObject* resistor1           READ resistor1          NOTIFY resistor1Changed)
+    Q_PROPERTY(QObject* resistor2           READ resistor2          NOTIFY resistor2Changed)
+    Q_PROPERTY(QObject* capictor_normal     READ capictor_normal    NOTIFY capictor_normalChanged)
+    Q_PROPERTY(QObject* capictor_abnormal   READ capictor_abnormal  NOTIFY capictor_abnormalChanged)
+    Q_PROPERTY(QObject* cappictor_error     READ cappictor_error    NOTIFY cappictor_errorChanged)
+    Q_PROPERTY(QObject* condutor_normal     READ condutor_normal    NOTIFY condutor_normalChanged)
+    Q_PROPERTY(QObject* condutor_error      READ condutor_error     NOTIFY condutor_errorChanged)
+    Q_PROPERTY(QObject* diode               READ diode              NOTIFY diodeChanged)
+    Q_PROPERTY(QObject* transistor          READ transistor         NOTIFY transistorChanged)
+    Q_PROPERTY(QObject* multimeter          READ multimeter         NOTIFY multimeterChanged)
     Q_PROPERTY(int pointerMode              READ pointerMode        WRITE setPointerMode    NOTIFY pointerModeChanged)
     Q_PROPERTY(int activedDeviced           READ activedDeviced     WRITE setActivedDeviced NOTIFY activedDevicedChanged)
     Q_PROPERTY(QList<QObject*> listModel    READ listModel          NOTIFY listModelChanged)
+    Q_PROPERTY(QString fingerSource         READ fingerSource       NOTIFY fingerSourceChanged)
 
     Q_INVOKABLE void updateActivedDevice(bool actived, int index, int posConnectedWire, int negaConnectedWire, int extConnectedWire);
 private:
@@ -336,7 +340,6 @@ private:
     QList<QObject*> m_listModel;
     QTimer m_capNormalTimer;
     QTimer m_capAbnormalTimer;
-
     int m_pointerMode;
     int m_activedDeviced;
 
@@ -367,6 +370,7 @@ public:
     QObject* transistor();
     QObject* multimeter();
     QList<QObject *> listModel();
+    QString fingerSource();
 
     int pointerMode();
     void setPointerMode(int _mode);
@@ -388,6 +392,8 @@ signals:
     void pointerModeChanged();
     void activedDevicedChanged();
     void listModelChanged();
+    void fingerSourceChanged();
+
 public slots:
     void onCapNormalTimerTrigged();
     void onCapAbnormalTimerTrigged();

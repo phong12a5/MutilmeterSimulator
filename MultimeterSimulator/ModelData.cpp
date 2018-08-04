@@ -173,9 +173,12 @@ void ModelData::handleActivedCapAbnormal(int posConnectedWire, int negaConnected
 void ModelData::handleActivedCapError(int posConnectedWire, int negaConnectedWire)
 {
     DLT_LOG << "posConnectedWire: " << posConnectedWire << " >> negaConnectedWire: " << negaConnectedWire;
-    m_multimeter->setProperty("runningAnimation",QVariant(false));
-    m_multimeter->setProperty("nextRotation",QVariant(45));
-    m_multimeter->setProperty("runningAnimation",QVariant(true));
+    if(m_pointerMode >= static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10K_R) &&
+       m_pointerMode <= static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R)){
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(45));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+    }
 }
 
 void ModelData::handleActivedConductorNormal()
@@ -241,6 +244,55 @@ void ModelData::handleActivedDiode(int posConnectedWire, int negaConnectedWire)
 void ModelData::handleActivedTransistor(int posConnectedWire, int negaConnectedWire, int extConnectedWire)
 {
     DLT_LOG << "posConnectedWire: " << posConnectedWire << " >> negaConnectedWire: " << negaConnectedWire << " >> extConnectedWire: " << extConnectedWire;
+    if(m_pointerMode >= static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10K_R) &&
+       m_pointerMode <= static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R)){
+        if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED) &&
+                negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK) &&
+                extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_NONE)){
+            DLT_LOG << "TH1: Que do vao Chan E, Que den vao C";
+            DLT_LOG << "Hien tuong: Kim khong nhich";
+        }else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED) &&
+                 negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_NONE) &&
+                 extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK)){
+            DLT_LOG << "TH2: Que do vao Chan E, Que den vao B";
+            DLT_LOG << "Hien tuong: Kim len vi tri 30";
+        }else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK) &&
+                 negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED) &&
+                 extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_NONE)){
+            DLT_LOG << "TH3: Que den vao Chan E, Que do vao C";
+            DLT_LOG << "Hien tuong: Kim khong nhich";
+        }
+        else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK) &&
+                negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_NONE) &&
+                extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED)){
+            DLT_LOG << "TH4: Que den vao Chan E, Que do vao B";
+            DLT_LOG << "Hien tuong: Kim khong nhich";
+        }
+        else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_NONE) &&
+                negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED) &&
+                extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK)){
+            DLT_LOG << "TH5: Que do vao chan C, Que den vao B";
+            DLT_LOG << "Hien tuong: Kim len";
+        }
+        else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_NONE) &&
+                negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK) &&
+                extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED)){
+            DLT_LOG << "TH6: Que den vao chan C, que do vao chan B";
+            DLT_LOG << "Hien tuong: Kim khong nhich";
+        }
+        else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED) &&
+                negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK) &&
+                extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_FINGER)){
+            DLT_LOG <<"TH P1: Que den vao chan C, que do vao chan E, dong thoi cham ngon tay vao chan B.";
+            DLT_LOG << "Hien tuong: Kim len vi tri 40.";
+        }
+        else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK) &&
+                negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED) &&
+                extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_FINGER)){
+            DLT_LOG <<"TH P2: Que do vao chan C, que den vao E, dong thoi cham ngon tay vao chan B.";
+            DLT_LOG <<"Hien tuong: Kim khong nhich";
+        }
+    }
 }
 
 void ModelData::updateStateOfDeActviedMultimeter()
@@ -315,6 +367,11 @@ QList<QObject *> ModelData::listModel()
         m_listModel.append(m_transistor);
     }
     return m_listModel;
+}
+
+QString ModelData::fingerSource()
+{
+    return QString("file:///" + QDir::currentPath() + "/Image/finger.png");
 }
 
 int ModelData::pointerMode()

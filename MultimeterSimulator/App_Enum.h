@@ -59,8 +59,9 @@ public:
     };
     enum E_WIRE_TYPE: int{
         E_WIRE_TYPE_NONE = 0,
-        E_WIRE_TYPE_RED = 1,
-        E_WIRE_TYPE_BLACK = 2
+        E_WIRE_TYPE_RED,
+        E_WIRE_TYPE_BLACK,
+        E_WIRE_TYPE_FINGER,
     };
     enum E_WIRE_STATUS: int{
         E_WIRE_STATUS_EMPTY,

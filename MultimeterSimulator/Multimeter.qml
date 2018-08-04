@@ -150,7 +150,6 @@ Item {
             duration: ModelData.multimeter.animationDuration
             easing.type: Easing.InCirc
             onRunningChanged: {
-                console.log("running: " + running)
                 if(!running)
                 {
                     ModelData.multimeter.currentRotation = ModelData.multimeter.nextRotation
