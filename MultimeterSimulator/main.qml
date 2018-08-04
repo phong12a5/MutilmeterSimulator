@@ -41,6 +41,7 @@ Window {
             width: Define.WIDGET_WIDTH
             height: Define.WIDGET_HEIGHT
             Rectangle{
+                id : bg
                 anchors.fill: parent
                 visible: mousePress.pressed
                 color: "grey"
@@ -298,7 +299,6 @@ Window {
                 target: window
                 onDragPointChanged:{
                     if(_index !== index){
-                        bg.color = "grey"
                         if(dragPoint.x > dlg.x - dlg.width && dragPoint.x < dlg.x + dlg.width &&
                            dragPoint.y > dlg.y - dlg.height && dragPoint.y < dlg.y + dlg.height){
                             console.log("Item at " + index + " contains this point")
@@ -328,7 +328,7 @@ Window {
         height: 160
         Image {
             anchors.fill: parent
-            source: "qrc:/Logo.jpg"
+            source: ModelData.logoSource
             smooth: true
         }
     }

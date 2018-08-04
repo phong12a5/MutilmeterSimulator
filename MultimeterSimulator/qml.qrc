@@ -4,6 +4,5 @@
         <file>CommonComponent.qml</file>
         <file>Multimeter.qml</file>
         <file>PointerWire.qml</file>
-        <file>Logo.jpg</file>
     </qresource>
 </RCC>

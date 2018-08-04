@@ -464,6 +464,11 @@ QString ModelData::fingerSource()
     return QString("file:///" + QDir::currentPath() + "/Image/finger.png");
 }
 
+QString ModelData::logoSource()
+{
+    return QString("file:///" + QDir::currentPath() + "/Image/logo.jpg");
+}
+
 int ModelData::pointerMode()
 {
     return m_pointerMode;

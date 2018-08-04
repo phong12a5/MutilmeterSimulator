@@ -321,7 +321,7 @@ public:
     Q_PROPERTY(int activedDeviced           READ activedDeviced     WRITE setActivedDeviced NOTIFY activedDevicedChanged)
     Q_PROPERTY(QList<QObject*> listModel    READ listModel          NOTIFY listModelChanged)
     Q_PROPERTY(QString fingerSource         READ fingerSource       NOTIFY fingerSourceChanged)
-
+    Q_PROPERTY(QString logoSource           READ logoSource         NOTIFY logoChanged)
     Q_INVOKABLE void updateActivedDevice(bool actived, int index, int posConnectedWire, int negaConnectedWire, int extConnectedWire);
 private:
 
@@ -372,7 +372,7 @@ public:
     QObject* multimeter();
     QList<QObject *> listModel();
     QString fingerSource();
-
+    QString logoSource();
     int pointerMode();
     void setPointerMode(int _mode);
     int activedDeviced();
@@ -394,6 +394,7 @@ signals:
     void activedDevicedChanged();
     void listModelChanged();
     void fingerSourceChanged();
+    void logoChanged();
 
 public slots:
     void onCapNormalTimerTrigged();

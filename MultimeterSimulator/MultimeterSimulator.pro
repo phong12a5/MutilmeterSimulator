@@ -37,3 +37,6 @@ HEADERS += \
     App_Enum.h
 
 DISTFILES +=
+
+RC_ICONS = Logo.ico
+
