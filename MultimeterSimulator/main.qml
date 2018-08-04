@@ -9,6 +9,8 @@ Window {
     width: Screen.width
     height: Screen.height
 
+    signal dragPointChanged(point dragPoint, int _index, var _dlg, point _prevPoint)
+
     ListModel{
         id: mod
     }
@@ -67,6 +69,8 @@ Window {
                         dlg.x = dlg.prevPoint.x
                         dlg.y = dlg.prevPoint.y
                     }
+
+                    dragPointChanged(Qt.point(dlg.x,dlg.y), index, dlg, prevPoint)
                 }
                 onPositionChanged: {
                     dlg.matchingNegative = App_Enum.E_WIRE_STATUS_EMPTY
@@ -290,6 +294,20 @@ Window {
                     finger.x = dlg.x + 74
                 }
             }
+            Connections{
+                target: window
+                onDragPointChanged:{
+                    if(_index !== index){
+                        bg.color = "grey"
+                        if(dragPoint.x > dlg.x - dlg.width && dragPoint.x < dlg.x + dlg.width &&
+                           dragPoint.y > dlg.y - dlg.height && dragPoint.y < dlg.y + dlg.height){
+                            console.log("Item at " + index + " contains this point")
+                            _dlg.x = _prevPoint.x
+                            _dlg.y = _prevPoint.y
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -381,4 +399,16 @@ Window {
         wire.redCanvas.requestPaint()
         wire.blackCanvas.requestPaint()
     }
+
+//    function checkOverLap(dlg,prePoint,index){
+//        var result = false;
+//        for(var i = 0; i < ModelData.listModel.length; i++){
+//            if(index === i)
+//                continue;
+//            else{
+//                if(dlg.)
+//            }
+//        }
+//        return false
+//    }
 }
