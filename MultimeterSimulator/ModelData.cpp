@@ -251,46 +251,118 @@ void ModelData::handleActivedTransistor(int posConnectedWire, int negaConnectedW
                 extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_NONE)){
             DLT_LOG << "TH1: Que do vao Chan E, Que den vao C";
             DLT_LOG << "Hien tuong: Kim khong nhich";
+            m_multimeter->setProperty("runningAnimation",QVariant(false));
+            m_multimeter->setProperty("nextRotation",QVariant(-45));
+            m_multimeter->setProperty("runningAnimation",QVariant(true));
         }else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED) &&
                  negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_NONE) &&
                  extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK)){
             DLT_LOG << "TH2: Que do vao Chan E, Que den vao B";
             DLT_LOG << "Hien tuong: Kim len vi tri 30";
+            m_multimeter->setProperty("runningAnimation",QVariant(false));
+            switch (this->pointerMode()) {
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10K_R):
+                m_multimeter->setProperty("nextRotation",QVariant(0));
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1K_R):
+                m_multimeter->setProperty("nextRotation",QVariant(-10));
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10_R):
+                m_multimeter->setProperty("nextRotation",QVariant(-30));
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R):
+                m_multimeter->setProperty("nextRotation",QVariant(-40));
+                break;
+            default:
+                m_multimeter->setProperty("nextRotation",QVariant(-45));
+                break;
+            }
+            m_multimeter->setProperty("runningAnimation",QVariant(true));
         }else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK) &&
                  negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED) &&
                  extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_NONE)){
             DLT_LOG << "TH3: Que den vao Chan E, Que do vao C";
             DLT_LOG << "Hien tuong: Kim khong nhich";
+            m_multimeter->setProperty("runningAnimation",QVariant(false));
+            m_multimeter->setProperty("nextRotation",QVariant(-45));
+            m_multimeter->setProperty("runningAnimation",QVariant(true));
         }
         else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK) &&
                 negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_NONE) &&
                 extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED)){
             DLT_LOG << "TH4: Que den vao Chan E, Que do vao B";
             DLT_LOG << "Hien tuong: Kim khong nhich";
+            m_multimeter->setProperty("runningAnimation",QVariant(false));
+            m_multimeter->setProperty("nextRotation",QVariant(-45));
+            m_multimeter->setProperty("runningAnimation",QVariant(true));
         }
         else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_NONE) &&
                 negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED) &&
                 extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK)){
             DLT_LOG << "TH5: Que do vao chan C, Que den vao B";
             DLT_LOG << "Hien tuong: Kim len";
+            m_multimeter->setProperty("runningAnimation",QVariant(false));
+            switch (this->pointerMode()) {
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10K_R):
+                m_multimeter->setProperty("nextRotation",QVariant(-10));
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1K_R):
+                m_multimeter->setProperty("nextRotation",QVariant(-35));
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10_R):
+                m_multimeter->setProperty("nextRotation",QVariant(-40));
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R):
+                m_multimeter->setProperty("nextRotation",QVariant(-44));
+                break;
+            default:
+                m_multimeter->setProperty("nextRotation",QVariant(-45));
+                break;
+            }
+            m_multimeter->setProperty("runningAnimation",QVariant(true));
         }
         else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_NONE) &&
                 negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK) &&
                 extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED)){
             DLT_LOG << "TH6: Que den vao chan C, que do vao chan B";
             DLT_LOG << "Hien tuong: Kim khong nhich";
+            m_multimeter->setProperty("runningAnimation",QVariant(false));
+            m_multimeter->setProperty("nextRotation",QVariant(-45));
+            m_multimeter->setProperty("runningAnimation",QVariant(true));
         }
         else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED) &&
                 negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK) &&
                 extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_FINGER)){
             DLT_LOG <<"TH P1: Que den vao chan C, que do vao chan E, dong thoi cham ngon tay vao chan B.";
             DLT_LOG << "Hien tuong: Kim len vi tri 40.";
+            m_multimeter->setProperty("runningAnimation",QVariant(false));
+            switch (this->pointerMode()) {
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10K_R):
+                m_multimeter->setProperty("nextRotation",QVariant(-10));
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1K_R):
+                m_multimeter->setProperty("nextRotation",QVariant(-35));
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10_R):
+                m_multimeter->setProperty("nextRotation",QVariant(-40));
+                break;
+            case static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R):
+                m_multimeter->setProperty("nextRotation",QVariant(-44));
+                break;
+            default:
+                m_multimeter->setProperty("nextRotation",QVariant(-45));
+                break;
+            }
+            m_multimeter->setProperty("runningAnimation",QVariant(true));
         }
         else if(posConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_BLACK) &&
                 negaConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_RED) &&
                 extConnectedWire == static_cast<int>(App_Enum::E_WIRE_TYPE_FINGER)){
             DLT_LOG <<"TH P2: Que do vao chan C, que den vao E, dong thoi cham ngon tay vao chan B.";
             DLT_LOG <<"Hien tuong: Kim khong nhich";
+            m_multimeter->setProperty("runningAnimation",QVariant(false));
+            m_multimeter->setProperty("nextRotation",QVariant(-45));
+            m_multimeter->setProperty("runningAnimation",QVariant(true));
         }
     }
 }
@@ -302,6 +374,24 @@ void ModelData::updateStateOfDeActviedMultimeter()
     m_multimeter->setProperty("nextRotation",QVariant(-45));
     m_multimeter->setProperty("runningAnimation",QVariant(true));
 }
+
+void ModelData::updateStateOfActviedMultimeter()
+{
+    DLT_LOG;
+    if(this->pointerMode() >= static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10K_R) &&
+            this->pointerMode() <= static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R)){
+        this->updateActivedDevice(true,
+                                  this->activedDeviced(),
+                                  this->listModel().at(this->activedDeviced())->property("posConnectedWire").toInt(),
+                                  this->listModel().at(this->activedDeviced())->property("negaConnectedWire").toInt(),
+                                  this->listModel().at(this->activedDeviced())->property("extConnectedWire").toInt());
+    }else{
+        m_multimeter->setProperty("runningAnimation",QVariant(false));
+        m_multimeter->setProperty("nextRotation",QVariant(-45));
+        m_multimeter->setProperty("runningAnimation",QVariant(true));
+    }
+}
+
 
 QObject *ModelData::resistor1()
 {
@@ -391,6 +481,8 @@ void ModelData::setPointerMode(int _mode)
         if(!existActivedDevice){
             DLT_LOG << "Don't have any active deviced";
             updateStateOfDeActviedMultimeter();
+        }else{
+            updateStateOfActviedMultimeter();
         }
     }
 }

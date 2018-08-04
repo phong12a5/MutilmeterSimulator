@@ -76,7 +76,6 @@ Item {
                         anchors.fill: parent
                         onClicked: {
                             var radius = Math.abs(mouseY - center.y);
-                            console.log("Radius: " + radius)
                             if(radius >= pointer.width/2 && radius <= pointerMouse.width/2){
                                 ModelData.pointerMode = index
                             }
@@ -94,7 +93,6 @@ Item {
                         anchors.fill: parent
                         onClicked: {
                             var radius = Math.abs(mouseY/* - center.y*/);
-                            console.log("Radius: " + radius)
                             if(radius >= pointer.width/2 && radius <= pointerMouse.width/2){
                                 ModelData.pointerMode = index + 10
                             }

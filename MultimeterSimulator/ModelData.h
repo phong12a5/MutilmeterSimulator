@@ -355,6 +355,7 @@ private:
     void handleActivedTransistor(int posConnectedWire, int negaConnectedWire, int extConnectedWire);
 
     void updateStateOfDeActviedMultimeter();
+    void updateStateOfActviedMultimeter();
 public:
     static ModelData* getInstance();
     void initObjects();
