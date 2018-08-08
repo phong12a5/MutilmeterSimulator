@@ -150,7 +150,9 @@ Item {
             onRunningChanged: {
                 if(!running)
                 {
+                    console.log("ModelData.multimeter.animationDuration: " + ModelData.multimeter.animationDuration)
                     ModelData.multimeter.currentRotation = ModelData.multimeter.nextRotation
+                    console.log("ModelData.multimeter.runningAnimation = false")
                     ModelData.multimeter.runningAnimation = false
                 }
             }

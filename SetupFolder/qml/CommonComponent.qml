@@ -1,5 +1,7 @@
 import QtQuick 2.0
 import App_Enum 1.0
+import QtGraphicalEffects 1.0
+
 
 Item {
     id: root
@@ -22,6 +24,18 @@ Item {
         height: parent.height -10
         source: modelData.sourceImage
         smooth: true
+
+        RadialGradient {
+            anchors.top: parent.top
+            anchors.horizontalCenter: parent.horizontalCenter
+            visible: index == App_Enum.E_OBJECT_INDEX_LED_GREEN && modelData.onOffState
+            width: 70
+            height: 70
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: "#7fff00" }
+                GradientStop { position: 0.5; color: "transparent" }
+            }
+        }
     }
     Rectangle{
         id: positive
@@ -31,7 +45,7 @@ Item {
         width: 10
         height: 10
         radius: matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED? width/2:0
-        color: matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED? "black":"red"
+        color: matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED? "#B87333":"red"
         opacity: matchingPositive == App_Enum.E_WIRE_STATUS_CONNECTED? 1:0.2
         visible: matchingPositive!= App_Enum.E_WIRE_STATUS_EMPTY
         onConnetedWireChanged: {
@@ -47,7 +61,7 @@ Item {
         width: 10
         height: 10
         radius: matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED? width/2:0
-        color: matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED? "black":"red"
+        color: matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED? "#B87333":"red"
         opacity: matchingNegative == App_Enum.E_WIRE_STATUS_CONNECTED? 1:0.2
         visible: matchingNegative != App_Enum.E_WIRE_STATUS_EMPTY
         onConnetedWireChanged: {

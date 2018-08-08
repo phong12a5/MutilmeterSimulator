@@ -31,8 +31,8 @@ class DefineModel : public QObject
     Q_PROPERTY(int _RED_WIRE   READ _RED_WIRE CONSTANT)
     Q_PROPERTY(int _BLACK_WIRE   READ _BLACK_WIRE CONSTANT)
 private:
-    int WIDGET_WIDTH(){return 150;}
-    int WIDGET_HEIGHT(){return 150;}
+    int WIDGET_WIDTH(){return 124;}
+    int WIDGET_HEIGHT(){return 124;}
     int multiImg_sourcwWidth(){return 2225;}
     int multiImg_sourcwHeight(){return 3305;}
     int multiPointerStartXPoint(){return 603;}

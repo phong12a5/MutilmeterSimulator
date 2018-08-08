@@ -1,19 +1,16 @@
-import QtQuick 2.11
-import QtQuick.Window 2.11
+import QtQuick 2.3
+import QtQuick.Window 2.10
 import App_Enum 1.0
 
 Window {
     id: window
     visible: true
-    title: qsTr("Electronic circuit simulator Software")
+    title: qsTr("Phần mềm kiểm tra linh kiện điện tử")
     width: Screen.width
     height: Screen.height
 
     signal dragPointChanged(point dragPoint, int _index, var _dlg, point _prevPoint)
-
-    ListModel{
-        id: mod
-    }
+    signal resetSignal()
 
     Multimeter{
         id: multimeter
@@ -56,10 +53,14 @@ Window {
                 drag.maximumY: window.height - Define.WIDGET_HEIGHT
                 drag.minimumY: 0
                 onPressed: {
+                    console.log("MouseX:" + mouseX)
+                    console.log("MouseY:" + mouseY)
                     lsv.currentIndex = index
                     prevPoint = Qt.point(dlg.x,dlg.y)
                 }
                 onReleased: {
+                    console.log("MouseX: " + mouseX)
+                    console.log("MouseY: " + mouseY)
                     if(dlg.y <= 0 || (dlg.y - lsv.y < dlg.height)){
                         dlg.y = 0
                         dlg.x = index* dlg.width
@@ -292,7 +293,7 @@ Window {
                 if(ModelData.activedDeviced === App_Enum.E_OBJECT_INDEX_TRANSISTOR &&
                    dlg._extend.connetedWire === App_Enum.E_WIRE_TYPE_NONE){
                     finger.y = dlg.y + dlg.height - 20
-                    finger.x = dlg.x + 74
+                    finger.x = dlg.x + 54
                 }
             }
             Connections{
@@ -306,6 +307,13 @@ Window {
                             _dlg.y = _prevPoint.y
                         }
                     }
+                }
+                onResetSignal:{
+                    dlg.y = 0;
+                    dlg.x = index * Define.WIDGET_WIDTH
+                    dlg.matchingNegative = App_Enum.E_WIRE_STATUS_EMPTY
+                    dlg.matchingPositive = App_Enum.E_WIRE_STATUS_EMPTY
+                    dlg.matchingExtend = App_Enum.E_WIRE_STATUS_EMPTY
                 }
             }
         }
@@ -400,15 +408,120 @@ Window {
         wire.blackCanvas.requestPaint()
     }
 
-//    function checkOverLap(dlg,prePoint,index){
-//        var result = false;
-//        for(var i = 0; i < ModelData.listModel.length; i++){
-//            if(index === i)
-//                continue;
-//            else{
-//                if(dlg.)
-//            }
-//        }
-//        return false
-//    }
+    Image {
+        id: rstBtn
+        width: 100
+        height: 50
+        anchors.bottom: parent.bottom
+        anchors.right: multimeter.left
+        source: ModelData.rstBtnSource
+        Rectangle{
+            id: onpress
+            anchors.fill: parent
+            opacity: 0.2
+            color: "grey"
+            visible: false
+        }
+
+        MouseArea{
+            signal re
+            anchors.fill: parent
+            onPressed: {
+                onpress.visible = true
+            }
+            onReleased: {
+                onpress.visible = false
+                resetSignal()
+                wire.redPointer.x = wire.redPointer.parent.width - 500
+                wire.redPointer.y = wire.redPointer.parent.height - 500
+                wire.blackPointer.x = wire.blackPointer.parent.width - 550
+                wire.blackPointer.y = wire.blackPointer.parent.height - 500
+                wire.redCanvas.requestPaint()
+                wire.blackCanvas.requestPaint()
+            }
+        }
+    }
+
+    Rectangle{
+        id: infoBtn
+        width: 70
+        height: 30
+        color: "grey"
+        opacity: 0.5
+        MouseArea{
+            anchors.fill: parent
+            propagateComposedEvents: false
+            onPressed: {
+                parent.opacity = 0.6
+            }
+            onReleased: {
+                parent.opacity = 0.5
+                popupBg.visible = true
+            }
+        }
+    }
+    Text {
+        text: qsTr("Thông tin")
+        anchors.centerIn: infoBtn
+        opacity: 2
+    }
+    Rectangle{
+        id: popupBg
+        anchors.fill: parent
+        color: "black"
+        opacity: 0.5
+        visible: false
+        MouseArea{
+            anchors.fill: parent
+            propagateComposedEvents: false
+        }
+    }
+
+    Rectangle{
+        id: info
+        width: 470
+        height: 200
+        visible: popupBg.visible
+        anchors.centerIn: parent
+        color: "black"
+        border.color: "white"
+        border.width: 1
+        Text {
+            text: qsTr("Đây là phần mềm mô phỏng sự đo kiểm tra đánh giá chất lượng cấu kiện điện tử, phục vụ cho nội dung thực hành  học phần Cấu kiện điện tử (C20) và học phần Đo lường điện tử (C25)”")
+            width: parent.width - 30
+            height: parent.height - 30
+            wrapMode: Text.Wrap
+            font.pixelSize: 15
+            color: "white"
+            horizontalAlignment: Text.AlignHCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            anchors.topMargin: 50
+        }
+        Rectangle{
+            id: closeBtn
+            width: 80
+            height: 30
+            color: "white"
+            radius: 2
+            anchors.bottom: parent.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottomMargin: 10
+            Text {
+                text: qsTr("Close")
+                anchors.centerIn: parent
+                font.pixelSize: 19
+            }
+            MouseArea{
+                anchors.fill: parent
+                onPressed: {
+                    closeBtn.color = "grey"
+                }
+                onReleased: {
+                    closeBtn.color = "white"
+                    popupBg.visible = false
+                }
+            }
+        }
+    }
 }
