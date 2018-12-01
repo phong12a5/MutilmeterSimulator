@@ -30,7 +30,7 @@ Window {
         width: parent.width
         height: Define.WIDGET_HEIGHT
         orientation : ListView.Horizontal
-        boundsBehavior: ListView.StopAtBounds
+//        boundsBehavior: ListView.StopAtBounds
         model: ModelData.listModel
         delegate: CommonComponent{
             id: dlg
@@ -73,8 +73,11 @@ Window {
                     }
 
                     dragPointChanged(Qt.point(dlg.x,dlg.y), index, dlg, prevPoint)
-                }
+                }        
+
                 onPositionChanged: {
+                    console.log("MouseX:" + mouseX)
+                    console.log("MouseY:" + mouseY)
                     dlg.matchingNegative = App_Enum.E_WIRE_STATUS_EMPTY
                     dlg.matchingPositive = App_Enum.E_WIRE_STATUS_EMPTY
                     dlg.matchingExtend = App_Enum.E_WIRE_STATUS_EMPTY
@@ -317,8 +320,50 @@ Window {
                 }
             }
         }
+        onContentXChanged: {
+            console.log("onContentXChanged: " + contentX)
+        }
     }
 
+    Image {
+        id: prevBtn
+        height: lsv.height / 2
+        width: height
+        anchors.left: lsv.left
+        anchors.verticalCenter: lsv.verticalCenter
+        source: "qrc:/Image/prevBtn.png"
+        opacity: mousePrev.pressed? 0.5:0.3
+        visible: lsv.contentX > 0
+
+        MouseArea{
+            id: mousePrev
+            anchors.fill: parent
+            onClicked: {
+                console.log("Clicked previous button")
+                lsv.positionViewAtBeginning()
+            }
+        }
+    }
+
+    Image {
+        id: nextBtn
+        height: lsv.height / 2
+        width: height
+        anchors.right: lsv.right
+        anchors.verticalCenter: lsv.verticalCenter
+        source: "qrc:/Image/nextBtn.png"
+        opacity: mouseNext.pressed? 0.5:0.3
+        visible: lsv.contentX <=0 && lsv.contentWidth > window.width
+
+        MouseArea{
+            id: mouseNext
+            anchors.fill: parent
+            onClicked: {
+                console.log("Clicked next button")
+                lsv.positionViewAtEnd()
+            }
+        }
+    }
     Rectangle{
         id: line
         width: window.width

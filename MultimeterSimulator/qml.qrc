@@ -4,5 +4,7 @@
         <file>CommonComponent.qml</file>
         <file>Multimeter.qml</file>
         <file>PointerWire.qml</file>
+        <file>Image/nextBtn.png</file>
+        <file>Image/prevBtn.png</file>
     </qresource>
 </RCC>

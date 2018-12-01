@@ -330,6 +330,7 @@ public:
     Q_PROPERTY(QObject* multimeter          READ multimeter         NOTIFY multimeterChanged)
     Q_PROPERTY(QObject* greenLed            READ greenLed           NOTIFY greenLedChanged)
     Q_PROPERTY(QObject* redLed              READ redLed             NOTIFY redLedChanged)
+    Q_PROPERTY(QObject* powerSocket         READ powerSocket        NOTIFY powerSocketChanged)
     Q_PROPERTY(int pointerMode              READ pointerMode        WRITE setPointerMode    NOTIFY pointerModeChanged)
     Q_PROPERTY(int activedDeviced           READ activedDeviced     WRITE setActivedDeviced NOTIFY activedDevicedChanged)
     Q_PROPERTY(QList<QObject*> listModel    READ listModel          NOTIFY listModelChanged)
@@ -354,6 +355,7 @@ private:
     QObject* m_multimeter;
     QObject* m_greenLed;
     QObject* m_redLed;
+    QObject* m_powerSocket;
     QList<QObject*> m_listModel;
     QTimer m_capNormalTimer;
     QTimer m_capAbnormalTimer;
@@ -372,6 +374,7 @@ private:
     void handleActivedTransistor(int posConnectedWire, int negaConnectedWire, int extConnectedWire);
     void handleActivedGreenLed(int posConnectedWire, int negaConnectedWire, int extConnectedWire);
     void handleActivedRedLed(int posConnectedWire, int negaConnectedWire, int extConnectedWire);
+    void handleActivedPowerSocket(int posConnectedWire, int negaConnectedWire, int extConnectedWire);
     void updateStateOfDeActviedMultimeter();
     void updateStateOfActviedMultimeter();
 public:
@@ -388,6 +391,7 @@ public:
     QObject* diode();
     QObject* transistor();
     QObject* redLed();
+    QObject* powerSocket();
     QObject* greenLed();
     QObject* multimeter();
     QList<QObject *> listModel();
@@ -410,6 +414,7 @@ signals:
     void diodeChanged();
     void transistorChanged();
     void redLedChanged();
+    void powerSocketChanged();
     void greenLedChanged();
     void multimeterChanged();
     void pointerModeChanged();
