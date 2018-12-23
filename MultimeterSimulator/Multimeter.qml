@@ -1,5 +1,7 @@
 import QtQuick 2.3
+import QtGraphicalEffects 1.0
 import App_Enum 1.0
+
 Item {
     id: root
 
@@ -8,7 +10,6 @@ Item {
 
     property var stopRedPoint: [280/_FACTOR + bg.x,2519/_FACTOR  + bg.y]
     property var stopBlackPoint: [280/_FACTOR + bg.x,2943/_FACTOR  + bg.y]
-
 
     Rectangle{
         width: 2
@@ -25,7 +26,57 @@ Item {
         width: Define.multiImg_sourcwWidth/_FACTOR
         height: Define.multiImg_sourcwHeight/_FACTOR
         mipmap: true
+        Image {
+            id: konap
+            width: 270/_FACTOR
+            height: width
+            x: 1795/_FACTOR
+            y: 1887/_FACTOR
+            source: "qrc:/Image/konap_1.png"
+            rotation: drgMouse._rotate
+
+            Rectangle{
+                id: centerOfImage
+                anchors.centerIn: parent
+                width: 1
+                height: 1
+                color: "yellow"
+            }
+        }
+
+        MouseArea{
+            id: drgMouse
+            property int centerX: centerOfImage.x + 1
+            property int centerY: centerOfImage.y + 1
+            property int _rotate: 0
+            x: konap.x
+            y: konap.y
+            width: konap.width
+            height: konap.height
+            onPositionChanged: {
+                if(pressed){
+                    var radius = Math.sqrt(Math.pow(mouseX - centerX,2) +  Math.pow(mouseY - centerY,2))
+                    if(radius < width/2){
+                        if(mouseX < centerX && mouseY < centerY){
+                            _rotate = Math.asin((mouseX - centerX)/radius) * 180/Math.PI + 360
+                            ModelData.resetAdj = false
+                        }else if(mouseX > centerX && mouseY < centerY){
+                            _rotate = Math.asin((mouseX - centerX)/radius) * 180/Math.PI
+                            ModelData.resetAdj = false
+                        }else if(mouseX > centerX && mouseY > centerY){
+                            _rotate = (Math.PI - Math.asin((mouseX - centerX)/radius)) * 180/Math.PI
+                            ModelData.resetAdj = false
+                        }else if(mouseX < centerX && mouseY > centerY){
+                            _rotate = (Math.PI - Math.asin((mouseX - centerX)/radius)) * 180/Math.PI
+                            ModelData.resetAdj = false
+                        }
+                    }
+                }
+            }
+        }
     }
+
+
     Image {
         id: pointer
         width: Define.multiPointerRaius/_FACTOR

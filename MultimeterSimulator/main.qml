@@ -9,8 +9,11 @@ Window {
     width: Screen.width
     height: Screen.height
 
+    property int startIndex: 0
     signal dragPointChanged(point dragPoint, int _index, var _dlg, point _prevPoint)
     signal resetSignal()
+    signal pressedNext()
+    signal pressedPrevious()
 
     Multimeter{
         id: multimeter
@@ -29,12 +32,13 @@ Window {
         id: lsv
         width: parent.width
         height: Define.WIDGET_HEIGHT
+        contentWidth: width
         orientation : ListView.Horizontal
-//        boundsBehavior: ListView.StopAtBounds
+        boundsBehavior: ListView.StopAtBounds
         model: ModelData.listModel
         delegate: CommonComponent{
             id: dlg
-            property point prevPoint: Qt.point(index * dlg.width,0)
+            property point prevPoint: Qt.point(index * dlg.width - startIndex * dlg.width,0)
             width: Define.WIDGET_WIDTH
             height: Define.WIDGET_HEIGHT
             Rectangle{
@@ -52,18 +56,16 @@ Window {
                 drag.minimumX: 0
                 drag.maximumY: window.height - Define.WIDGET_HEIGHT
                 drag.minimumY: 0
+                propagateComposedEvents: true
                 onPressed: {
-                    console.log("MouseX:" + mouseX)
-                    console.log("MouseY:" + mouseY)
                     lsv.currentIndex = index
                     prevPoint = Qt.point(dlg.x,dlg.y)
                 }
                 onReleased: {
-                    console.log("MouseX: " + mouseX)
-                    console.log("MouseY: " + mouseY)
                     if(dlg.y <= 0 || (dlg.y - lsv.y < dlg.height)){
                         dlg.y = 0
-                        dlg.x = index* dlg.width
+                        dlg.x = index * dlg.width - startIndex * dlg.width
+                        return
                     }
 
                     if((dlg.x + dlg.width > multimeter.x && dlg.y > 0) ||
@@ -73,11 +75,9 @@ Window {
                     }
 
                     dragPointChanged(Qt.point(dlg.x,dlg.y), index, dlg, prevPoint)
-                }        
+                }
 
                 onPositionChanged: {
-                    console.log("MouseX:" + mouseX)
-                    console.log("MouseY:" + mouseY)
                     dlg.matchingNegative = App_Enum.E_WIRE_STATUS_EMPTY
                     dlg.matchingPositive = App_Enum.E_WIRE_STATUS_EMPTY
                     dlg.matchingExtend = App_Enum.E_WIRE_STATUS_EMPTY
@@ -313,15 +313,55 @@ Window {
                 }
                 onResetSignal:{
                     dlg.y = 0;
-                    dlg.x = index * Define.WIDGET_WIDTH
+                    dlg.x = index * Define.WIDGET_WIDTH  - startIndex * Define.WIDGET_WIDTH
                     dlg.matchingNegative = App_Enum.E_WIRE_STATUS_EMPTY
                     dlg.matchingPositive = App_Enum.E_WIRE_STATUS_EMPTY
                     dlg.matchingExtend = App_Enum.E_WIRE_STATUS_EMPTY
                 }
+                onPressedNext:{
+                    if(dlg.y <= lsv.y + 10){
+                        dlg.x = dlg.x - dlg.width
+                    }
+                }
+
+                onPressedPrevious:{
+                    if(dlg.y <= lsv.y + 10){
+                        dlg.x = dlg.x + dlg.width
+                    }
+                }
+            }
+            onShowZoomImage: {
+                if(zoom.visible){
+                    if(zoomImage.source != modelData.sourceImage)
+                        zoomImage.source = modelData.sourceImage
+                    else
+                        zoom.visible = false
+                }else{
+                    zoom.visible = true
+                    zoomImage.source = modelData.sourceImage
+                }
             }
         }
-        onContentXChanged: {
-            console.log("onContentXChanged: " + contentX)
+    }
+
+    Rectangle {
+        id: zoom
+        anchors.left: parent.left
+        anchors.top: lsv.bottom
+        width: parent.width - multimeter.width
+        height: parent.height - lsv.height
+        color: "white"
+        visible: false
+        Image {
+            id: zoomImage
+            width: 500
+            height: 500
+            anchors.centerIn: parent
+            source: ""
+        }
+        MouseArea{
+            anchors.fill: parent
+            onDoubleClicked: parent.visible = false
         }
     }
 
@@ -333,14 +373,15 @@ Window {
         anchors.verticalCenter: lsv.verticalCenter
         source: "qrc:/Image/prevBtn.png"
         opacity: mousePrev.pressed? 0.5:0.3
-        visible: lsv.contentX > 0
+        visible: startIndex >= (lsv.contentWidth - window.width)/Define.WIDGET_WIDTH && lsv.contentWidth > window.width
 
         MouseArea{
             id: mousePrev
             anchors.fill: parent
             onClicked: {
                 console.log("Clicked previous button")
-                lsv.positionViewAtBeginning()
+                startIndex --
+                pressedPrevious()
             }
         }
     }
@@ -353,14 +394,15 @@ Window {
         anchors.verticalCenter: lsv.verticalCenter
         source: "qrc:/Image/nextBtn.png"
         opacity: mouseNext.pressed? 0.5:0.3
-        visible: lsv.contentX <=0 && lsv.contentWidth > window.width
+        visible: startIndex == 0 && lsv.contentWidth > window.width
 
         MouseArea{
             id: mouseNext
             anchors.fill: parent
             onClicked: {
                 console.log("Clicked next button")
-                lsv.positionViewAtEnd()
+                startIndex ++
+                pressedNext()
             }
         }
     }
@@ -476,6 +518,8 @@ Window {
             }
             onReleased: {
                 onpress.visible = false
+                startIndex = 0
+                lsv.contentX = 0
                 resetSignal()
                 wire.redPointer.x = wire.redPointer.parent.width - 500
                 wire.redPointer.y = wire.redPointer.parent.height - 500
@@ -524,7 +568,7 @@ Window {
 
     Rectangle{
         id: info
-        width: 470
+        width: 500
         height: 200
         visible: popupBg.visible
         anchors.centerIn: parent
@@ -532,7 +576,10 @@ Window {
         border.color: "white"
         border.width: 1
         Text {
-            text: qsTr("Đây là phần mềm mô phỏng sự đo kiểm tra đánh giá chất lượng cấu kiện điện tử, phục vụ cho nội dung thực hành  học phần Cấu kiện điện tử (C20) và học phần Đo lường điện tử (C25)”")
+            text: qsTr("Đây là phần mềm mô phỏng sự đo kiểm tra đánh giá chất lượng cấu kiện điện tử, phục vụ cho nội dung thực hành  học phần Cấu kiện điện tử (C20) và học phần Đo lường điện tử (C25)
+Mọi thắc mắc xin liên hệ KS, Nguyễn Trọng Quang và nhóm tác giả.
+SDT: 0374790129
+gmail: trongquang3883686@gmail.com")
             width: parent.width - 30
             height: parent.height - 30
             wrapMode: Text.Wrap
@@ -541,7 +588,7 @@ Window {
             horizontalAlignment: Text.AlignHCenter
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
-            anchors.topMargin: 50
+            anchors.topMargin: 40
         }
         Rectangle{
             id: closeBtn

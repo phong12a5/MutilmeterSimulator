@@ -7,6 +7,8 @@ ModelData::ModelData(QObject *parent) : QObject(parent)
 {
     m_pointerMode = static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_OFF);
     m_activedDeviced = -1;
+    m_resetAdj = true;
+    m_bothWireAtSamePos = false;
     initObjects();
     m_capNormalTimer.setSingleShot(true);
     m_capAbnormalTimer.setSingleShot(true);
@@ -588,11 +590,31 @@ void ModelData::setPointerMode(int _mode)
         m_pointerMode = _mode;
         emit pointerModeChanged();
 
+        this->setResetAdj(true);
         bool existActivedDevice =   m_activedDeviced >= static_cast<int>(App_Enum::E_OBJECT_INDEX_RESISTOR_1) &&
                 m_activedDeviced <= static_cast<int>(App_Enum::E_OBJECT_INDEX_POWER_SOCKET);
         if(!existActivedDevice){
             DLT_LOG << "Don't have any active deviced";
-            updateStateOfDeActviedMultimeter();
+            if(this->bothWireAtSamePos()){
+                if(this->pointerMode() >= static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10K_R) &&
+                        this->pointerMode() <= static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R)){
+                    if(this->resetAdj()){
+                        m_multimeter->setProperty("runningAnimation",QVariant(false));
+                        m_multimeter->setProperty("nextRotation",QVariant(42));
+                        m_multimeter->setProperty("runningAnimation",QVariant(true));
+                    }else{
+                        m_multimeter->setProperty("runningAnimation",QVariant(false));
+                        m_multimeter->setProperty("nextRotation",QVariant(45));
+                        m_multimeter->setProperty("runningAnimation",QVariant(true));
+                    }
+                }else{
+                    m_multimeter->setProperty("runningAnimation",QVariant(false));
+                    m_multimeter->setProperty("nextRotation",QVariant(-45));
+                    m_multimeter->setProperty("runningAnimation",QVariant(true));
+                }
+            }else{
+                updateStateOfDeActviedMultimeter();
+            }
         }else{
             updateStateOfActviedMultimeter();
         }
@@ -617,6 +639,67 @@ void ModelData::setActivedDeviced(int data)
 QString ModelData::rstBtnSource()
 {
     return QString("file:///" + QDir::currentPath() + "/Image/reset_button.png");
+}
+
+bool ModelData::resetAdj()
+{
+    return m_resetAdj;
+}
+
+void ModelData::setResetAdj(bool data)
+{
+    DLT_LOG << data;
+    if(m_resetAdj != data){
+        m_resetAdj = data;
+        emit resetAdjChanged();
+
+        if(this->bothWireAtSamePos()){
+            if(this->pointerMode() >= static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10K_R) &&
+                    this->pointerMode() <= static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R)){
+                if(this->resetAdj()){
+                    m_multimeter->setProperty("runningAnimation",QVariant(false));
+                    m_multimeter->setProperty("nextRotation",QVariant(42));
+                    m_multimeter->setProperty("runningAnimation",QVariant(true));
+                }else{
+                    m_multimeter->setProperty("runningAnimation",QVariant(false));
+                    m_multimeter->setProperty("nextRotation",QVariant(45));
+                    m_multimeter->setProperty("runningAnimation",QVariant(true));
+                }
+            }
+        }
+    }
+}
+
+bool ModelData::bothWireAtSamePos()
+{
+    return m_bothWireAtSamePos;
+}
+
+void ModelData::setBothWireAtSamePos(bool data)
+{
+    DLT_LOG << data;
+    if(m_bothWireAtSamePos != data){
+        m_bothWireAtSamePos = data;
+        emit bothWireAtSamePosChanged();
+        if(this->bothWireAtSamePos()){
+            if(this->pointerMode() >= static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_10K_R) &&
+                    this->pointerMode() <= static_cast<int>(App_Enum::E_MULTI_POINTER_MODE_1_R)){
+                if(this->resetAdj()){
+                    m_multimeter->setProperty("runningAnimation",QVariant(false));
+                    m_multimeter->setProperty("nextRotation",QVariant(42));
+                    m_multimeter->setProperty("runningAnimation",QVariant(true));
+                }else{
+                    m_multimeter->setProperty("runningAnimation",QVariant(false));
+                    m_multimeter->setProperty("nextRotation",QVariant(45));
+                    m_multimeter->setProperty("runningAnimation",QVariant(true));
+                }
+            }
+        }else{
+            m_multimeter->setProperty("runningAnimation",QVariant(false));
+            m_multimeter->setProperty("nextRotation",QVariant(-45));
+            m_multimeter->setProperty("runningAnimation",QVariant(true));
+        }
+    }
 }
 
 ModelData *ModelData::getInstance()

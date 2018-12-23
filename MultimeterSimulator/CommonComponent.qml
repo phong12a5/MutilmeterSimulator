@@ -18,6 +18,8 @@ Item {
     property alias _positive: positive
     property alias _negative: negative
     property alias _extend: extend
+
+    signal showZoomImage()
     Image{
         id: profileImage
         width: parent.width - 10
@@ -35,6 +37,12 @@ Item {
                 GradientStop { position: 0.0; color: "#7fff00" }
                 GradientStop { position: 0.5; color: "transparent" }
             }
+        }
+    }
+    MouseArea{
+        anchors.fill: parent
+        onDoubleClicked: {
+            showZoomImage()
         }
     }
     Rectangle{

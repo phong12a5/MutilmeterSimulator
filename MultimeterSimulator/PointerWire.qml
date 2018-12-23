@@ -7,6 +7,7 @@ Item{
 
     property var stopRedPoint: [0,0]
     property var stopBlackPoint: [0,0]
+    property bool bothWireAtSamePos: Math.abs(redPointer.x - blackPointer.x) < 5 && Math.abs(redPointer.y - blackPointer.y)
     signal redWireChangingPos(int posX, int posY)
     signal blackWireChangingPos(int posX, int posY)
     signal redWireRelesedPos()
@@ -36,52 +37,37 @@ Item{
             color: "#cc3300"
         }
 
+        Rectangle{
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            width: 10
+            height: width
+            radius: width/2
+            color: "#B87333"
+            visible: bothWireAtSamePos
+        }
+
         MouseArea{
+            id: redMouse
             anchors.fill: parent
             drag.target: parent
             drag.minimumX: 0//parent.width
             drag.maximumX: root.width - Define.multiMeterWidth - 50
             drag.minimumY: 0
             drag.maximumY: root.height - parent.height
+            onPressed: {
+                redPointer.z = 10
+                redPointer.z = 11
+                blackCanvas.z = 5
+                blackCanvas.z = 6
+            }
+
             onPositionChanged: {
                 redCanvas.requestPaint()
                 redWireChangingPos(redPointer.x + redPointer.width/2, redPointer.y)
             }
             onReleased: {
                 redWireRelesedPos()
-            }
-        }
-    }
-
-    Image{
-        id: blackPointer
-        width: sourceSize.width/2
-        height: sourceSize.height/2
-        source: ModelData.multimeter.blackSourceImg
-        x: root.width - 550
-        y: root.height - 500
-        Rectangle{
-            anchors.verticalCenter: parent.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: 1
-            width: parent.width/2
-            height: 10
-            radius: 10
-            color: "black"
-        }
-        MouseArea{
-            anchors.fill: parent
-            drag.target: parent
-            drag.minimumX: 0//parent.width
-            drag.maximumX: root.width - Define.multiMeterWidth - 50
-            drag.minimumY: 0
-            drag.maximumY: root.height - parent.height
-            onPositionChanged: {
-                blackCanvas.requestPaint()
-                blackWireChangingPos(blackPointer.x + blackPointer.width/2, blackPointer.y)
-            }
-            onReleased: {
-                blackWireRelesedPos()
             }
         }
     }
@@ -109,6 +95,58 @@ Item{
 //            }
 
             ctx.stroke();
+        }
+    }
+
+    Image{
+        id: blackPointer
+        width: sourceSize.width/2
+        height: sourceSize.height/2
+        source: ModelData.multimeter.blackSourceImg
+        x: root.width - 550
+        y: root.height - 500
+
+        Rectangle{
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            width: 10
+            height: width
+            radius: width/2
+            color: "#B87333"
+            visible: bothWireAtSamePos
+        }
+
+        Rectangle{
+            anchors.verticalCenter: parent.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: 1
+            width: parent.width/2
+            height: 10
+            radius: 10
+            color: "black"
+        }
+        MouseArea{
+            id: blueMouse
+            anchors.fill: parent
+            drag.target: parent
+            drag.minimumX: 0//parent.width
+            drag.maximumX: root.width - Define.multiMeterWidth - 50
+            drag.minimumY: 0
+            drag.maximumY: root.height - parent.height
+            onPressed: {
+                blackPointer.z = 10
+                blackCanvas.z = 11
+                redPointer.z = 5
+                redCanvas.z = 6
+            }
+
+            onPositionChanged: {
+                blackCanvas.requestPaint()
+                blackWireChangingPos(blackPointer.x + blackPointer.width/2, blackPointer.y)
+            }
+            onReleased: {
+                blackWireRelesedPos()
+            }
         }
     }
 
@@ -140,6 +178,10 @@ Item{
     Component.onCompleted: {
         redCanvas.requestPaint()
         blackCanvas.requestPaint()
+    }
+
+    onBothWireAtSamePosChanged: {
+        ModelData.bothWireAtSamePos = bothWireAtSamePos;
     }
 }
 

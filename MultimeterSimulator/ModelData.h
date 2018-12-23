@@ -338,6 +338,9 @@ public:
     Q_PROPERTY(QString logoSource           READ logoSource         NOTIFY logoChanged)
     Q_PROPERTY(QString rstBtnSource         READ rstBtnSource       NOTIFY rstBtnSourceChanged)
 
+    Q_PROPERTY(bool resetAdj                READ resetAdj           WRITE setResetAdj           NOTIFY resetAdjChanged)
+    Q_PROPERTY(bool bothWireAtSamePos       READ bothWireAtSamePos  WRITE setBothWireAtSamePos  NOTIFY bothWireAtSamePosChanged)
+
     Q_INVOKABLE void updateActivedDevice(bool actived, int index, int posConnectedWire, int negaConnectedWire, int extConnectedWire);
 private:
 
@@ -361,6 +364,8 @@ private:
     QTimer m_capAbnormalTimer;
     int m_pointerMode;
     int m_activedDeviced;
+    bool m_resetAdj;
+    bool m_bothWireAtSamePos;
 
 private:
     void handleActivedRes1();
@@ -402,6 +407,10 @@ public:
     int activedDeviced();
     void setActivedDeviced(int data);
     QString rstBtnSource();
+    bool resetAdj();
+    void setResetAdj(bool data);
+    bool bothWireAtSamePos();
+    void setBothWireAtSamePos(bool data);
 
 signals:
     void resistor1Changed();
@@ -423,7 +432,8 @@ signals:
     void fingerSourceChanged();
     void logoChanged();
     void rstBtnSourceChanged();
-
+    void resetAdjChanged();
+    void bothWireAtSamePosChanged();
 
 public slots:
     void onCapNormalTimerTrigged();
