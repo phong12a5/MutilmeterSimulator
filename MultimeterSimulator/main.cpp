@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
     DefineModel * defineModel = DefineModel::getInstance();
     engine.rootContext()->setContextProperty("ModelData", model);
     engine.rootContext()->setContextProperty("Define", defineModel);
+    engine.addImageProvider(QLatin1String("ImgProvider"), new ImageProvider);
     qmlRegisterType<App_Enum>("App_Enum", 1, 0, "App_Enum");
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

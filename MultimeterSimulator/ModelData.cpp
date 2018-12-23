@@ -14,6 +14,7 @@ ModelData::ModelData(QObject *parent) : QObject(parent)
     m_capAbnormalTimer.setInterval(800);
     QObject::connect(&m_capNormalTimer,SIGNAL(timeout()),this,SLOT(onCapNormalTimerTrigged()));
     QObject::connect(&m_capAbnormalTimer,SIGNAL(timeout()),this,SLOT(onCapAbnormalTimerTrigged()));
+    DLT_LOG << "CurrentPath: " << QDir::currentPath();
 }
 
 ModelData::~ModelData()
@@ -568,12 +569,12 @@ QList<QObject *> ModelData::listModel()
 
 QString ModelData::fingerSource()
 {
-    return QString("file:///" + QDir::currentPath() + "/Image/finger.png");
+    return QString(FOLDER_PREFIX + "Image/finger.png");
 }
 
 QString ModelData::logoSource()
 {
-    return QString("file:///" + QDir::currentPath() + "/Image/logo.jpg");
+    return QString(FOLDER_PREFIX + "Image/Logo.jpg");
 }
 
 int ModelData::pointerMode()
@@ -616,7 +617,7 @@ void ModelData::setActivedDeviced(int data)
 
 QString ModelData::rstBtnSource()
 {
-    return QString("file:///" + QDir::currentPath() + "/Image/reset_button.png");
+    return QString(FOLDER_PREFIX + "Image/reset_button.png");
 }
 
 ModelData *ModelData::getInstance()
@@ -637,24 +638,24 @@ ModelData *ModelData::getInstance()
 void ModelData::initObjects()
 {
     DLT_LOG;
-    m_resistor1         = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_RESISTOR_1),    "Resistor_1"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_RESISTOR   ), "file:///" + QDir::currentPath() + "/Image/Resistor_1.jpg",     QPointF(2,58),      QPointF(112,58), QPointF(0,0));
-    m_resistor2         = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_RESISTOR_2),    "Resistor_2"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_RESISTOR   ), "file:///" + QDir::currentPath() + "/Image/Resistor_2.jpg",     QPointF(0,60),      QPointF(114,58), QPointF(0,0));
-    m_capictor_normal   = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_CAPICTOR_1),    "Capictor_1"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_CAPICTOR   ), "file:///" + QDir::currentPath() + "/Image/Capictor_1.png",     QPointF(44,112),    QPointF(66,113), QPointF(0,0));
-    m_capictor_abnormal = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_CAPICTOR_2),    "Capictor_2"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_CAPICTOR   ), "file:///" + QDir::currentPath() + "/Image/Capictor_2.jpg",     QPointF(47,114),    QPointF(68,113), QPointF(0,0));
-    m_cappictor_error   = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_CAPICTOR_3),    "Capictor_3"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_CAPICTOR   ), "file:///" + QDir::currentPath() + "/Image/Capictor_3.png",     QPointF(40,114),    QPointF(68,113), QPointF(0,0));
-    m_condutor_normal   = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_CONDUTOR_1),    "Conductor_1"  ,static_cast<int>(App_Enum::E_OBJECT_TYPE_CONDUTOR   ), "file:///" + QDir::currentPath() + "/Image/Conductor_1.png",    QPointF(0,106),     QPointF(113,49), QPointF(0,0));
-    m_condutor_error    = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_CONDUTOR_2),    "Conductor_2"  ,static_cast<int>(App_Enum::E_OBJECT_TYPE_CONDUTOR   ), "file:///" + QDir::currentPath() + "/Image/Conductor_2.png",    QPointF(16,114),    QPointF(100,113),QPointF(0,0));
-    m_diode             = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_DIODE     ),    "Diode"        ,static_cast<int>(App_Enum::E_OBJECT_TYPE_DIODE      ), "file:///" + QDir::currentPath() + "/Image/Diode.png",          QPointF(0,61),      QPointF(113,58), QPointF(0,0));
-    m_transistor        = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_TRANSISTOR),    "Transistor"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_TRANSISTOR ), "file:///" + QDir::currentPath() + "/Image/Transistor.png",     QPointF(34,114),    QPointF(56,114), QPointF(79,114));
-    m_greenLed          = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_LED_GREEN),     "greenLed"     ,static_cast<int>(App_Enum::E_OBJECT_TYPE_DIODE      ), "file:///" + QDir::currentPath() + "/Image/GreenLed.jpg",       QPointF(47,112),    QPointF(69,112), QPointF(0,0));
-    m_redLed            = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_LED_RED),       "redLed"       ,static_cast<int>(App_Enum::E_OBJECT_TYPE_DIODE      ), "file:///" + QDir::currentPath() + "/Image/GreenLed.jpg",       QPointF(47,112),    QPointF(69,112), QPointF(0,0));
-    m_powerSocket       = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_POWER_SOCKET),  "power_socket" ,static_cast<int>(App_Enum::E_OBJECT_TYPE_POWER_SOCKET),"file:///" + QDir::currentPath() + "/Image/power_socket.png",   QPointF(45,54),     QPointF(65,54),     QPointF(0,0));
-    m_multimeter        = new MultimeterObject(static_cast<int>(App_Enum::E_OBJECT_INDEX_MULTIMETER),    "Multimeter"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_MULTIMETER ), "file:///" + QDir::currentPath() + "/Image/Multimeter_bg.png",
-                                               "file:///" + QDir::currentPath() + "/Image/Multimeter_pointer.png",
-                                               "file:///" + QDir::currentPath() + "/Image/positivePonter.png",
-                                               "file:///" + QDir::currentPath() + "/Image/negativePonter.png",
-                                               "file:///" + QDir::currentPath() + "/Image/mask.png",
-                                               "file:///" + QDir::currentPath() + "/Image/line.png");
+    m_resistor1         = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_RESISTOR_1),    "Resistor_1"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_RESISTOR   ), FOLDER_PREFIX + "Image/Resistor_1.jpg",     QPointF(2,58),      QPointF(112,58), QPointF(0,0));
+    m_resistor2         = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_RESISTOR_2),    "Resistor_2"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_RESISTOR   ), FOLDER_PREFIX + "Image/Resistor_2.jpg",     QPointF(0,60),      QPointF(114,58), QPointF(0,0));
+    m_capictor_normal   = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_CAPICTOR_1),    "Capictor_1"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_CAPICTOR   ), FOLDER_PREFIX + "Image/Capictor_1.png",     QPointF(44,112),    QPointF(66,113), QPointF(0,0));
+    m_capictor_abnormal = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_CAPICTOR_2),    "Capictor_2"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_CAPICTOR   ), FOLDER_PREFIX + "Image/Capictor_2.jpg",     QPointF(47,114),    QPointF(68,113), QPointF(0,0));
+    m_cappictor_error   = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_CAPICTOR_3),    "Capictor_3"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_CAPICTOR   ), FOLDER_PREFIX + "Image/Capictor_3.png",     QPointF(40,114),    QPointF(68,113), QPointF(0,0));
+    m_condutor_normal   = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_CONDUTOR_1),    "Conductor_1"  ,static_cast<int>(App_Enum::E_OBJECT_TYPE_CONDUTOR   ), FOLDER_PREFIX + "Image/Conductor_1.png",    QPointF(0,106),     QPointF(113,49), QPointF(0,0));
+    m_condutor_error    = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_CONDUTOR_2),    "Conductor_2"  ,static_cast<int>(App_Enum::E_OBJECT_TYPE_CONDUTOR   ), FOLDER_PREFIX + "Image/Conductor_2.png",    QPointF(16,114),    QPointF(100,113),QPointF(0,0));
+    m_diode             = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_DIODE     ),    "Diode"        ,static_cast<int>(App_Enum::E_OBJECT_TYPE_DIODE      ), FOLDER_PREFIX + "Image/Diode.png",          QPointF(0,61),      QPointF(113,58), QPointF(0,0));
+    m_transistor        = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_TRANSISTOR),    "Transistor"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_TRANSISTOR ), FOLDER_PREFIX + "Image/Transistor.png",     QPointF(34,114),    QPointF(56,114), QPointF(79,114));
+    m_greenLed          = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_LED_GREEN),     "greenLed"     ,static_cast<int>(App_Enum::E_OBJECT_TYPE_DIODE      ), FOLDER_PREFIX + "Image/GreenLed.jpg",       QPointF(47,112),    QPointF(69,112), QPointF(0,0));
+    m_redLed            = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_LED_RED),       "redLed"       ,static_cast<int>(App_Enum::E_OBJECT_TYPE_DIODE      ), FOLDER_PREFIX + "Image/GreenLed.jpg",       QPointF(47,112),    QPointF(69,112), QPointF(0,0));
+    m_powerSocket       = new CommonObject    (static_cast<int>(App_Enum::E_OBJECT_INDEX_POWER_SOCKET),  "power_socket" ,static_cast<int>(App_Enum::E_OBJECT_TYPE_POWER_SOCKET),FOLDER_PREFIX + "Image/power_socket.png",   QPointF(45,54),     QPointF(65,54),  QPointF(0,0));
+    m_multimeter        = new MultimeterObject(static_cast<int>(App_Enum::E_OBJECT_INDEX_MULTIMETER),    "Multimeter"   ,static_cast<int>(App_Enum::E_OBJECT_TYPE_MULTIMETER ), FOLDER_PREFIX + "Image/Multimeter_bg.png",
+                                               FOLDER_PREFIX + "Image/Multimeter_pointer.png",
+                                               FOLDER_PREFIX + "Image/positivePonter.png",
+                                               FOLDER_PREFIX + "Image/negativePonter.png",
+                                               FOLDER_PREFIX + "Image/mask.png",
+                                               FOLDER_PREFIX + "Image/line.png");
 }
 void ModelData::onCapNormalTimerTrigged()
 {
