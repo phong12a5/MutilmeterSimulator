@@ -9,24 +9,15 @@ ImageProvider::ImageProvider() : QQuickImageProvider(QQuickImageProvider::Pixmap
 
 QPixmap ImageProvider::requestPixmap(const QString &id, QSize *size, const QSize &requestedSize)
 {
-    int width = 100;
-    int height = 50;
+    DLT_LOG << "id: " << id << " -- requestedSize: " << requestedSize;
+    QString rsrcid = id;
+    QPixmap image(rsrcid);
+    QPixmap result;
 
-    if (size)
-        *size = QSize(width, height);
-    QPixmap pixmap(requestedSize.width() > 0 ? requestedSize.width() : width,
-                   requestedSize.height() > 0 ? requestedSize.height() : height);
-    pixmap.fill(QColor(id).rgba());
-    return pixmap;
-}
+    if(image.isNull()){
+        DLT_LOG << "Image with id" << id << "is null, defaulting to image1";
+    }
 
-QImage ImageProvider::requestImage(const QString &id, QSize *size, const QSize &requestedSize)
-{
-    QString rsrcid = ":/" + id;
-    QImage image(rsrcid);
-    QImage result;
-
-    DLT_LOG << image.isNull();
     if (requestedSize.isValid()) {
         result = image.scaled(requestedSize, Qt::KeepAspectRatio);
     } else {
