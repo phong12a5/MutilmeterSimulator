@@ -9,6 +9,14 @@
 #include "App_Enum.h"
 #include <QPointF>
 #include <QTimer>
+#include <QString>
+#include "ImageProvider.h"
+
+#if defined (WEB_ENV)
+#define FOLDER_PREFIX QString("image://ImgProvider/")
+#else
+#define FOLDER_PREFIX "file:///"+QDir::currentPath()
+#endif
 
 class CommonObject: public QObject
 {

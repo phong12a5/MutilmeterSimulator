@@ -6,6 +6,7 @@ CONFIG += c++11
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
+DEFINES += WEB_ENV
 
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -15,7 +16,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     ModelData.cpp \
-    DefineModel.cpp
+    DefineModel.cpp \
+    ImageProvider.cpp
 
 RESOURCES += qml.qrc
 
@@ -34,7 +36,8 @@ HEADERS += \
     ModelData.h \
     AppDefine.h \
     DefineModel.h \
-    App_Enum.h
+    App_Enum.h \
+    ImageProvider.h
 
 DISTFILES +=
 
