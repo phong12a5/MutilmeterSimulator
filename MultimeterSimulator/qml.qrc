@@ -7,5 +7,24 @@
         <file>Image/nextBtn.png</file>
         <file>Image/prevBtn.png</file>
         <file>Image/konap_1.png</file>
+        <file>Image/Capictor_1.png</file>
+        <file>Image/Capictor_2.jpg</file>
+        <file>Image/Capictor_3.png</file>
+        <file>Image/Conductor_1.png</file>
+        <file>Image/Conductor_2.png</file>
+        <file>Image/Diode.png</file>
+        <file>Image/finger.png</file>
+        <file>Image/GreenLed.jpg</file>
+        <file>Image/line.png</file>
+        <file>Image/Logo.jpg</file>
+        <file>Image/mask.png</file>
+        <file>Image/Multimeter_pointer.png</file>
+        <file>Image/negativePonter.png</file>
+        <file>Image/positivePonter.png</file>
+        <file>Image/power_socket.png</file>
+        <file>Image/reset_button.png</file>
+        <file>Image/Resistor_1.jpg</file>
+        <file>Image/Resistor_2.jpg</file>
+        <file>Image/Transistor.png</file>
     </qresource>
 </RCC>

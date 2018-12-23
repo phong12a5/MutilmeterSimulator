@@ -13,7 +13,7 @@
 #include "ImageProvider.h"
 
 #if defined (WEB_ENV)
-#define FOLDER_PREFIX QString("image://imgProvider/")
+#define FOLDER_PREFIX QString("qrc:/")
 #else
 #define FOLDER_PREFIX "file:///"+QDir::currentPath()
 #endif
