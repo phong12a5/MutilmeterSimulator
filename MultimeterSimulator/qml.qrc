@@ -26,5 +26,7 @@
         <file>Image/Resistor_1.jpg</file>
         <file>Image/Resistor_2.jpg</file>
         <file>Image/Transistor.png</file>
+        <file>Image/Multimeter_bg-min.png</file>
+        <file>InformationPopup.qml</file>
     </qresource>
 </RCC>

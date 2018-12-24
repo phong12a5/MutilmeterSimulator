@@ -16,8 +16,7 @@ DEFINES += WEB_ENV
 SOURCES += \
     main.cpp \
     ModelData.cpp \
-    DefineModel.cpp \
-    ImageProvider.cpp
+    DefineModel.cpp
 
 RESOURCES += qml.qrc
 
@@ -36,8 +35,7 @@ HEADERS += \
     ModelData.h \
     AppDefine.h \
     DefineModel.h \
-    App_Enum.h \
-    ImageProvider.h
+    App_Enum.h
 
 DISTFILES +=
 

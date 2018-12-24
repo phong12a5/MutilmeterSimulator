@@ -10,7 +10,6 @@
 #include <QPointF>
 #include <QTimer>
 #include <QString>
-#include "ImageProvider.h"
 
 #if defined (WEB_ENV)
 #define FOLDER_PREFIX QString("qrc:/")
